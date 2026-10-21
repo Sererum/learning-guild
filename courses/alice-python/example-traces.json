@@ -1,0 +1,5341 @@
+{
+  "schemaVersion": 1,
+  "runtime": "Python 3.12",
+  "traces": {
+    "1a7d8820015046f89ef04622bb468ee1facbaa2aa29116a2670305ffc7be4a5f": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "known_price": null
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "known_price": null
+          },
+          "output": "Значения пока нет: True\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "known_price": 0
+          },
+          "output": "Значения пока нет: True\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "known_price": 0
+          },
+          "output": "Значения пока нет: True\nНоль — это отсутствие? False\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 7,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "known_price": "None"
+          },
+          "output": "Значения пока нет: True\nНоль — это отсутствие? False\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 8,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "known_price": "None"
+          },
+          "output": "Значения пока нет: True\nНоль — это отсутствие? False\nТекст — это отсутствие? False\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "1c3272e67689df8112c016291028ebb9b67272a883d67418f2779164ef6ba224": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "raw_note": "  TEA  "
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "raw_note": "  TEA  "
+          },
+          "output": "После strip: TEA\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "raw_note": "  TEA  "
+          },
+          "output": "После strip: TEA\nПосле strip и lower: tea\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "raw_note": "  TEA  "
+          },
+          "output": "После strip: TEA\nПосле strip и lower: tea\nИсходный текст:   TEA  \n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "2d887a8dbcb88245dbf8c7380e9c6efd085a5f6c5fdf8bcf02f944d899a13981": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "pair_equalities": [
+              true,
+              false
+            ]
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "pair_equalities": [
+              true,
+              false
+            ],
+            "pairs_seen": 0
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "pair_equalities": [
+              true,
+              false
+            ],
+            "pairs_seen": 0,
+            "pairs_equal": 0
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "pair_equalities": [
+              true,
+              false
+            ],
+            "pairs_seen": 0,
+            "pairs_equal": 0,
+            "same": true
+          },
+          "output": "",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 0 из pair_equalities: same = True. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "pair_equalities": [
+              true,
+              false
+            ],
+            "pairs_seen": 1,
+            "pairs_equal": 0,
+            "same": true
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "pair_equalities": [
+              true,
+              false
+            ],
+            "pairs_seen": 1,
+            "pairs_equal": 0,
+            "same": true
+          },
+          "output": "",
+          "label": "Проверка условия",
+          "explanation": "Проверка same дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 7,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "pair_equalities": [
+              true,
+              false
+            ],
+            "pairs_seen": 1,
+            "pairs_equal": 1,
+            "same": true
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 8,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "pair_equalities": [
+              true,
+              false
+            ],
+            "pairs_seen": 1,
+            "pairs_equal": 1,
+            "same": true
+          },
+          "output": "Сравнение: True Просмотрено: 1 Совпало: 1\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "pair_equalities": [
+              true,
+              false
+            ],
+            "pairs_seen": 1,
+            "pairs_equal": 1,
+            "same": false
+          },
+          "output": "Сравнение: True Просмотрено: 1 Совпало: 1\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 1 из pair_equalities: same = False. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 5,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "pair_equalities": [
+              true,
+              false
+            ],
+            "pairs_seen": 2,
+            "pairs_equal": 1,
+            "same": false
+          },
+          "output": "Сравнение: True Просмотрено: 1 Совпало: 1\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "pair_equalities": [
+              true,
+              false
+            ],
+            "pairs_seen": 2,
+            "pairs_equal": 1,
+            "same": false
+          },
+          "output": "Сравнение: True Просмотрено: 1 Совпало: 1\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка same дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 8,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "pair_equalities": [
+              true,
+              false
+            ],
+            "pairs_seen": 2,
+            "pairs_equal": 1,
+            "same": false
+          },
+          "output": "Сравнение: True Просмотрено: 1 Совпало: 1\nСравнение: False Просмотрено: 2 Совпало: 1\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "pair_equalities": [
+              true,
+              false
+            ],
+            "pairs_seen": 2,
+            "pairs_equal": 1,
+            "same": false
+          },
+          "output": "Сравнение: True Просмотрено: 1 Совпало: 1\nСравнение: False Просмотрено: 2 Совпало: 1\n",
+          "label": "Перебор завершён",
+          "explanation": "Элементы закончились. Выходим из цикла; нового значения для переменной цикла нет."
+        },
+        {
+          "line": 9,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "pair_equalities": [
+              true,
+              false
+            ],
+            "pairs_seen": 2,
+            "pairs_equal": 1,
+            "same": false
+          },
+          "output": "Сравнение: True Просмотрено: 1 Совпало: 1\nСравнение: False Просмотрено: 2 Совпало: 1\nИтог: 2 1\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "3082a1757422ec3a423838128ba161c81de678f820890bb3c8e4b0c1a6a56e41": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "a": 1
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "a": 1,
+            "b": 99
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "a": 1,
+            "b": 99
+          },
+          "output": "Первый случай: True\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "a": 0,
+            "b": 99
+          },
+          "output": "Первый случай: True\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "a": 0,
+            "b": 2
+          },
+          "output": "Первый случай: True\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "a": 0,
+            "b": 2
+          },
+          "output": "Первый случай: True\nВторой случай: True\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 9,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "a": 0,
+            "b": 2
+          },
+          "output": "Первый случай: True\nВторой случай: True\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 10,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "a": 0,
+            "b": 99
+          },
+          "output": "Первый случай: True\nВторой случай: True\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 11,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "a": 0,
+            "b": 99
+          },
+          "output": "Первый случай: True\nВторой случай: True\nТретий случай: False\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "35a25a21308adfbed2fdfb5bcae013cb78ab92c5419bd39f3cedd37a46eedccf": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "stock": {
+              "чай": 2
+            }
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "stock": {
+              "чай": 2
+            },
+            "old_stock": 2
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "stock": {
+              "чай": 3
+            },
+            "old_stock": 2
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "stock": {
+              "чай": 3
+            },
+            "old_stock": 2
+          },
+          "output": "2 {'чай': 3}\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "3fb4824a7341af471eb820db752b5104160c44b1b6579d3516833c2c91e4a5ee": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "known_price": null
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "known_price": null,
+            "sample_price": 140
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "known_price": null,
+            "sample_price": 140,
+            "should_replace_price": true
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "known_price": null,
+            "sample_price": 140,
+            "should_replace_price": true
+          },
+          "output": "Запоминаем первую цену: True\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "known_price": 160,
+            "sample_price": 140,
+            "should_replace_price": true
+          },
+          "output": "Запоминаем первую цену: True\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "known_price": 160,
+            "sample_price": 140,
+            "should_replace_price": true
+          },
+          "output": "Запоминаем первую цену: True\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 8,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "known_price": 160,
+            "sample_price": 140,
+            "should_replace_price": true
+          },
+          "output": "Запоминаем первую цену: True\n140 дешевле 160: True\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 10,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "known_price": 100,
+            "sample_price": 140,
+            "should_replace_price": true
+          },
+          "output": "Запоминаем первую цену: True\n140 дешевле 160: True\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 11,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "known_price": 100,
+            "sample_price": 140,
+            "should_replace_price": false
+          },
+          "output": "Запоминаем первую цену: True\n140 дешевле 160: True\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 12,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "known_price": 100,
+            "sample_price": 140,
+            "should_replace_price": false
+          },
+          "output": "Запоминаем первую цену: True\n140 дешевле 160: True\n140 дешевле 100: False\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "56c4a74d3fb70aab5cbcb613ae2e99446c97e989d6909233692e41c2078cdaf7": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "values": [
+              5,
+              8
+            ]
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "values": [
+              5,
+              8
+            ],
+            "index": 1
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "values": [
+              5,
+              8
+            ],
+            "index": 1
+          },
+          "output": "Есть элемент, и он положительный: True\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "values": [
+              5,
+              8
+            ],
+            "index": 2
+          },
+          "output": "Есть элемент, и он положительный: True\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "values": [
+              5,
+              8
+            ],
+            "index": 2
+          },
+          "output": "Есть элемент, и он положительный: True\nЗа концом списка: False\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 8,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "values": [],
+            "index": 2
+          },
+          "output": "Есть элемент, и он положительный: True\nЗа концом списка: False\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 9,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "values": [],
+            "index": 0
+          },
+          "output": "Есть элемент, и он положительный: True\nЗа концом списка: False\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 10,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "values": [],
+            "index": 0
+          },
+          "output": "Есть элемент, и он положительный: True\nЗа концом списка: False\nПустой список: False\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "5beb046511b81c2b02be1e7f5b5130e1018ac323988960bade8dd91ec9831afb": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "чай и кофе"
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "чай и кофе",
+            "marker": "чай"
+          },
+          "output": "",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 0 из ['чай', 'кофе', 'сок']: marker = 'чай'. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "чай и кофе",
+            "marker": "чай",
+            "index": 0
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "чай и кофе",
+            "marker": "чай",
+            "index": 0
+          },
+          "output": "Ищем: чай Адрес: 0 Нашли: True\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 2,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "чай и кофе",
+            "marker": "кофе",
+            "index": 0
+          },
+          "output": "Ищем: чай Адрес: 0 Нашли: True\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 1 из ['чай', 'кофе', 'сок']: marker = 'кофе'. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 3,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "чай и кофе",
+            "marker": "кофе",
+            "index": 6
+          },
+          "output": "Ищем: чай Адрес: 0 Нашли: True\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "чай и кофе",
+            "marker": "кофе",
+            "index": 6
+          },
+          "output": "Ищем: чай Адрес: 0 Нашли: True\nИщем: кофе Адрес: 6 Нашли: True\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 2,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "text": "чай и кофе",
+            "marker": "сок",
+            "index": 6
+          },
+          "output": "Ищем: чай Адрес: 0 Нашли: True\nИщем: кофе Адрес: 6 Нашли: True\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 2 из ['чай', 'кофе', 'сок']: marker = 'сок'. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 3,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "text": "чай и кофе",
+            "marker": "сок",
+            "index": -1
+          },
+          "output": "Ищем: чай Адрес: 0 Нашли: True\nИщем: кофе Адрес: 6 Нашли: True\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "text": "чай и кофе",
+            "marker": "сок",
+            "index": -1
+          },
+          "output": "Ищем: чай Адрес: 0 Нашли: True\nИщем: кофе Адрес: 6 Нашли: True\nИщем: сок Адрес: -1 Нашли: False\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 2,
+          "occurrence": 4,
+          "event": "after",
+          "variables": {
+            "text": "чай и кофе",
+            "marker": "сок",
+            "index": -1
+          },
+          "output": "Ищем: чай Адрес: 0 Нашли: True\nИщем: кофе Адрес: 6 Нашли: True\nИщем: сок Адрес: -1 Нашли: False\n",
+          "label": "Перебор завершён",
+          "explanation": "Элементы закончились. Выходим из цикла; нового значения для переменной цикла нет."
+        }
+      ],
+      "complete": true
+    },
+    "69d235d45b23fd9762c6ad8aca2e57312b9fd162d9600f2d679cf15898819d26": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drink_counts": {
+              "латте": 2,
+              "чай": 1
+            }
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drink_counts": {
+              "латте": 2,
+              "чай": 1
+            }
+          },
+          "output": "До изменения: {'латте': 2, 'чай': 1}\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drink_counts": {
+              "латте": 2,
+              "чай": 2
+            }
+          },
+          "output": "До изменения: {'латте': 2, 'чай': 1}\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drink_counts": {
+              "латте": 2,
+              "чай": 2
+            }
+          },
+          "output": "До изменения: {'латте': 2, 'чай': 1}\nПосле изменения: {'латте': 2, 'чай': 2}\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "6a5dcc82bf27cf7185d6ab80bdfe24862da62d0991f6fe83833317971df8852f": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drinks": [
+              "чай",
+              "латте",
+              "чай"
+            ]
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drinks": [
+              "чай",
+              "латте",
+              "чай"
+            ],
+            "counts": {}
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drinks": [
+              "чай",
+              "латте",
+              "чай"
+            ],
+            "counts": {},
+            "drink": "чай"
+          },
+          "output": "",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 0 из drinks: drink = 'чай'. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drinks": [
+              "чай",
+              "латте",
+              "чай"
+            ],
+            "counts": {
+              "чай": 1
+            },
+            "drink": "чай"
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drinks": [
+              "чай",
+              "латте",
+              "чай"
+            ],
+            "counts": {
+              "чай": 1
+            },
+            "drink": "чай"
+          },
+          "output": "Сейчас: {'чай': 1}\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 3,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "drinks": [
+              "чай",
+              "латте",
+              "чай"
+            ],
+            "counts": {
+              "чай": 1
+            },
+            "drink": "латте"
+          },
+          "output": "Сейчас: {'чай': 1}\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 1 из drinks: drink = 'латте'. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 4,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "drinks": [
+              "чай",
+              "латте",
+              "чай"
+            ],
+            "counts": {
+              "чай": 1,
+              "латте": 1
+            },
+            "drink": "латте"
+          },
+          "output": "Сейчас: {'чай': 1}\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 5,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "drinks": [
+              "чай",
+              "латте",
+              "чай"
+            ],
+            "counts": {
+              "чай": 1,
+              "латте": 1
+            },
+            "drink": "латте"
+          },
+          "output": "Сейчас: {'чай': 1}\nСейчас: {'чай': 1, 'латте': 1}\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 3,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "drinks": [
+              "чай",
+              "латте",
+              "чай"
+            ],
+            "counts": {
+              "чай": 1,
+              "латте": 1
+            },
+            "drink": "чай"
+          },
+          "output": "Сейчас: {'чай': 1}\nСейчас: {'чай': 1, 'латте': 1}\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 2 из drinks: drink = 'чай'. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 4,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "drinks": [
+              "чай",
+              "латте",
+              "чай"
+            ],
+            "counts": {
+              "чай": 2,
+              "латте": 1
+            },
+            "drink": "чай"
+          },
+          "output": "Сейчас: {'чай': 1}\nСейчас: {'чай': 1, 'латте': 1}\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 5,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "drinks": [
+              "чай",
+              "латте",
+              "чай"
+            ],
+            "counts": {
+              "чай": 2,
+              "латте": 1
+            },
+            "drink": "чай"
+          },
+          "output": "Сейчас: {'чай': 1}\nСейчас: {'чай': 1, 'латте': 1}\nСейчас: {'чай': 2, 'латте': 1}\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 3,
+          "occurrence": 4,
+          "event": "after",
+          "variables": {
+            "drinks": [
+              "чай",
+              "латте",
+              "чай"
+            ],
+            "counts": {
+              "чай": 2,
+              "латте": 1
+            },
+            "drink": "чай"
+          },
+          "output": "Сейчас: {'чай': 1}\nСейчас: {'чай': 1, 'латте': 1}\nСейчас: {'чай': 2, 'латте': 1}\n",
+          "label": "Перебор завершён",
+          "explanation": "Элементы закончились. Выходим из цикла; нового значения для переменной цикла нет."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drinks": [
+              "чай",
+              "латте",
+              "чай"
+            ],
+            "counts": {
+              "чай": 2,
+              "латте": 1
+            },
+            "drink": "чай"
+          },
+          "output": "Сейчас: {'чай': 1}\nСейчас: {'чай': 1, 'латте': 1}\nСейчас: {'чай': 2, 'латте': 1}\nВсего: 3 Сводка: {'чай': 2, 'латте': 1}\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "771ddc2cb995f93347bd7b6a096f561473a6e6ffbc6a5b7cf9f6452e3e86b05e": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "done": 2
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "done": 2,
+            "goal": 4
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "done": 2,
+            "goal": 4
+          },
+          "output": "",
+          "label": "Проверка условия",
+          "explanation": "Проверка done < goal дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "done": 2,
+            "goal": 4
+          },
+          "output": "До: 2 Нужно ещё: True\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "done": 3,
+            "goal": 4
+          },
+          "output": "До: 2 Нужно ещё: True\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "done": 3,
+            "goal": 4
+          },
+          "output": "До: 2 Нужно ещё: True\nПосле: 3\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 3,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "done": 3,
+            "goal": 4
+          },
+          "output": "До: 2 Нужно ещё: True\nПосле: 3\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка done < goal дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 4,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "done": 3,
+            "goal": 4
+          },
+          "output": "До: 2 Нужно ещё: True\nПосле: 3\nДо: 3 Нужно ещё: True\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 5,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "done": 4,
+            "goal": 4
+          },
+          "output": "До: 2 Нужно ещё: True\nПосле: 3\nДо: 3 Нужно ещё: True\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "done": 4,
+            "goal": 4
+          },
+          "output": "До: 2 Нужно ещё: True\nПосле: 3\nДо: 3 Нужно ещё: True\nПосле: 4\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 3,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "done": 4,
+            "goal": 4
+          },
+          "output": "До: 2 Нужно ещё: True\nПосле: 3\nДо: 3 Нужно ещё: True\nПосле: 4\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка done < goal дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 7,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "done": 4,
+            "goal": 4
+          },
+          "output": "До: 2 Нужно ещё: True\nПосле: 3\nДо: 3 Нужно ещё: True\nПосле: 4\nИтог: 4\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "77f663cd4e196704c5d1c088eb6884a289345ff71fcf38115820837654a26646": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "checks": [
+              120,
+              70
+            ]
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "checks": [
+              120,
+              70
+            ],
+            "total": 0
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "checks": [
+              120,
+              70
+            ],
+            "total": 0,
+            "amount": 120
+          },
+          "output": "",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 0 из checks: amount = 120. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "checks": [
+              120,
+              70
+            ],
+            "total": 0,
+            "amount": 120
+          },
+          "output": "До: 0 элемент: 120\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "checks": [
+              120,
+              70
+            ],
+            "total": 120,
+            "amount": 120
+          },
+          "output": "До: 0 элемент: 120\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "checks": [
+              120,
+              70
+            ],
+            "total": 120,
+            "amount": 120
+          },
+          "output": "До: 0 элемент: 120\nПосле: 120\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 3,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "checks": [
+              120,
+              70
+            ],
+            "total": 120,
+            "amount": 70
+          },
+          "output": "До: 0 элемент: 120\nПосле: 120\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 1 из checks: amount = 70. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 4,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "checks": [
+              120,
+              70
+            ],
+            "total": 120,
+            "amount": 70
+          },
+          "output": "До: 0 элемент: 120\nПосле: 120\nДо: 120 элемент: 70\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 5,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "checks": [
+              120,
+              70
+            ],
+            "total": 190,
+            "amount": 70
+          },
+          "output": "До: 0 элемент: 120\nПосле: 120\nДо: 120 элемент: 70\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "checks": [
+              120,
+              70
+            ],
+            "total": 190,
+            "amount": 70
+          },
+          "output": "До: 0 элемент: 120\nПосле: 120\nДо: 120 элемент: 70\nПосле: 190\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 3,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "checks": [
+              120,
+              70
+            ],
+            "total": 190,
+            "amount": 70
+          },
+          "output": "До: 0 элемент: 120\nПосле: 120\nДо: 120 элемент: 70\nПосле: 190\n",
+          "label": "Перебор завершён",
+          "explanation": "Элементы закончились. Выходим из цикла; нового значения для переменной цикла нет."
+        },
+        {
+          "line": 7,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "checks": [
+              120,
+              70
+            ],
+            "total": 190,
+            "amount": 70
+          },
+          "output": "До: 0 элемент: 120\nПосле: 120\nДо: 120 элемент: 70\nПосле: 190\nИтог: 190\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "78feaa89eb79fee8982efc4c06f56c56677980670d5597e1293bfba3551e3da1": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "visitors": [
+              "V-2",
+              "V-2",
+              "V-8"
+            ]
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "visitors": [
+              "V-2",
+              "V-2",
+              "V-8"
+            ],
+            "people": [
+              "V-2",
+              "V-8"
+            ]
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "visitors": [
+              "V-2",
+              "V-2",
+              "V-8"
+            ],
+            "people": [
+              "V-2",
+              "V-8"
+            ],
+            "visit_count": 3
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "visitors": [
+              "V-2",
+              "V-2",
+              "V-8"
+            ],
+            "people": [
+              "V-2",
+              "V-8"
+            ],
+            "visit_count": 3,
+            "person_count": 2
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "visitors": [
+              "V-2",
+              "V-2",
+              "V-8"
+            ],
+            "people": [
+              "V-2",
+              "V-8"
+            ],
+            "visit_count": 3,
+            "person_count": 2
+          },
+          "output": "Посещений: 3 Людей: 2\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "791a4662b86bfe850186ec6761e4e7c1e441833faf34c23f1a90b8bb29dcf66a": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "raw_drink": "  ЛАТТЕ  "
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "raw_drink": "  ЛАТТЕ  "
+          },
+          "output": "raw_drink: '  ЛАТТЕ  '\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "raw_drink": "  ЛАТТЕ  "
+          },
+          "output": "raw_drink: '  ЛАТТЕ  '\nraw_drink.strip(): 'ЛАТТЕ'\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "raw_drink": "  ЛАТТЕ  "
+          },
+          "output": "raw_drink: '  ЛАТТЕ  '\nraw_drink.strip(): 'ЛАТТЕ'\nraw_drink.strip().lower(): 'латте'\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "raw_drink": "  ЛАТТЕ  "
+          },
+          "output": "raw_drink: '  ЛАТТЕ  '\nraw_drink.strip(): 'ЛАТТЕ'\nraw_drink.strip().lower(): 'латте'\nИсходная строка после вызовов: '  ЛАТТЕ  '\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 9,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "raw_drink": "  ЛАТТЕ  ",
+            "clean_drink": "латте"
+          },
+          "output": "raw_drink: '  ЛАТТЕ  '\nraw_drink.strip(): 'ЛАТТЕ'\nraw_drink.strip().lower(): 'латте'\nИсходная строка после вызовов: '  ЛАТТЕ  '\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 10,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "raw_drink": "  ЛАТТЕ  ",
+            "clean_drink": "латте"
+          },
+          "output": "raw_drink: '  ЛАТТЕ  '\nraw_drink.strip(): 'ЛАТТЕ'\nraw_drink.strip().lower(): 'латте'\nИсходная строка после вызовов: '  ЛАТТЕ  '\nСохранённый результат: латте\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "7c38434d471f804da6be9eac077178d254adbde03eadfca198bfe883227c9cae": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea"
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea"
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 0
+          },
+          "output": "",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 0 из range(len(text) - width + 1): start = 0. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 0,
+            "window": "cof"
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 0,
+            "window": "cof"
+          },
+          "output": "Начало: 0 окно: cof\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 8,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 0,
+            "window": "cof"
+          },
+          "output": "Начало: 0 окно: cof\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка window == marker дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 5,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 1,
+            "window": "cof"
+          },
+          "output": "Начало: 0 окно: cof\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 1 из range(len(text) - width + 1): start = 1. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 6,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 1,
+            "window": "off"
+          },
+          "output": "Начало: 0 окно: cof\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 1,
+            "window": "off"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 8,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 1,
+            "window": "off"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка window == marker дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 5,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 2,
+            "window": "off"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 2 из range(len(text) - width + 1): start = 2. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 6,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 2,
+            "window": "ffe"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 2,
+            "window": "ffe"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 8,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 2,
+            "window": "ffe"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка window == marker дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 5,
+          "occurrence": 4,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 3,
+            "window": "ffe"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 3 из range(len(text) - width + 1): start = 3. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 6,
+          "occurrence": 4,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 3,
+            "window": "fee"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 4,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 3,
+            "window": "fee"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 8,
+          "occurrence": 4,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 3,
+            "window": "fee"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка window == marker дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 5,
+          "occurrence": 5,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 4,
+            "window": "fee"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 4 из range(len(text) - width + 1): start = 4. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 6,
+          "occurrence": 5,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 4,
+            "window": "ee "
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 5,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 4,
+            "window": "ee "
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 8,
+          "occurrence": 5,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 4,
+            "window": "ee "
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \n",
+          "label": "Проверка условия",
+          "explanation": "Проверка window == marker дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 5,
+          "occurrence": 6,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 5,
+            "window": "ee "
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 5 из range(len(text) - width + 1): start = 5. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 6,
+          "occurrence": 6,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 5,
+            "window": "e t"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 6,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 5,
+            "window": "e t"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \nНачало: 5 окно: e t\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 8,
+          "occurrence": 6,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 5,
+            "window": "e t"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \nНачало: 5 окно: e t\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка window == marker дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 5,
+          "occurrence": 7,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 6,
+            "window": "e t"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \nНачало: 5 окно: e t\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 6 из range(len(text) - width + 1): start = 6. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 6,
+          "occurrence": 7,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 6,
+            "window": " te"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \nНачало: 5 окно: e t\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 7,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 6,
+            "window": " te"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \nНачало: 5 окно: e t\nНачало: 6 окно:  te\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 8,
+          "occurrence": 7,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 6,
+            "window": " te"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \nНачало: 5 окно: e t\nНачало: 6 окно:  te\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка window == marker дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 5,
+          "occurrence": 8,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 7,
+            "window": " te"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \nНачало: 5 окно: e t\nНачало: 6 окно:  te\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 7 из range(len(text) - width + 1): start = 7. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 6,
+          "occurrence": 8,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 7,
+            "window": "tea"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \nНачало: 5 окно: e t\nНачало: 6 окно:  te\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 8,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 7,
+            "window": "tea"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \nНачало: 5 окно: e t\nНачало: 6 окно:  te\nНачало: 7 окно: tea\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 8,
+          "occurrence": 8,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": -1,
+            "start": 7,
+            "window": "tea"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \nНачало: 5 окно: e t\nНачало: 6 окно:  te\nНачало: 7 окно: tea\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка window == marker дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 9,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": 7,
+            "start": 7,
+            "window": "tea"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \nНачало: 5 окно: e t\nНачало: 6 окно:  te\nНачало: 7 окно: tea\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 10,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": 7,
+            "start": 7,
+            "window": "tea"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \nНачало: 5 окно: e t\nНачало: 6 окно:  te\nНачало: 7 окно: tea\nСовпало!\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 11,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": 7,
+            "start": 7,
+            "window": "tea"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \nНачало: 5 окно: e t\nНачало: 6 окно:  te\nНачало: 7 окно: tea\nСовпало!\n",
+          "label": "Строка выполнена",
+          "explanation": "Справа показано состояние после выполнения выделенной строки."
+        },
+        {
+          "line": 12,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "coffee tea",
+            "marker": "tea",
+            "width": 3,
+            "found_at": 7,
+            "start": 7,
+            "window": "tea"
+          },
+          "output": "Начало: 0 окно: cof\nНачало: 1 окно: off\nНачало: 2 окно: ffe\nНачало: 3 окно: fee\nНачало: 4 окно: ee \nНачало: 5 окно: e t\nНачало: 6 окно:  te\nНачало: 7 окно: tea\nСовпало!\nПервое начало: 7\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "8cfd01e233c7a395b31e7678a651cf367730527f20ffb72bbab327de05d8fd66": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "stock": {
+              "чай": 0
+            }
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "stock": {
+              "чай": 0
+            },
+            "missing": 0
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "stock": {
+              "чай": 0
+            },
+            "missing": 0
+          },
+          "output": "После чтения: {'чай': 0}\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "stock": {
+              "чай": 0,
+              "какао": 1
+            },
+            "missing": 0
+          },
+          "output": "После чтения: {'чай': 0}\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "stock": {
+              "чай": 0,
+              "какао": 1
+            },
+            "missing": 0
+          },
+          "output": "После чтения: {'чай': 0}\nПосле записи: {'чай': 0, 'какао': 1}\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "9c65db17a37c3d10d8a78f9919d64297c6abdd5301f8af764ebd0fac036a21cc": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "message": "код:77"
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "message": "код:77",
+            "marker": ":"
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "message": "код:77",
+            "marker": ":",
+            "position": 3
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "message": "код:77",
+            "marker": ":",
+            "position": 3
+          },
+          "output": "Адрес: 3\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "message": "код:77",
+            "marker": ":",
+            "position": 3
+          },
+          "output": "Адрес: 3\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка position != -1 дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "message": "код:77",
+            "marker": ":",
+            "position": 3,
+            "tail": "77"
+          },
+          "output": "Адрес: 3\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 9,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "message": "код:77",
+            "marker": ":",
+            "position": 3,
+            "tail": "77"
+          },
+          "output": "Адрес: 3\nХвост: 77\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "9d70934bf433c5192b2e167ec76e0a28845fc9471be3440f835c68af21fc029d": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ]
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -30
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -30
+          },
+          "output": "Начальный лидер: -30\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -30,
+            "profit": -30
+          },
+          "output": "Начальный лидер: -30\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 0 из profits: profit = -30. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -30,
+            "profit": -30
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -30,
+            "profit": -30
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка profit > best_profit дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 8,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -30,
+            "profit": -30
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -30,
+            "profit": -12
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 1 из profits: profit = -12. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 5,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -30,
+            "profit": -12
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\nПроверяем: -12 лидер до: -30\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 6,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -30,
+            "profit": -12
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\nПроверяем: -12 лидер до: -30\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка profit > best_profit дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 7,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -12,
+            "profit": -12
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\nПроверяем: -12 лидер до: -30\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 8,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -12,
+            "profit": -12
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\nПроверяем: -12 лидер до: -30\nЛидер после: -12\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -12,
+            "profit": -45
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\nПроверяем: -12 лидер до: -30\nЛидер после: -12\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 2 из profits: profit = -45. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 5,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -12,
+            "profit": -45
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\nПроверяем: -12 лидер до: -30\nЛидер после: -12\nПроверяем: -45 лидер до: -12\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 6,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -12,
+            "profit": -45
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\nПроверяем: -12 лидер до: -30\nЛидер после: -12\nПроверяем: -45 лидер до: -12\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка profit > best_profit дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 8,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -12,
+            "profit": -45
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\nПроверяем: -12 лидер до: -30\nЛидер после: -12\nПроверяем: -45 лидер до: -12\nЛидер после: -12\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 4,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -12,
+            "profit": -8
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\nПроверяем: -12 лидер до: -30\nЛидер после: -12\nПроверяем: -45 лидер до: -12\nЛидер после: -12\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 3 из profits: profit = -8. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 5,
+          "occurrence": 4,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -12,
+            "profit": -8
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\nПроверяем: -12 лидер до: -30\nЛидер после: -12\nПроверяем: -45 лидер до: -12\nЛидер после: -12\nПроверяем: -8 лидер до: -12\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 6,
+          "occurrence": 4,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -12,
+            "profit": -8
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\nПроверяем: -12 лидер до: -30\nЛидер после: -12\nПроверяем: -45 лидер до: -12\nЛидер после: -12\nПроверяем: -8 лидер до: -12\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка profit > best_profit дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 7,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -8,
+            "profit": -8
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\nПроверяем: -12 лидер до: -30\nЛидер после: -12\nПроверяем: -45 лидер до: -12\nЛидер после: -12\nПроверяем: -8 лидер до: -12\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 8,
+          "occurrence": 4,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -8,
+            "profit": -8
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\nПроверяем: -12 лидер до: -30\nЛидер после: -12\nПроверяем: -45 лидер до: -12\nЛидер после: -12\nПроверяем: -8 лидер до: -12\nЛидер после: -8\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 5,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -8,
+            "profit": -8
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\nПроверяем: -12 лидер до: -30\nЛидер после: -12\nПроверяем: -45 лидер до: -12\nЛидер после: -12\nПроверяем: -8 лидер до: -12\nЛидер после: -8\n",
+          "label": "Перебор завершён",
+          "explanation": "Элементы закончились. Выходим из цикла; нового значения для переменной цикла нет."
+        },
+        {
+          "line": 9,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "profits": [
+              -30,
+              -12,
+              -45,
+              -8
+            ],
+            "best_profit": -8,
+            "profit": -8
+          },
+          "output": "Начальный лидер: -30\nПроверяем: -30 лидер до: -30\nЛидер после: -30\nПроверяем: -12 лидер до: -30\nЛидер после: -12\nПроверяем: -45 лидер до: -12\nЛидер после: -12\nПроверяем: -8 лидер до: -12\nЛидер после: -8\nЛучший результат: -8\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "af40bd6062965e27d870e8b100573af0f74910a7672a204b1cc80e23cab13455": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "cocoa"
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "marker": "oco"
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "marker": "oco",
+            "found_at": -1
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "marker": "oco",
+            "found_at": -1,
+            "start": 0
+          },
+          "output": "",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 0 из range(len(text) - len(marker) + 1): start = 0. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "marker": "oco",
+            "found_at": -1,
+            "start": 0,
+            "window": "coc"
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "marker": "oco",
+            "found_at": -1,
+            "start": 0,
+            "window": "coc"
+          },
+          "output": "Начало: 0 окно: coc совпало: False\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 7,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "marker": "oco",
+            "found_at": -1,
+            "start": 0,
+            "window": "coc"
+          },
+          "output": "Начало: 0 окно: coc совпало: False\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка window == marker дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 4,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "marker": "oco",
+            "found_at": -1,
+            "start": 1,
+            "window": "coc"
+          },
+          "output": "Начало: 0 окно: coc совпало: False\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 1 из range(len(text) - len(marker) + 1): start = 1. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 5,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "marker": "oco",
+            "found_at": -1,
+            "start": 1,
+            "window": "oco"
+          },
+          "output": "Начало: 0 окно: coc совпало: False\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "marker": "oco",
+            "found_at": -1,
+            "start": 1,
+            "window": "oco"
+          },
+          "output": "Начало: 0 окно: coc совпало: False\nНачало: 1 окно: oco совпало: True\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 7,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "marker": "oco",
+            "found_at": -1,
+            "start": 1,
+            "window": "oco"
+          },
+          "output": "Начало: 0 окно: coc совпало: False\nНачало: 1 окно: oco совпало: True\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка window == marker дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 8,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "marker": "oco",
+            "found_at": 1,
+            "start": 1,
+            "window": "oco"
+          },
+          "output": "Начало: 0 окно: coc совпало: False\nНачало: 1 окно: oco совпало: True\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 9,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "marker": "oco",
+            "found_at": 1,
+            "start": 1,
+            "window": "oco"
+          },
+          "output": "Начало: 0 окно: coc совпало: False\nНачало: 1 окно: oco совпало: True\n",
+          "label": "Строка выполнена",
+          "explanation": "Справа показано состояние после выполнения выделенной строки."
+        },
+        {
+          "line": 10,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "marker": "oco",
+            "found_at": 1,
+            "start": 1,
+            "window": "oco"
+          },
+          "output": "Начало: 0 окно: coc совпало: False\nНачало: 1 окно: oco совпало: True\nПервое начало: 1\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "b7677a64449b2f6187c8b17d350c35f1985dc2818603f7dab16f4e832d39dfe8": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "visits": 12
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "visits": 12
+          },
+          "output": "Посетителей: 12\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "visits": 12
+          },
+          "output": "Посетителей: 12\nПосетителей: 12\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "visits": 0
+          },
+          "output": "Посетителей: 12\nПосетителей: 12\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "visits": 0
+          },
+          "output": "Посетителей: 12\nПосетителей: 12\nПосетителей: 0\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "b81eab0153d72f0a479aa19dfa1287ab1ac6cfabdd64f0c24012956abd2b4d65": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "word": "кофе"
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "word": "кофе",
+            "left": 0
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "word": "кофе",
+            "left": 0,
+            "right": 3
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "word": "кофе",
+            "left": 0,
+            "right": 3,
+            "mirrored": true
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "word": "кофе",
+            "left": 0,
+            "right": 3,
+            "mirrored": true
+          },
+          "output": "",
+          "label": "Проверка условия",
+          "explanation": "Проверка left < right дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "word": "кофе",
+            "left": 0,
+            "right": 3,
+            "mirrored": true
+          },
+          "output": "Адреса: 0 3 Символы: к е\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 7,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "word": "кофе",
+            "left": 0,
+            "right": 3,
+            "mirrored": true
+          },
+          "output": "Адреса: 0 3 Символы: к е\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка word[left] != word[right] дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 8,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "word": "кофе",
+            "left": 0,
+            "right": 3,
+            "mirrored": false
+          },
+          "output": "Адреса: 0 3 Символы: к е\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 9,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "word": "кофе",
+            "left": 0,
+            "right": 3,
+            "mirrored": false
+          },
+          "output": "Адреса: 0 3 Символы: к е\n",
+          "label": "Строка выполнена",
+          "explanation": "Справа показано состояние после выполнения выделенной строки."
+        },
+        {
+          "line": 12,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "word": "кофе",
+            "left": 0,
+            "right": 3,
+            "mirrored": false
+          },
+          "output": "Адреса: 0 3 Символы: к е\nЗеркальная строка: False\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "c1066e7d9bc241d4771f0606cb9046535f9885e2650a66eae233f3a8cd9ae0e3": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ]
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 0
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 0,
+            "right": 3
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 0,
+            "right": 3,
+            "pair_found": false
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 0,
+            "right": 3,
+            "pair_found": false
+          },
+          "output": "",
+          "label": "Проверка условия",
+          "explanation": "Проверка left < right дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 7,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 0,
+            "right": 3,
+            "pair_found": false,
+            "total": 11
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 8,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 0,
+            "right": 3,
+            "pair_found": false,
+            "total": 11
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 9,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 0,
+            "right": 3,
+            "pair_found": false,
+            "total": 11
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка total == target дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 13,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 0,
+            "right": 3,
+            "pair_found": false,
+            "total": 11
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка total < target дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 14,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 1,
+            "right": 3,
+            "pair_found": false,
+            "total": 11
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 1,
+            "right": 3,
+            "pair_found": false,
+            "total": 11
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка left < right дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 7,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 1,
+            "right": 3,
+            "pair_found": false,
+            "total": 13
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 8,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 1,
+            "right": 3,
+            "pair_found": false,
+            "total": 13
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\nАдреса: 1 3 цены: 4 9 сумма: 13\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 9,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 1,
+            "right": 3,
+            "pair_found": false,
+            "total": 13
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\nАдреса: 1 3 цены: 4 9 сумма: 13\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка total == target дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 13,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 1,
+            "right": 3,
+            "pair_found": false,
+            "total": 13
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\nАдреса: 1 3 цены: 4 9 сумма: 13\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка total < target дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 16,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 1,
+            "right": 2,
+            "pair_found": false,
+            "total": 13
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\nАдреса: 1 3 цены: 4 9 сумма: 13\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 1,
+            "right": 2,
+            "pair_found": false,
+            "total": 13
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\nАдреса: 1 3 цены: 4 9 сумма: 13\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка left < right дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 7,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 1,
+            "right": 2,
+            "pair_found": false,
+            "total": 12
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\nАдреса: 1 3 цены: 4 9 сумма: 13\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 8,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 1,
+            "right": 2,
+            "pair_found": false,
+            "total": 12
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\nАдреса: 1 3 цены: 4 9 сумма: 13\nАдреса: 1 2 цены: 4 8 сумма: 12\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 9,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 1,
+            "right": 2,
+            "pair_found": false,
+            "total": 12
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\nАдреса: 1 3 цены: 4 9 сумма: 13\nАдреса: 1 2 цены: 4 8 сумма: 12\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка total == target дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 10,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 1,
+            "right": 2,
+            "pair_found": true,
+            "total": 12
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\nАдреса: 1 3 цены: 4 9 сумма: 13\nАдреса: 1 2 цены: 4 8 сумма: 12\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 11,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 1,
+            "right": 2,
+            "pair_found": true,
+            "total": 12
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\nАдреса: 1 3 цены: 4 9 сумма: 13\nАдреса: 1 2 цены: 4 8 сумма: 12\nПара: 4 8\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 12,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 1,
+            "right": 2,
+            "pair_found": true,
+            "total": 12
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\nАдреса: 1 3 цены: 4 9 сумма: 13\nАдреса: 1 2 цены: 4 8 сумма: 12\nПара: 4 8\n",
+          "label": "Строка выполнена",
+          "explanation": "Справа показано состояние после выполнения выделенной строки."
+        },
+        {
+          "line": 17,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "prices": [
+              2,
+              4,
+              8,
+              9
+            ],
+            "target": 12,
+            "left": 1,
+            "right": 2,
+            "pair_found": true,
+            "total": 12
+          },
+          "output": "Адреса: 0 3 цены: 2 9 сумма: 11\nАдреса: 1 3 цены: 4 9 сумма: 13\nАдреса: 1 2 цены: 4 8 сумма: 12\nПара: 4 8\nПара найдена: True\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "c38b6ab0ce050783f47e94f3226202827cc07fa33260e73c689d134b6fa7f38e": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "ababa"
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba"
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": []
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": [],
+            "start": 0
+          },
+          "output": "",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 0 из range(len(text) - len(marker) + 1): start = 0. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": [],
+            "start": 0,
+            "window": "aba"
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": [],
+            "start": 0,
+            "window": "aba"
+          },
+          "output": "",
+          "label": "Проверка условия",
+          "explanation": "Проверка window == marker дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 7,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": [
+              0
+            ],
+            "start": 0,
+            "window": "aba"
+          },
+          "output": "",
+          "label": "Строка выполнена",
+          "explanation": "Справа показано состояние после выполнения выделенной строки."
+        },
+        {
+          "line": 8,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": [
+              0
+            ],
+            "start": 0,
+            "window": "aba"
+          },
+          "output": "Начало: 0 окно: aba найденные адреса: [0]\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": [
+              0
+            ],
+            "start": 1,
+            "window": "aba"
+          },
+          "output": "Начало: 0 окно: aba найденные адреса: [0]\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 1 из range(len(text) - len(marker) + 1): start = 1. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 5,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": [
+              0
+            ],
+            "start": 1,
+            "window": "bab"
+          },
+          "output": "Начало: 0 окно: aba найденные адреса: [0]\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": [
+              0
+            ],
+            "start": 1,
+            "window": "bab"
+          },
+          "output": "Начало: 0 окно: aba найденные адреса: [0]\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка window == marker дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 8,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": [
+              0
+            ],
+            "start": 1,
+            "window": "bab"
+          },
+          "output": "Начало: 0 окно: aba найденные адреса: [0]\nНачало: 1 окно: bab найденные адреса: [0]\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": [
+              0
+            ],
+            "start": 2,
+            "window": "bab"
+          },
+          "output": "Начало: 0 окно: aba найденные адреса: [0]\nНачало: 1 окно: bab найденные адреса: [0]\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 2 из range(len(text) - len(marker) + 1): start = 2. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 5,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": [
+              0
+            ],
+            "start": 2,
+            "window": "aba"
+          },
+          "output": "Начало: 0 окно: aba найденные адреса: [0]\nНачало: 1 окно: bab найденные адреса: [0]\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": [
+              0
+            ],
+            "start": 2,
+            "window": "aba"
+          },
+          "output": "Начало: 0 окно: aba найденные адреса: [0]\nНачало: 1 окно: bab найденные адреса: [0]\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка window == marker дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 7,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": [
+              0,
+              2
+            ],
+            "start": 2,
+            "window": "aba"
+          },
+          "output": "Начало: 0 окно: aba найденные адреса: [0]\nНачало: 1 окно: bab найденные адреса: [0]\n",
+          "label": "Строка выполнена",
+          "explanation": "Справа показано состояние после выполнения выделенной строки."
+        },
+        {
+          "line": 8,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": [
+              0,
+              2
+            ],
+            "start": 2,
+            "window": "aba"
+          },
+          "output": "Начало: 0 окно: aba найденные адреса: [0]\nНачало: 1 окно: bab найденные адреса: [0]\nНачало: 2 окно: aba найденные адреса: [0, 2]\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 4,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": [
+              0,
+              2
+            ],
+            "start": 2,
+            "window": "aba"
+          },
+          "output": "Начало: 0 окно: aba найденные адреса: [0]\nНачало: 1 окно: bab найденные адреса: [0]\nНачало: 2 окно: aba найденные адреса: [0, 2]\n",
+          "label": "Перебор завершён",
+          "explanation": "Элементы закончились. Выходим из цикла; нового значения для переменной цикла нет."
+        },
+        {
+          "line": 9,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "ababa",
+            "marker": "aba",
+            "starts": [
+              0,
+              2
+            ],
+            "start": 2,
+            "window": "aba"
+          },
+          "output": "Начало: 0 окно: aba найденные адреса: [0]\nНачало: 1 окно: bab найденные адреса: [0]\nНачало: 2 окно: aba найденные адреса: [0, 2]\nВсе начала: [0, 2]\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "c4b056ef98e50f582cbae7a7104a6b5958ba75ce7015833406253f5abcba7a88": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "route_stops": [
+              "музей",
+              "мост",
+              "парк",
+              "кафе"
+            ]
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "route_stops": [
+              "музей",
+              "мост",
+              "парк",
+              "кафе"
+            ],
+            "left": 0
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "route_stops": [
+              "музей",
+              "мост",
+              "парк",
+              "кафе"
+            ],
+            "left": 0,
+            "right": 3
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "route_stops": [
+              "музей",
+              "мост",
+              "парк",
+              "кафе"
+            ],
+            "left": 0,
+            "right": 3
+          },
+          "output": "",
+          "label": "Проверка условия",
+          "explanation": "Проверка left < right дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "route_stops": [
+              "музей",
+              "мост",
+              "парк",
+              "кафе"
+            ],
+            "left": 0,
+            "right": 3
+          },
+          "output": "До: 0 3 Пара: музей кафе\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "route_stops": [
+              "музей",
+              "мост",
+              "парк",
+              "кафе"
+            ],
+            "left": 1,
+            "right": 3
+          },
+          "output": "До: 0 3 Пара: музей кафе\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "route_stops": [
+              "музей",
+              "мост",
+              "парк",
+              "кафе"
+            ],
+            "left": 1,
+            "right": 2
+          },
+          "output": "До: 0 3 Пара: музей кафе\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 8,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "route_stops": [
+              "музей",
+              "мост",
+              "парк",
+              "кафе"
+            ],
+            "left": 1,
+            "right": 2
+          },
+          "output": "До: 0 3 Пара: музей кафе\nПосле: 1 2\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "route_stops": [
+              "музей",
+              "мост",
+              "парк",
+              "кафе"
+            ],
+            "left": 1,
+            "right": 2
+          },
+          "output": "До: 0 3 Пара: музей кафе\nПосле: 1 2\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка left < right дала True. Переходим к телу; его строки ещё не выполнены."
+        },
+        {
+          "line": 5,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "route_stops": [
+              "музей",
+              "мост",
+              "парк",
+              "кафе"
+            ],
+            "left": 1,
+            "right": 2
+          },
+          "output": "До: 0 3 Пара: музей кафе\nПосле: 1 2\nДо: 1 2 Пара: мост парк\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 6,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "route_stops": [
+              "музей",
+              "мост",
+              "парк",
+              "кафе"
+            ],
+            "left": 2,
+            "right": 2
+          },
+          "output": "До: 0 3 Пара: музей кафе\nПосле: 1 2\nДо: 1 2 Пара: мост парк\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "route_stops": [
+              "музей",
+              "мост",
+              "парк",
+              "кафе"
+            ],
+            "left": 2,
+            "right": 1
+          },
+          "output": "До: 0 3 Пара: музей кафе\nПосле: 1 2\nДо: 1 2 Пара: мост парк\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 8,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "route_stops": [
+              "музей",
+              "мост",
+              "парк",
+              "кафе"
+            ],
+            "left": 2,
+            "right": 1
+          },
+          "output": "До: 0 3 Пара: музей кафе\nПосле: 1 2\nДо: 1 2 Пара: мост парк\nПосле: 2 1\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "route_stops": [
+              "музей",
+              "мост",
+              "парк",
+              "кафе"
+            ],
+            "left": 2,
+            "right": 1
+          },
+          "output": "До: 0 3 Пара: музей кафе\nПосле: 1 2\nДо: 1 2 Пара: мост парк\nПосле: 2 1\n",
+          "label": "Проверка условия",
+          "explanation": "Проверка left < right дала False. Пропускаем тело и идём дальше."
+        },
+        {
+          "line": 9,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "route_stops": [
+              "музей",
+              "мост",
+              "парк",
+              "кафе"
+            ],
+            "left": 2,
+            "right": 1
+          },
+          "output": "До: 0 3 Пара: музей кафе\nПосле: 1 2\nДо: 1 2 Пара: мост парк\nПосле: 2 1\nКрая просмотрены\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "d5bcb4d3d51f6246a79949d1ce6e3498c317d5344b1c491171d7c3b5dacbd1a4": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drink_orders": [
+              "латте",
+              "чай",
+              "латте"
+            ]
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drink_orders": [
+              "латте",
+              "чай",
+              "латте"
+            ],
+            "drink_counts": {}
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drink_orders": [
+              "латте",
+              "чай",
+              "латте"
+            ],
+            "drink_counts": {},
+            "drink": "латте"
+          },
+          "output": "",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 0 из drink_orders: drink = 'латте'. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drink_orders": [
+              "латте",
+              "чай",
+              "латте"
+            ],
+            "drink_counts": {},
+            "drink": "латте",
+            "previous_count": 0
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drink_orders": [
+              "латте",
+              "чай",
+              "латте"
+            ],
+            "drink_counts": {
+              "латте": 1
+            },
+            "drink": "латте",
+            "previous_count": 0
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drink_orders": [
+              "латте",
+              "чай",
+              "латте"
+            ],
+            "drink_counts": {
+              "латте": 1
+            },
+            "drink": "латте",
+            "previous_count": 0
+          },
+          "output": "Учли: латте Сводка: {'латте': 1}\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "drink_orders": [
+              "латте",
+              "чай",
+              "латте"
+            ],
+            "drink_counts": {
+              "латте": 1
+            },
+            "drink": "чай",
+            "previous_count": 0
+          },
+          "output": "Учли: латте Сводка: {'латте': 1}\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 1 из drink_orders: drink = 'чай'. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 5,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "drink_orders": [
+              "латте",
+              "чай",
+              "латте"
+            ],
+            "drink_counts": {
+              "латте": 1
+            },
+            "drink": "чай",
+            "previous_count": 0
+          },
+          "output": "Учли: латте Сводка: {'латте': 1}\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "drink_orders": [
+              "латте",
+              "чай",
+              "латте"
+            ],
+            "drink_counts": {
+              "латте": 1,
+              "чай": 1
+            },
+            "drink": "чай",
+            "previous_count": 0
+          },
+          "output": "Учли: латте Сводка: {'латте': 1}\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "drink_orders": [
+              "латте",
+              "чай",
+              "латте"
+            ],
+            "drink_counts": {
+              "латте": 1,
+              "чай": 1
+            },
+            "drink": "чай",
+            "previous_count": 0
+          },
+          "output": "Учли: латте Сводка: {'латте': 1}\nУчли: чай Сводка: {'латте': 1, 'чай': 1}\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "drink_orders": [
+              "латте",
+              "чай",
+              "латте"
+            ],
+            "drink_counts": {
+              "латте": 1,
+              "чай": 1
+            },
+            "drink": "латте",
+            "previous_count": 0
+          },
+          "output": "Учли: латте Сводка: {'латте': 1}\nУчли: чай Сводка: {'латте': 1, 'чай': 1}\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 2 из drink_orders: drink = 'латте'. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 5,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "drink_orders": [
+              "латте",
+              "чай",
+              "латте"
+            ],
+            "drink_counts": {
+              "латте": 1,
+              "чай": 1
+            },
+            "drink": "латте",
+            "previous_count": 1
+          },
+          "output": "Учли: латте Сводка: {'латте': 1}\nУчли: чай Сводка: {'латте': 1, 'чай': 1}\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "drink_orders": [
+              "латте",
+              "чай",
+              "латте"
+            ],
+            "drink_counts": {
+              "латте": 2,
+              "чай": 1
+            },
+            "drink": "латте",
+            "previous_count": 1
+          },
+          "output": "Учли: латте Сводка: {'латте': 1}\nУчли: чай Сводка: {'латте': 1, 'чай': 1}\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "drink_orders": [
+              "латте",
+              "чай",
+              "латте"
+            ],
+            "drink_counts": {
+              "латте": 2,
+              "чай": 1
+            },
+            "drink": "латте",
+            "previous_count": 1
+          },
+          "output": "Учли: латте Сводка: {'латте': 1}\nУчли: чай Сводка: {'латте': 1, 'чай': 1}\nУчли: латте Сводка: {'латте': 2, 'чай': 1}\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 4,
+          "event": "after",
+          "variables": {
+            "drink_orders": [
+              "латте",
+              "чай",
+              "латте"
+            ],
+            "drink_counts": {
+              "латте": 2,
+              "чай": 1
+            },
+            "drink": "латте",
+            "previous_count": 1
+          },
+          "output": "Учли: латте Сводка: {'латте': 1}\nУчли: чай Сводка: {'латте': 1, 'чай': 1}\nУчли: латте Сводка: {'латте': 2, 'чай': 1}\n",
+          "label": "Перебор завершён",
+          "explanation": "Элементы закончились. Выходим из цикла; нового значения для переменной цикла нет."
+        }
+      ],
+      "complete": true
+    },
+    "e2a28ab2baf7daff9fee916ba296eb8b248e18bfcda75915464fbee0d06dbefc": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drink_orders": []
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drink_orders": [],
+            "drink_counts": {}
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drink_orders": [],
+            "drink_counts": {},
+            "order_count": 0
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drink_orders": [],
+            "drink_counts": {},
+            "order_count": 0
+          },
+          "output": "Сводка заказов: {}\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "drink_orders": [],
+            "drink_counts": {},
+            "order_count": 0
+          },
+          "output": "Сводка заказов: {}\nВсего заказов: 0\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "e2b79f5b763074dc4f9ccca6966fa5495066bc2a33b25d5fe7d81b26e79b05b4": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "exhibition_hours": [
+              10,
+              11
+            ]
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "exhibition_hours": [
+              10,
+              11
+            ],
+            "hour_index": 0
+          },
+          "output": "",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 0 из range(len(exhibition_hours)): hour_index = 0. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "exhibition_hours": [
+              10,
+              11
+            ],
+            "hour_index": 0
+          },
+          "output": "Адрес: 0 Час: 10\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 2,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "exhibition_hours": [
+              10,
+              11
+            ],
+            "hour_index": 1
+          },
+          "output": "Адрес: 0 Час: 10\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 1 из range(len(exhibition_hours)): hour_index = 1. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 3,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "exhibition_hours": [
+              10,
+              11
+            ],
+            "hour_index": 1
+          },
+          "output": "Адрес: 0 Час: 10\nАдрес: 1 Час: 11\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 2,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "exhibition_hours": [
+              10,
+              11
+            ],
+            "hour_index": 1
+          },
+          "output": "Адрес: 0 Час: 10\nАдрес: 1 Час: 11\n",
+          "label": "Перебор завершён",
+          "explanation": "Элементы закончились. Выходим из цикла; нового значения для переменной цикла нет."
+        }
+      ],
+      "complete": true
+    },
+    "ed1799460a17da9d391392d8343d486321dae73cb86764c3e858fd1ab193197c": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "tips": [
+              20,
+              50
+            ]
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "tips": [
+              20,
+              50
+            ],
+            "total": 0
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "tips": [
+              20,
+              50
+            ],
+            "total": 0,
+            "count": 0
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "tips": [
+              20,
+              50
+            ],
+            "total": 0,
+            "count": 0,
+            "tip": 20
+          },
+          "output": "",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 0 из tips: tip = 20. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "tips": [
+              20,
+              50
+            ],
+            "total": 20,
+            "count": 0,
+            "tip": 20
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "tips": [
+              20,
+              50
+            ],
+            "total": 20,
+            "count": 1,
+            "tip": 20
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "tips": [
+              20,
+              50
+            ],
+            "total": 20,
+            "count": 1,
+            "tip": 20
+          },
+          "output": "Деньги: 20 События: 1\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "tips": [
+              20,
+              50
+            ],
+            "total": 20,
+            "count": 1,
+            "tip": 50
+          },
+          "output": "Деньги: 20 События: 1\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 1 из tips: tip = 50. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 5,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "tips": [
+              20,
+              50
+            ],
+            "total": 70,
+            "count": 1,
+            "tip": 50
+          },
+          "output": "Деньги: 20 События: 1\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 6,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "tips": [
+              20,
+              50
+            ],
+            "total": 70,
+            "count": 2,
+            "tip": 50
+          },
+          "output": "Деньги: 20 События: 1\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 7,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "tips": [
+              20,
+              50
+            ],
+            "total": 70,
+            "count": 2,
+            "tip": 50
+          },
+          "output": "Деньги: 20 События: 1\nДеньги: 70 События: 2\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 4,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "tips": [
+              20,
+              50
+            ],
+            "total": 70,
+            "count": 2,
+            "tip": 50
+          },
+          "output": "Деньги: 20 События: 1\nДеньги: 70 События: 2\n",
+          "label": "Перебор завершён",
+          "explanation": "Элементы закончились. Выходим из цикла; нового значения для переменной цикла нет."
+        },
+        {
+          "line": 8,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "tips": [
+              20,
+              50
+            ],
+            "total": 70,
+            "count": 2,
+            "tip": 50
+          },
+          "output": "Деньги: 20 События: 1\nДеньги: 70 События: 2\nОтчёт: 70 2\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    },
+    "efadcda950cb075c100023c6d2e1c7bee6f061510d129604fbf02038b840c61d": {
+      "frames": [
+        {
+          "line": 1,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "cocoa"
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 2,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "width": 3
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 3,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "width": 3,
+            "start": 0
+          },
+          "output": "",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 0 из range(len(text) - width + 1): start = 0. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 4,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "width": 3,
+            "start": 0,
+            "window": "coc"
+          },
+          "output": "",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 5,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "width": 3,
+            "start": 0,
+            "window": "coc"
+          },
+          "output": "Начало: 0 граница справа: 3 окно: coc\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 3,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "width": 3,
+            "start": 1,
+            "window": "coc"
+          },
+          "output": "Начало: 0 граница справа: 3 окно: coc\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 1 из range(len(text) - width + 1): start = 1. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 4,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "width": 3,
+            "start": 1,
+            "window": "oco"
+          },
+          "output": "Начало: 0 граница справа: 3 окно: coc\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 5,
+          "occurrence": 2,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "width": 3,
+            "start": 1,
+            "window": "oco"
+          },
+          "output": "Начало: 0 граница справа: 3 окно: coc\nНачало: 1 граница справа: 4 окно: oco\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 3,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "width": 3,
+            "start": 2,
+            "window": "oco"
+          },
+          "output": "Начало: 0 граница справа: 3 окно: coc\nНачало: 1 граница справа: 4 окно: oco\n",
+          "label": "Следующий элемент",
+          "explanation": "Берём элемент с индексом 2 из range(len(text) - width + 1): start = 2. Тело цикла ещё не выполнено."
+        },
+        {
+          "line": 4,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "width": 3,
+            "start": 2,
+            "window": "coa"
+          },
+          "output": "Начало: 0 граница справа: 3 окно: coc\nНачало: 1 граница справа: 4 окно: oco\n",
+          "label": "Присваивание",
+          "explanation": "Строка выполнена. Справа показаны переменные после присваивания."
+        },
+        {
+          "line": 5,
+          "occurrence": 3,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "width": 3,
+            "start": 2,
+            "window": "coa"
+          },
+          "output": "Начало: 0 граница справа: 3 окно: coc\nНачало: 1 граница справа: 4 окно: oco\nНачало: 2 граница справа: 5 окно: coa\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        },
+        {
+          "line": 3,
+          "occurrence": 4,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "width": 3,
+            "start": 2,
+            "window": "coa"
+          },
+          "output": "Начало: 0 граница справа: 3 окно: coc\nНачало: 1 граница справа: 4 окно: oco\nНачало: 2 граница справа: 5 окно: coa\n",
+          "label": "Перебор завершён",
+          "explanation": "Элементы закончились. Выходим из цикла; нового значения для переменной цикла нет."
+        },
+        {
+          "line": 6,
+          "occurrence": 1,
+          "event": "after",
+          "variables": {
+            "text": "cocoa",
+            "width": 3,
+            "start": 2,
+            "window": "coa"
+          },
+          "output": "Начало: 0 граница справа: 3 окно: coc\nНачало: 1 граница справа: 4 окно: oco\nНачало: 2 граница справа: 5 окно: coa\nОкна закончились\n",
+          "label": "Вывод",
+          "explanation": "print() выполнен. Ниже показан весь вывод, накопленный к этому шагу."
+        }
+      ],
+      "complete": true
+    }
+  }
+}

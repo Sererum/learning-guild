@@ -1,0 +1,309 @@
+{
+  "start": {
+    "id": "start",
+    "name": "Начало пути",
+    "x": 7,
+    "y": 18
+  },
+  "routes": [
+    {
+      "from": "start",
+      "to": "variables"
+    },
+    {
+      "from": "variables",
+      "to": "math"
+    },
+    {
+      "from": "math",
+      "to": "conditions"
+    },
+    {
+      "from": "conditions",
+      "to": "clean"
+    },
+    {
+      "from": "clean",
+      "to": "index"
+    },
+    {
+      "from": "index",
+      "to": "for",
+      "via": [
+        [
+          36,
+          73
+        ],
+        [
+          37,
+          30
+        ]
+      ]
+    },
+    {
+      "from": "for",
+      "to": "accumulator"
+    },
+    {
+      "from": "accumulator",
+      "to": "while"
+    },
+    {
+      "from": "while",
+      "to": "keys",
+      "via": [
+        [
+          63,
+          54
+        ],
+        [
+          66,
+          34
+        ]
+      ]
+    },
+    {
+      "from": "keys",
+      "to": "safe-get"
+    },
+    {
+      "from": "safe-get",
+      "to": "unique"
+    },
+    {
+      "from": "unique",
+      "to": "archon"
+    },
+    {
+      "from": "archon",
+      "to": "algorithms"
+    },
+    {
+      "from": "index",
+      "to": "foundation-archon",
+      "side": true
+    },
+    {
+      "from": "clean",
+      "to": "daily-point",
+      "side": true
+    },
+    {
+      "from": "while",
+      "to": "repair-point",
+      "side": true
+    },
+    {
+      "from": "safe-get",
+      "to": "frequency",
+      "side": true
+    }
+  ],
+  "regions": [
+    {
+      "id": "foundation",
+      "name": "I · Долина фундамента",
+      "subtitle": "Предыдущий регион · блок 1",
+      "x": 21,
+      "y": 15
+    },
+    {
+      "id": "structures",
+      "name": "II · Архипелаг структур",
+      "subtitle": "Текущий регион · блок 2",
+      "x": 65,
+      "y": 15
+    }
+  ],
+  "points": [
+    {
+      "id": "variables",
+      "kind": "teleport",
+      "region": "foundation",
+      "name": "Переменные и типы",
+      "x": 12,
+      "y": 29,
+      "known": true,
+      "summary": "Переменная — ярлык для значения. Присваивание сохраняет результат; выражение без сохранения не меняет старую переменную.",
+      "example": "price = 200\nprice_after_discount = price - 30\nprint(price, price_after_discount)"
+    },
+    {
+      "id": "math",
+      "kind": "teleport",
+      "region": "foundation",
+      "name": "Арифметика и bool",
+      "x": 29,
+      "y": 34,
+      "known": true,
+      "summary": "// считает полные группы, % — остаток. Сравнение возвращает True или False. Сохраняй результат, если он нужен дальше.",
+      "example": "rolls = 19\nprint(\"Полных наборов:\", rolls // 8)\nprint(\"Остаток:\", rolls % 8)\nhas_leftovers = rolls % 8 > 0\nprint(has_leftovers)"
+    },
+    {
+      "id": "conditions",
+      "kind": "teleport",
+      "region": "foundation",
+      "name": "Условия if / else",
+      "x": 14,
+      "y": 47,
+      "known": true,
+      "summary": "Условие — развилка. if выбирает действие при True, else — при False. На равенстве отдельно проверь смысл правила.",
+      "example": "balance = 500\nprice = 450\nif balance >= price:\n    print(\"Покупка разрешена\")\nelse:\n    print(\"Денег пока недостаточно\")"
+    },
+    {
+      "id": "clean",
+      "kind": "teleport",
+      "region": "foundation",
+      "name": "Методы строк",
+      "x": 29,
+      "y": 56,
+      "known": true,
+      "summary": "Знакомая тема: .strip() убирает пробелы по краям, .lower() приводит текст к нижнему регистру.",
+      "example": "raw_city = \"  Сочи  \"\ncity = raw_city.strip().lower()\nprint(city)",
+      "task": "daily"
+    },
+    {
+      "id": "index",
+      "kind": "teleport",
+      "region": "foundation",
+      "name": "Индексы и срезы",
+      "x": 12,
+      "y": 65,
+      "known": true,
+      "summary": "Индекс — номер символа. В срезе правая граница не включается. Сначала предскажи выбранные символы.",
+      "example": "word = \"архив\"\nprint(word[0])\nprint(word[1:4])"
+    },
+    {
+      "id": "for",
+      "kind": "teleport",
+      "region": "structures",
+      "name": "Списки и for",
+      "x": 45,
+      "y": 31,
+      "known": true,
+      "summary": "Список хранит последовательность, for берёт элементы по одному. Накопитель складывает значения, счётчик считает действия.",
+      "example": "prices = [200, 350]\ntotal = 0\nfor price in prices:\n    total += price\n    print(\"Промежуточная сумма:\", total)"
+    },
+    {
+      "id": "accumulator",
+      "kind": "teleport",
+      "region": "structures",
+      "name": "Сумма и счётчик",
+      "x": 58,
+      "y": 39,
+      "known": true,
+      "summary": "Накопитель прибавляет значения; счётчик — единицу за подходящее действие. У них разные роли.",
+      "example": "orders = [200, 700]\nrevenue = 0\nlarge_orders = 0\nfor price in orders:\n    revenue += price\n    if price >= 500:\n        large_orders += 1\n    print(revenue, large_orders)"
+    },
+    {
+      "id": "while",
+      "kind": "teleport",
+      "region": "structures",
+      "name": "Состояние while",
+      "x": 45,
+      "y": 48,
+      "known": true,
+      "summary": "Условие разрешает следующий круг. Проследи, какая переменная меняется и почему цикл остановится.",
+      "example": "steps = 2\nwhile steps > 0:\n    print(\"До шага:\", steps)\n    steps -= 1\nprint(\"Остановились:\", steps)",
+      "task": "repair"
+    },
+    {
+      "id": "keys",
+      "kind": "teleport",
+      "region": "structures",
+      "name": "Ключи и значения",
+      "x": 74,
+      "y": 31,
+      "summary": "Словарь похож на справочник: по смысловому ключу получаем связанное значение. Изменение существующего ключа заменяет его значение.",
+      "example": "card = {\"name\": \"Свиток\", \"stock\": 3}\nprint(card[\"name\"])\ncard[\"stock\"] = 2\nprint(card)",
+      "task": "lesson"
+    },
+    {
+      "id": "safe-get",
+      "kind": "teleport",
+      "region": "structures",
+      "name": "Безопасный поиск",
+      "x": 85,
+      "y": 47,
+      "summary": "Ключ может отсутствовать. Метод .get() возвращает запасное значение, только если ключа нет. Ноль — допустимое настоящее значение.",
+      "example": "ratings = {\"архив\": 0}\nprint(ratings.get(\"архив\", \"нет оценки\"))\nprint(ratings.get(\"сад\", \"нет оценки\"))",
+      "task": "lesson"
+    },
+    {
+      "id": "frequency",
+      "kind": "teleport",
+      "region": "structures",
+      "name": "Частоты категорий",
+      "x": 65,
+      "y": 70,
+      "requires": "lesson",
+      "summary": "Словарь-счётчик хранит категорию и число её появлений. На каждом шаге читаем прежнее количество и добавляем единицу.",
+      "example": "statuses = [\"новый\", \"новый\"]\ncounts = {}\nfor status in statuses:\n    counts[status] = counts.get(status, 0) + 1\n    print(counts)",
+      "task": "frequency-practice"
+    },
+    {
+      "id": "unique",
+      "kind": "teleport",
+      "region": "structures",
+      "name": "Уникальные элементы",
+      "x": 81,
+      "y": 77,
+      "requires": "lesson",
+      "summary": "Множество оставляет уникальные элементы. Добавление повтора не увеличивает число разных людей.",
+      "example": "visits = [\"Алиса\", \"Полина\", \"Алиса\"]\npeople = set(visits)\nprint(len(visits), len(people))",
+      "task": "unique-practice"
+    },
+    {
+      "id": "algorithms",
+      "kind": "teleport",
+      "region": "structures",
+      "name": "Базовые алгоритмы",
+      "x": 60,
+      "y": 88,
+      "requires": "exam",
+      "summary": "Следующая тема этого региона: поиск максимума, подстроки и два указателя. Урок доступен после испытания структур данных. Телепорт откроется после завершения его практики и финального кейса.",
+      "example": "values = [3, 8, 5]\nbest = values[0]\nfor value in values:\n    if value > best:\n        best = value\n    print(\"Текущий максимум:\", best)"
+    },
+    {
+      "id": "daily-point",
+      "kind": "daily",
+      "topic": "clean",
+      "region": "foundation",
+      "name": "Дэйлик: забытое имя",
+      "x": 32,
+      "y": 66,
+      "task": "daily",
+      "summary": "Рядом с методами строк: короткое повторение очистки и регистра. Награда — 60 примогемов и два лепестка памяти."
+    },
+    {
+      "id": "repair-point",
+      "kind": "repair",
+      "topic": "while",
+      "region": "structures",
+      "name": "Разбираем границу",
+      "x": 49,
+      "y": 59,
+      "task": "repair",
+      "summary": "Рядом с темой while: проверим лишний круг на обычном случае, равенстве и старте выше цели. Награда — 40 примогемов."
+    },
+    {
+      "id": "foundation-archon",
+      "kind": "statue",
+      "region": "foundation",
+      "name": "Финал блока 1 · Анализатор текста",
+      "x": 18,
+      "y": 87,
+      "task": "foundations-exam",
+      "summary": "Самостоятельный анализатор текста заявки: очистка, индексы, безопасный поиск, срезы и понятный отчёт. Только темы блока 1."
+    },
+    {
+      "id": "archon",
+      "kind": "statue",
+      "region": "structures",
+      "name": "Статуя структур данных",
+      "x": 86,
+      "y": 89,
+      "task": "exam",
+      "summary": "Большая тема текущего региона: словари и множества. Испытание объединяет частоты источников и уникальных клиентов. Награда — 640 примогемов."
+    }
+  ]
+}

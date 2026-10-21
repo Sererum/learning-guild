@@ -1,0 +1,195 @@
+{
+  "currentLessonId": "algorithms",
+  "currentPointId": "algorithms",
+  "legacyLessonId": "frequency",
+  "roadmap": {
+    "variables": {
+      "number": "1.1",
+      "phase": "archive",
+      "note": "Имена переменных, значения и типы данных."
+    },
+    "math": {
+      "number": "1.2",
+      "phase": "archive",
+      "note": "Арифметика, сравнения и логические значения."
+    },
+    "conditions": {
+      "number": "1.3",
+      "phase": "archive",
+      "note": "Условия if, elif и else."
+    },
+    "clean": {
+      "number": "1.4",
+      "phase": "archive",
+      "note": "Методы строк, очистка и регистр."
+    },
+    "index": {
+      "number": "1.4 / 1.4a",
+      "phase": "archive",
+      "note": "Индексы, срезы и безопасный поиск."
+    },
+    "for": {
+      "number": "2.1",
+      "phase": "archive",
+      "note": "Поочерёдный обход списка циклом for."
+    },
+    "accumulator": {
+      "number": "2.1a",
+      "phase": "archive",
+      "note": "Накопление суммы и подсчёт событий."
+    },
+    "while": {
+      "number": "2.2 / 2.2a–c",
+      "phase": "archive",
+      "note": "Условие продолжения цикла и точные границы."
+    },
+    "keys": {
+      "number": "2.3 · dict",
+      "phase": "archive",
+      "note": "Роли ключа и значения в словаре."
+    },
+    "safe-get": {
+      "number": "2.3 · dict",
+      "phase": "archive",
+      "note": "Безопасное чтение словаря с запасным значением."
+    },
+    "frequency": {
+      "number": "2.3 · dict",
+      "phase": "archive",
+      "note": "Подсчёт частот категорий."
+    },
+    "unique": {
+      "number": "2.3 · set",
+      "phase": "archive",
+      "note": "Уникальные элементы и множества."
+    },
+    "algorithms": {
+      "number": "2.4",
+      "phase": "current",
+      "note": "Следующий полный урок: три мини-блока, девять тренировочных задач и итоговый мини-проект. Работы над ошибками открываются отдельно, рядом с прежними жёлтыми темами."
+    },
+    "foundation-archon": {
+      "number": "Финал блока 1",
+      "phase": "available",
+      "note": "Самостоятельная работа по переменным, условиям и строкам. Один бизнес-кейс «Анализатор текста заявки», без циклов и новых тем."
+    },
+    "archon": {
+      "number": "Итог блока 2",
+      "phase": "future",
+      "note": "Следующее итоговое испытание блока 2 пока недоступно. Для начала урока 2.4 проходить его не требуется."
+    },
+    "daily-point": {
+      "number": "Повторение строк",
+      "phase": "available",
+      "note": "Знакомые методы строк на открытой территории. Награду можно получить один раз за день по московскому времени; карта от повторения не меняется."
+    },
+    "repair-point": {
+      "number": "Повторение while",
+      "phase": "archive",
+      "note": "Разбор временно недоступен. Сейчас открыты урок 2.4 и финал блока 1."
+    }
+  },
+  "previous": {
+    "variables": null,
+    "math": "variables",
+    "conditions": "math",
+    "clean": "conditions",
+    "index": "clean",
+    "for": "index",
+    "accumulator": "for",
+    "while": "accumulator",
+    "keys": "while",
+    "safe-get": "keys",
+    "frequency": "safe-get",
+    "unique": "frequency",
+    "algorithms": "unique"
+  },
+  "visibleRegionIds": [
+    "foundation",
+    "structures"
+  ],
+  "regions": {
+    "foundation": {
+      "name": "1. Базовый синтаксис и строки",
+      "subtitle": "Программа первого блока",
+      "description": "Переменные → арифметика → условия → строки. Итоговая работа: анализатор текста."
+    },
+    "structures": {
+      "name": "2. Структуры данных и алгоритмы",
+      "subtitle": "Программа второго блока",
+      "description": "Списки → циклы → словари и множества → базовые алгоритмы. Пройденные темы определяются локальным профилем."
+    }
+  },
+  "points": {
+    "daily-point": {
+      "lessonId": "daily",
+      "available": true,
+      "description": "Очисти имя от пробелов по краям, переведи буквы в нижний регистр, сохрани и выведи результат. Одна знакомая задача, короткая памятка и проверка на тестах."
+    },
+    "algorithms": {
+      "lessonId": "algorithms",
+      "available": true,
+      "number": "2.4",
+      "legacyRewardField": "legacyAlgorithmCredit",
+      "description": "Научимся находить максимум, искать фрагмент текста и работать двумя указателями. Внутри каждого мини-блока — короткая теория, интерактивные примеры и три самостоятельные задачи; в конце — аналитический мини-проект."
+    },
+    "foundation-archon": {
+      "lessonId": "foundations-final",
+      "available": true,
+      "prerequisites": [
+        "variables",
+        "math",
+        "conditions",
+        "clean",
+        "index"
+      ],
+      "description": "Подготовь текст заявки, безопасно найди важный фрагмент и его продолжение, выбери решение через условия и выведи мини-отчёт. Здесь используются только темы блока 1: переменные, условия, индексы, срезы и методы строк."
+    },
+    "archon": {
+      "prerequisites": [
+        "algorithms"
+      ]
+    }
+  },
+  "routeOverrides": {
+    "remove": [
+      [
+        "safe-get",
+        "unique"
+      ],
+      [
+        "safe-get",
+        "frequency"
+      ],
+      [
+        "unique",
+        "archon"
+      ],
+      [
+        "archon",
+        "algorithms"
+      ]
+    ],
+    "add": [
+      {
+        "from": "safe-get",
+        "to": "frequency"
+      },
+      {
+        "from": "frequency",
+        "to": "unique"
+      },
+      {
+        "from": "unique",
+        "to": "algorithms"
+      },
+      {
+        "from": "algorithms",
+        "to": "archon"
+      }
+    ]
+  },
+  "worldTitle": "Твой путь в Python",
+  "worldSubtitle": "Здесь виден учебный маршрут. Изученные темы остаются в архиве; яркая точка — урок, который можно пройти сейчас.",
+  "bookSubtitle": "Доступны полный урок 2.4 и финал блока 1, а также ежедневное повторение. Прежние работы сохранены в архиве."
+}

@@ -1,0 +1,10 @@
+import {readFileSync as readCourseFixture} from 'node:fs';
+import {lessons as courseLessons} from '../lessons.mjs';
+const coursePresentation=JSON.parse(readCourseFixture(new URL('../courses/alice-python/presentation.json',import.meta.url)));
+import test from 'node:test';import assert from 'node:assert/strict';
+import {selectLesson,renderLesson} from '../public/pages/lesson.js';import {notebookLesson} from '../notebook.mjs';import {lessons} from '../lessons.mjs';import {publicTasks} from '../tasks.mjs';import {initialState,courseMap} from '../engine.mjs';
+const esc=x=>String(x??'').replaceAll('<','&lt;');const ctx=()=>({data:{course:{recurringTasks:['daily']},presentation:coursePresentation,lessons:courseLessons,state:initialState(),lesson:notebookLesson,lessons,tasks:publicTasks(),courseMap},esc});
+test('One portal opens the complete algorithm lesson with a selected task',()=>{const c=ctx();selectLesson('algo-substring-2','algorithms',c.data);const html=renderLesson(c);assert.ok(html.includes('lesson=algorithms&task=algo-substring-2'));assert.equal((html.match(/<iframe/g)||[]).length,1);assert.ok(!html.includes('algorithmSolutions'));});
+test('Foundation final opens its own assessment instead of the algorithm lesson',()=>{const c=ctx();selectLesson('foundations-exam','foundation-archon',c.data);const html=renderLesson(c);assert.ok(html.includes('lesson=foundations-final&task=foundations-exam'));assert.ok(!html.includes('task=algo-'));});
+test('Daily opens its separate repetition lesson instead of the algorithm workbook',()=>{const c=ctx();selectLesson('daily','daily-point',c.data);const html=renderLesson(c);assert.ok(html.includes('lesson=daily&task=daily'));assert.ok(!html.includes('task=algo-'));});
+test('Old saved prototype and unsupported archive selection resume the current full lesson',()=>{for(const [task,point] of [['frequency-practice','frequency'],['repair','repair-point'],[null,'variables']]){const c=ctx();selectLesson(task,point,c.data);const html=renderLesson(c);assert.ok(html.includes('lesson=algorithms&task=algo-max-1'));assert.ok(!html.includes('Запустить пример'));}});

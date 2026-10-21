@@ -1,0 +1,35 @@
+{
+  "mode": "built-in imagegen",
+  "assets": [
+    {
+      "id": "wreath",
+      "source": "generated:exec-f3c7facb-07e7-4725-9fc5-813d5389c295.png",
+      "destination": "public/assets/equipment/worn-wreath-v1.png",
+      "prompt": "Use case: precise-object-edit. Asset type: wearable 2D layered game HEADBAND sprite. Input reference is an inventory icon; redesign its projection as a headband actually WORN on a front-facing chestnut-haired fantasy woman. A delicate sage leaf and small purple-and-ivory wildflower wreath, a wearable narrow floral headband. Keep reference palette and recognizable motif, simplify excess hanging ribbons. Render only the headband, NO HEAD, NO HAIR, NO PERSON. Front orthographic view, symmetrical shallow concave arch following a forehead, left and right ends at same baseline, upper edge ornamentation. Narrow, delicate jewelry in anime fantasy painted style, ivory-gold linework, soft light upper-left. Wide composition, object extends across 80% width, height about35%width. No closed circular wreath, no oval top-view hoop, no large pendant hanging below eyebrows, no straight flat crown plate. Highest ornament center, ends curve down gently toward temples. No background, no shadows or glow outside object, genuine alpha transparency. No text or watermark. This is a modular layer worn over hairline."
+    },
+    {
+      "id": "star",
+      "source": "generated:exec-171204a2-954e-4ed8-9639-91ba979cd2ed.png",
+      "destination": "public/assets/equipment/worn-star-v1.png",
+      "prompt": "Use case: precise-object-edit. Asset type: wearable 2D layered game HEADBAND sprite. Input reference is an inventory icon; redesign its projection as a headband actually WORN on a front-facing chestnut-haired fantasy woman. A delicate gold celestial tiara with a small amber star above the center and tiny pearls. Keep reference palette and recognizable motif, simplify excess hanging ribbons. Render only the headband, NO HEAD, NO HAIR, NO PERSON. Front orthographic view, symmetrical shallow concave arch following a forehead, left and right ends at same baseline, upper edge ornamentation. Narrow, delicate jewelry in anime fantasy painted style, ivory-gold linework, soft light upper-left. Wide composition, object extends across 80% width, height about35%width. No closed circular wreath, no oval top-view hoop, no large pendant hanging below eyebrows, no straight flat crown plate. Highest ornament center, ends curve down gently toward temples. No background, no shadows or glow outside object, genuine alpha transparency. No text or watermark. This is a modular layer worn over hairline."
+    },
+    {
+      "id": "halo",
+      "source": "generated:exec-ecfe7f0b-05f2-42c2-84e9-5a8c5281aa42.png",
+      "destination": "public/assets/equipment/worn-halo-v1.png",
+      "prompt": "Use case: precise-object-edit. Asset type: wearable 2D layered game HEADBAND sprite. Input reference is an inventory icon; redesign its projection as a headband actually WORN on a front-facing chestnut-haired fantasy woman. A slender pale-gold sunrise crown with upward rays and a honey gem. Keep reference palette and recognizable motif, simplify excess hanging ribbons. Render only the headband, NO HEAD, NO HAIR, NO PERSON. Front orthographic view, symmetrical shallow concave arch following a forehead, left and right ends at same baseline, upper edge ornamentation. Narrow, delicate jewelry in anime fantasy painted style, ivory-gold linework, soft light upper-left. Wide composition, object extends across 80% width, height about35%width. No closed circular wreath, no oval top-view hoop, no large pendant hanging below eyebrows, no straight flat crown plate. Highest ornament center, ends curve down gently toward temples. No background, no shadows or glow outside object, genuine alpha transparency. No text or watermark. This is a modular layer worn over hairline."
+    },
+    {
+      "id": "coral",
+      "source": "generated:exec-a6243130-bf16-4741-bf68-dcb71e7758b4.png",
+      "destination": "public/assets/equipment/worn-coral-v1.png",
+      "prompt": "Use case: precise-object-edit. Asset type: wearable 2D layered game HEADBAND sprite. Input reference is an inventory icon; redesign its projection as a headband actually WORN on a front-facing chestnut-haired fantasy woman. A fine rose-gold coral-and-pearl tiara with a blush seashell gem, gentle coral branches pointing upward. Keep reference palette and recognizable motif, simplify excess hanging ribbons. Render only the headband, NO HEAD, NO HAIR, NO PERSON. Front orthographic view, symmetrical shallow concave arch following a forehead, left and right ends at same baseline, upper edge ornamentation. Narrow, delicate jewelry in anime fantasy painted style, ivory-gold linework, soft light upper-left. Wide composition, object extends across 80% width, height about35%width. No closed circular wreath, no oval top-view hoop, no large pendant hanging below eyebrows, no straight flat crown plate. Highest ornament center, ends curve down gently toward temples. No background, no shadows or glow outside object, genuine alpha transparency. No text or watermark. This is a modular layer worn over hairline."
+    },
+    {
+      "id": "comet",
+      "source": "generated:exec-fffa1f97-d64a-4fd9-84f3-8aad5a7edf89.png",
+      "destination": "public/assets/equipment/worn-comet-v1.png",
+      "prompt": "Use case: precise-object-edit. Asset type: wearable 2D layered game HEADBAND sprite. Input reference is an inventory icon; redesign its projection as a headband actually WORN on a front-facing chestnut-haired fantasy woman. An elegant silver and blue-violet falling-star headband with a small crescent and a comet on the right side. Keep reference palette and recognizable motif, simplify excess hanging ribbons. Render only the headband, NO HEAD, NO HAIR, NO PERSON. Front orthographic view, symmetrical shallow concave arch following a forehead, left and right ends at same baseline, upper edge ornamentation. Narrow, delicate jewelry in anime fantasy painted style, ivory-gold linework, soft light upper-left. Wide composition, object extends across 80% width, height about35%width. No closed circular wreath, no oval top-view hoop, no large pendant hanging below eyebrows, no straight flat crown plate. Highest ornament center, ends curve down gently toward temples. No background, no shadows or glow outside object, genuine alpha transparency. No text or watermark. This is a modular layer worn over hairline."
+    }
+  ]
+}

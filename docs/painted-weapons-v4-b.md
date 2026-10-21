@@ -1,0 +1,25 @@
+# Painted magical weapons v4 (wand and staff)
+
+Mode: built-in `image_gen.imagegen`, separate generation call per weapon, `transparent_background: true`. No API/CLI fallback, image editing, SVG stand-ins or profile changes. Existing assets are unchanged.
+
+Both final images were inspected with the image viewer and the system image inspector: complete isolated weapon, no person, UI or writing elements; 1254 × 1254 PNG with alpha; below 8 MB. The model did not exactly follow requested composition coordinates. Use the actual grip centers below when positioning equipment.
+
+| Asset | Final path | Size | Actual grip center, normalized | Actual grip center, pixels (approx.) |
+|---|---|---:|---|---|
+| Amethyst wand | `public/assets/item-amethyst-wand-v1.png` | 432 KB | `(0.28, 0.78)` | `(351, 978)` |
+| Dawn staff | `public/assets/item-dawn-staff-v1.png` | 344 KB | `(0.39, 0.775)` | `(489, 972)` |
+
+Both axes run from lower left to upper right. Wand: lower end approximately `(0.14,0.95)`, crystal tip `(0.90,0.05)`. Staff: lower end approximately `(0.27,0.97)`, crown tip `(0.77,0.025)`. Padding is tighter than requested, so consumers should use containment and safe container margins. Grip centers are visual estimates within each clearly visible dark leather grip.
+
+## Amethyst wand prompt
+
+```text
+Use case: stylized-concept. Asset type: premium four-star magical weapon inventory illustration, transparent square PNG. Subject: ONE complete AMETHYST MAGIC WAND, clearly a fantasy spellcasting wand, absolutely not a feather or writing tool. Painstakingly hand-painted polished anime fantasy materials compatible with luxury embroidered violet scholar gowns. Long thin rigid dark plum wand body with fine silver and violet filigree, a readable dark leather wrapped HAND GRIP lower on the shaft, bright faceted amethyst crystal tip held in refined silver crescent-shaped openwork, tiny subordinate violet gemstones integrated into metal. Elegant, graceful weapon silhouette with slender rigid body and a modest crystal head, no feather shapes. Both ends and all side ornament fully visible. Essential exact composition on square canvas: straight object runs diagonally bottom-left to top-right. Lower butt END centered at (25% canvas width, 92% canvas height). CENTER OF THE CLEAR DARK HANDLE GRIP at (34% width,75% height). TOP OF AMETHYST CRYSTAL at (74% width,8% height). These three points share the same long straight wand axis. Keep handle dark, uncomplicated, unmistakable, and thick enough for a hand to grasp; decorative filigree and crystal belong above the grip. Main shaft reaches all the way from handle to crystal. Put no additional object anywhere. Allow 6–8% transparent padding around decorative extremities and no cropping. Genuine transparent alpha background. Precise painterly silver reflections, rich amethyst facets, tactile fine leather. No person, body, hands, stand, text, letters, title, numbers, stars, UI, frame, floor shadow, scenery, background color or watermark. Do not render any quill, feather, pen, writing nib, or page.
+```
+
+## Dawn staff prompt
+
+```text
+Use case: stylized-concept. Asset type: premium legendary five-star magical staff inventory illustration, genuine transparent square PNG. Subject: ONE complete DAWN STAFF, a real rigid long magical staff with ivory and gold shaft, coral accents and an elaborate solar orb crown. Painstaking painterly anime fantasy materials compatible with luxury scholarly heroine gowns. A very long slender straight ivory staff shaft in fine warm-gold spiral settings, coral cabochons embedded at intervals. The upper crown is a luminous faceted warm coral solar orb held in an elegant three-dimensional gold frame sculpted as TWO SMALL PHOENIX WINGS opening around the orb, with radiating fine gold arcs. The orb is the unmistakable center of the crown, small sculptural wings are metallic structural ornament and NOT a big feather. Long entire shaft must remain clearly visible as 70 percent of the staff total length. Lower grip is clearly defined dark warm-brown leather, unobstructed by large ornaments, framed by two slim golden rings. Modest ornate tapered gold lower butt. Exact square canvas composition: bottom staff end at (25% width,92% height); CENTER of the leather HAND GRIP at (34% width,75% height); upper tip of solar crown at (74% width,8% height). Keep this straighter, narrower diagonal than corner-to-corner: empty leftmost 15% and rightmost 15% of the canvas. Staff diagonal points from lower left upward right, not vertical. Whole object fully in frame with 6–8% transparent padding; preserve both ends. Tactile polished ivory, brushed gold, amber and coral gemstone reflections, beautiful complicated high craftsmanship, coherent functional silhouette. Genuine transparent alpha background with no glow outside the ornament silhouette, no scenery or floor shadow. Absolutely no person, body, hands, mannequin, stand, writing tool, feather quill, pen nib, page, lettering, numbers, stars, UI, frame, border or watermark. One staff only.
+```
+

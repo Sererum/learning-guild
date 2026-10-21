@@ -1,0 +1,13 @@
+{
+  "name": "learning-guild",
+  "version": "0.1.0",
+  "description": "Локальная учебная платформа с подключаемыми курсами и отдельными профилями",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node tools/test.mjs",
+    "check:course": "node tools/check-course.mjs"
+  },
+  "engines": {"node": ">=20"}
+}

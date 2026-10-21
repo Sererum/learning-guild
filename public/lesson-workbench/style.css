@@ -1,0 +1,1015 @@
+/* Original fantasy interface; all product styles scoped to the application. */
+body{margin:0;background:#ede8dc}
+#guild-adventure .wb-lesson-submission{margin:28px 0 0;padding:20px 0 0;border-top:1px solid var(--g-line)}
+#guild-adventure .wb-lesson-submission>p,#guild-adventure .wb-lesson-submit-form>p{font-size:12px;color:var(--g-muted);max-width:65ch}
+#guild-adventure .wb-lesson-submit-form{max-width:580px;margin-top:16px}
+#guild-adventure .wb-lesson-submit-form label{display:block;font-size:13px;margin:14px 0}
+#guild-adventure .wb-lesson-submit-form textarea{display:block;width:100%;padding:10px;border:1px solid var(--g-line);border-radius:7px;background:var(--g-paper);resize:vertical}
+#guild-adventure .wb-submit-actions{display:flex;gap:8px;flex-wrap:wrap}
+#guild-adventure .wb-learning-job{margin:14px 0;padding:12px 14px;border-radius:7px;background:var(--g-paper);border:1px solid var(--g-line)}
+#guild-adventure .wb-learning-job.failed,#guild-adventure .wb-submit-error{border-left:3px solid #b85d45;padding-left:12px}
+#guild-adventure .wb-learning-job li{margin:8px 0}
+#guild-adventure .wb-learning-job small{display:block;color:var(--g-muted)}
+#guild-adventure .nb-task-feedback{margin-top:20px}
+#guild-adventure .nb-task-feedback:empty{display:none}
+#guild-adventure .nb-task-feedback .nb-feedback-edit{font-size:12px}
+#guild-adventure{color-scheme:light;--g-bg:#faf6e9;--g-paper:#fffdf6;--g-ink:#39392f;--g-muted:#706e5f;--g-line:#e4ddc9;--g-gold:#8a713b;--g-softgold:#eee0b3;--g-green:#5a7669;--g-blue:#d8e8e8;--g-lilac:#e9dff2;--g-rose:#eac4cc;--g-deep:#3e514a;color:var(--g-ink);font:14px/1.55 system-ui,-apple-system,sans-serif;min-width:0}
+#guild-adventure *{box-sizing:border-box}
+#guild-adventure button,#guild-adventure input,#guild-adventure select,#guild-adventure textarea{font:inherit;color:inherit}
+#guild-adventure button{cursor:pointer}
+#guild-adventure button:disabled{cursor:default;opacity:.5}
+#guild-adventure button:focus-visible,#guild-adventure input:focus-visible,#guild-adventure select:focus-visible,#guild-adventure textarea:focus-visible{outline:3px solid #728bc1;outline-offset:3px}
+#guild-adventure [hidden]{display:none!important}
+#guild-adventure .shell{background:var(--g-bg);min-height:850px;border-radius:16px;border:1px solid var(--g-line);overflow:hidden;position:relative}
+#guild-adventure .topbar{background:var(--g-paper);border-bottom:1px solid var(--g-line);padding:19px 110px 19px 25px;display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+#guild-adventure .brand{display:flex;gap:11px;align-items:center}
+#guild-adventure .brand-mark{font:30px Georgia,serif;color:var(--g-gold)}
+#guild-adventure .brand strong{display:block;font:22px Georgia,serif;letter-spacing:-.04em}
+#guild-adventure .brand small{font-size:10px;letter-spacing:.1em;color:var(--g-muted)}
+#guild-adventure .wallet{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+#guild-adventure .wallet span{font-size:12px;background:#f2eddf;padding:7px 11px;border-radius:25px;white-space:nowrap}
+#guild-adventure .wallet b{font-weight:600;font-variant-numeric:tabular-nums}
+#guild-adventure .layout{display:grid;grid-template-columns:174px minmax(0,1fr)}
+#guild-adventure .sidebar{padding:23px 14px;border-right:1px solid var(--g-line);background:#f0edde;display:flex;flex-direction:column}
+#guild-adventure .identity{padding:0 10px 18px}
+#guild-adventure .identity strong{font:22px Georgia,serif;display:block;overflow-wrap:anywhere}
+#guild-adventure .identity small{color:var(--g-muted);font-size:11px}
+#guild-adventure nav{display:flex;flex-direction:column;gap:7px}
+#guild-adventure .nav-item{display:flex;align-items:center;gap:8px;width:100%;padding:11px 12px;border:0;background:transparent;border-radius:8px;text-align:left;font-size:12px}
+#guild-adventure .nav-item[aria-current="page"]{background:var(--g-deep);color:var(--g-paper)}
+#guild-adventure .nav-item .nav-icon{font-size:16px;width:20px;text-align:center}
+#guild-adventure .sidebar-note{margin-top:auto;padding:25px 9px 0;font-size:10px;line-height:1.8;color:var(--g-muted)}
+#guild-adventure .content{padding:25px 28px;min-width:0}
+#guild-adventure .eyebrow{font-size:10px;letter-spacing:.13em;color:var(--g-gold);font-weight:600;text-transform:uppercase}
+#guild-adventure h1{font:34px/1.15 Georgia,serif;letter-spacing:-.035em;font-weight:400;margin:9px 0 12px}
+#guild-adventure h2{font:23px/1.2 Georgia,serif;font-weight:400;margin:10px 0}
+#guild-adventure h3{font-size:14px;font-weight:600;margin:7px 0}
+#guild-adventure p{margin:8px 0}
+#guild-adventure .muted{color:var(--g-muted)}
+#guild-adventure .intro{font-size:12px;color:var(--g-muted);margin-bottom:22px;max-width:640px}
+#guild-adventure .row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+#guild-adventure .button{border:1px solid var(--g-line);background:var(--g-paper);padding:10px 14px;border-radius:8px;font-size:12px;min-height:40px;text-align:center}
+#guild-adventure .button.primary{background:var(--g-deep);border-color:var(--g-deep);color:var(--g-paper)}
+#guild-adventure .button.gold{background:var(--g-softgold);border-color:#d5c38d}
+#guild-adventure .button.small{padding:7px 10px;font-size:11px;min-height:35px}
+#guild-adventure .button.wide{width:100%}
+#guild-adventure .actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+#guild-adventure .tag{display:inline-block;background:var(--g-blue);border-radius:20px;padding:5px 10px;font-size:10px}
+#guild-adventure .tag.gold{background:var(--g-softgold)}
+#guild-adventure .tag.lilac{background:var(--g-lilac)}
+#guild-adventure .panel{padding:18px;border:1px solid var(--g-line);background:var(--g-paper);border-radius:12px}
+#guild-adventure .character-grid{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:20px;align-items:start}
+#guild-adventure .portrait-stage{position:relative;background:radial-gradient(ellipse at 50% 35%,#f6f1db 0%,#e8e5da 65%,#d8e1d8 100%);border-radius:150px 150px 12px 12px;min-height:450px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+#guild-adventure .portrait-stage:before{content:"";position:absolute;inset:35px;border:1px solid #cfc5a4;border-radius:50%}
+#guild-adventure .hero-art{position:relative;width:100%;max-width:340px;height:auto;display:block;overflow:visible}
+#guild-adventure .hero-art.mini{max-width:245px;margin:auto}
+#guild-adventure .hero-caption{position:relative;text-align:center;font:18px Georgia,serif;z-index:1;padding:0 12px 12px}
+#guild-adventure .hero-caption small{display:block;font:10px system-ui,sans-serif;color:var(--g-muted);margin-top:4px}
+#guild-adventure .level-line{display:flex;justify-content:space-between;gap:10px;font-size:12px;margin:5px 0 11px}
+#guild-adventure .track{height:5px;background:#eae4d7;border-radius:10px;overflow:hidden}
+#guild-adventure .track>span{height:100%;display:block;background:#ae9657;border-radius:10px}
+#guild-adventure .stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}
+#guild-adventure .stat{padding:10px 12px;background:#f2efe5;border-radius:9px;font-size:10px;color:var(--g-muted)}
+#guild-adventure .stat b{display:block;color:var(--g-ink);font-size:20px;font-weight:500;font-variant-numeric:tabular-nums}
+#guild-adventure .materials{display:flex;gap:7px;flex-wrap:wrap;font-size:10px;color:var(--g-muted);margin:12px 0}
+#guild-adventure .materials span{padding:5px 8px;background:#f1eee3;border-radius:5px}
+#guild-adventure .divider{border:0;border-top:1px solid var(--g-line);margin:17px 0}
+#guild-adventure .requirement{font-size:11px;padding:6px 0;display:flex;justify-content:space-between;gap:8px;color:var(--g-muted)}
+#guild-adventure .ok{color:#396648}
+#guild-adventure .profile-edit{margin-top:20px}
+#guild-adventure label{display:block;font-size:11px;margin:10px 0 5px;color:var(--g-muted)}
+#guild-adventure input,#guild-adventure select{width:100%;padding:8px 10px;border:1px solid var(--g-line);border-radius:7px;background:var(--g-paper);min-height:39px}
+#guild-adventure .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#guild-adventure .equipment-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+#guild-adventure .slot{border:1px solid var(--g-line);border-radius:9px;text-align:center;padding:11px 6px;background:var(--g-paper);font-size:10px}
+#guild-adventure .slot .item-symbol{font-size:24px;display:block}
+#guild-adventure .slot b{display:block;font-size:10px;font-weight:500}
+#guild-adventure .slot small{color:var(--g-muted);font-size:9px}
+#guild-adventure .closet{margin-top:25px}
+#guild-adventure .inventory-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin-top:14px}
+#guild-adventure .item-card{border:1px solid var(--g-line);background:var(--g-paper);padding:12px;border-radius:10px;position:relative;min-width:0}
+#guild-adventure .item-card .item-symbol{font-size:27px;margin:7px 0;display:block}
+#guild-adventure .item-card h3{font-size:12px;min-height:36px}
+#guild-adventure .item-card p{font-size:10px;color:var(--g-muted)}
+#guild-adventure .rarity{letter-spacing:.06em;font-size:10px;color:#7e8580}
+#guild-adventure .r4{color:#8c6da7}
+#guild-adventure .r5{color:#9b7834}
+#guild-adventure .task-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#guild-adventure .task-card{display:flex;flex-direction:column;align-items:flex-start;padding:19px;border:1px solid var(--g-line);border-radius:12px;background:var(--g-paper)}
+#guild-adventure .task-card h2{font-size:20px}
+#guild-adventure .task-card p{font-size:11px;color:var(--g-muted)}
+#guild-adventure .task-card .task-bottom{margin-top:auto;padding-top:16px;width:100%}
+#guild-adventure .task-card.exam{background:#f2e9d8}
+#guild-adventure .reward{font-size:12px;color:var(--g-gold);font-weight:600}
+#guild-adventure .task-guide{display:flex;gap:10px;flex-wrap:wrap;padding:14px 0 0;font-size:11px;color:var(--g-muted)}
+#guild-adventure .editor-layout{display:grid;grid-template-columns:minmax(0,1fr) 215px;gap:18px;margin-top:18px}
+#guild-adventure .editor-area{min-width:0}
+#guild-adventure textarea{width:100%;min-height:250px;resize:vertical;background:#fffefa;border:1px solid #cfc8b6;border-radius:10px;padding:16px;font:12px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace;tab-size:4}
+#guild-adventure pre{font:11px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;background:#f2efe6;padding:12px;border-radius:8px;margin:10px 0}
+#guild-adventure .hint-box{font-size:12px;color:var(--g-muted);border-left:2px solid #c4b47f;padding-left:12px;margin:15px 0}
+#guild-adventure .test-result{border-top:1px solid var(--g-line);padding:12px 0;font-size:11px}
+#guild-adventure .test-result strong{display:block;font-size:12px}
+#guild-adventure .test-error{color:#8c4c42}
+#guild-adventure .tiny{font-size:10px;color:var(--g-muted)}
+#guild-adventure .notice{padding:12px 15px;background:#f0ead6;border-radius:9px;font-size:11px;line-height:1.7;margin-top:15px}
+#guild-adventure .banner-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+#guild-adventure .banner-tabs button[aria-pressed="true"]{background:var(--g-deep);color:var(--g-paper)}
+#guild-adventure .wish-stage{display:grid;grid-template-columns:1fr 1fr;background:radial-gradient(ellipse at 25% 45%,#f5e8f0,#e9e5ee 50%,#d9e2e5);border:1px solid #d8ccdc;border-radius:14px;overflow:hidden;min-height:365px;align-items:center}
+#guild-adventure .banner-art{position:relative;display:grid;place-items:center;min-height:310px;overflow:hidden}
+#guild-adventure .banner-art:before{content:"";position:absolute;width:230px;height:230px;border:1px solid #baa1c6;border-radius:50%;transform:rotate(25deg);box-shadow:0 0 0 17px #e9e2ee,0 0 0 18px #c8b9d1}
+#guild-adventure .banner-symbol{position:relative;font:105px Georgia,serif;color:#9b7bb6;text-shadow:0 6px 0 #eee1f1}
+#guild-adventure .banner-copy{padding:28px 25px 28px 0;position:relative}
+#guild-adventure .banner-copy h2{font-size:30px}
+#guild-adventure .banner-copy p{font-size:12px}
+#guild-adventure .banner-copy .rarity{font-size:16px}
+#guild-adventure .wish-footer{display:grid;grid-template-columns:1fr auto;gap:15px;align-items:center;padding:20px 0}
+#guild-adventure .pity{font-size:11px;color:var(--g-muted)}
+#guild-adventure .pity strong{display:block;color:var(--g-ink);font-size:13px}
+#guild-adventure details{font-size:11px;color:var(--g-muted)}
+#guild-adventure summary{cursor:pointer;padding:10px 0}
+#guild-adventure .pool{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
+#guild-adventure .pool span{font-size:10px;padding:5px 8px;background:#f0ecdf;border-radius:6px}
+#guild-adventure .history{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+#guild-adventure .history-entry{padding:8px 11px;border:1px solid var(--g-line);border-radius:8px;font-size:10px;background:var(--g-paper)}
+#guild-adventure dialog{border:1px solid #ccb781;border-radius:18px;max-width:380px;width:calc(100% - 32px);padding:30px;background:var(--g-paper);color:var(--g-ink);text-align:center;box-shadow:0 18px 70px #39392f44}
+#guild-adventure dialog::backdrop{background:#25322d88}
+#guild-adventure dialog .drop-symbol{font-size:65px;display:block;margin:12px}
+#guild-adventure dialog h2{font-size:26px}
+#guild-adventure .world-scene{position:relative;min-height:310px;border:1px solid #d7ddc7;border-radius:14px;background:linear-gradient(#e3ebdf,#f2edda);overflow:hidden;display:flex;align-items:center;justify-content:center}
+#guild-adventure .world-scene:before,#guild-adventure .world-scene:after{content:"";position:absolute;width:400px;height:160px;background:#cbdcc5;border-radius:50%;bottom:-80px;left:-100px;transform:rotate(15deg)}
+#guild-adventure .world-scene:after{left:auto;right:-100px;background:#bdd0bd;transform:rotate(-15deg)}
+#guild-adventure .observatory{position:relative;width:170px;height:170px;z-index:1;display:flex;align-items:center;flex-direction:column;justify-content:flex-end}
+#guild-adventure .dome{width:130px;height:75px;border-radius:90px 90px 0 0;background:#a9b6af;border:2px solid #6e8477}
+#guild-adventure .tower{width:125px;height:100px;background:#e4dcc7;border:2px solid #8f947d;display:grid;place-items:center}
+#guild-adventure .tower-window{width:35px;height:65px;background:#a7b2a4;border-radius:25px 25px 0 0;border:2px solid #8d937d}
+#guild-adventure .world-scene.restored .dome{background:#8ca6ae;border-color:#617d87}
+#guild-adventure .world-scene.restored .tower-window{background:#ffe7a4;box-shadow:0 0 45px #ffd668}
+#guild-adventure .world-star{position:absolute;top:20px;left:50%;font-size:42px;z-index:2;color:#c4a14b}
+#guild-adventure .world-caption{position:absolute;bottom:18px;left:15px;right:15px;text-align:center;z-index:2;font-size:11px}
+#guild-adventure .world-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;margin-top:20px}
+#guild-adventure .toast{margin:0;padding:12px 25px;background:#e2ecdc;border-bottom:1px solid #c7d5bd;font-size:12px}
+#guild-adventure .footer{padding:13px 24px;border-top:1px solid var(--g-line);font-size:10px;color:var(--g-muted);background:var(--g-paper)}
+#guild-adventure .loading{padding:50px;text-align:center}
+@media(max-width:850px){#guild-adventure .layout{grid-template-columns:145px minmax(0,1fr)}#guild-adventure .content{padding:22px 19px}#guild-adventure .character-grid{grid-template-columns:minmax(0,1fr) 215px;gap:14px}#guild-adventure .portrait-stage{min-height:390px}#guild-adventure .editor-layout{grid-template-columns:1fr}#guild-adventure .editor-help{display:none}#guild-adventure .task-list{grid-template-columns:1fr}#guild-adventure .banner-copy h2{font-size:26px}}
+@media(max-width:650px){#guild-adventure .layout{grid-template-columns:1fr}#guild-adventure .sidebar{border-right:0;border-bottom:1px solid var(--g-line);padding:10px}#guild-adventure .identity,#guild-adventure .sidebar-note{display:none}#guild-adventure nav{flex-direction:row;flex-wrap:wrap;gap:4px}#guild-adventure .nav-item{width:auto;padding:9px 10px;min-height:42px}#guild-adventure .nav-item .nav-icon{display:none}#guild-adventure .topbar{padding:15px 18px;padding-right:100px}#guild-adventure .brand strong{font-size:20px}#guild-adventure .wallet{gap:6px}#guild-adventure .wallet span{font-size:10px;padding:6px 8px}#guild-adventure .character-grid,#guild-adventure .world-grid{grid-template-columns:1fr}#guild-adventure .portrait-stage{min-height:410px;max-width:370px;margin:auto}#guild-adventure .portrait-stage .hero-art{max-width:300px}#guild-adventure .content{padding:20px 15px}#guild-adventure h1{font-size:28px}#guild-adventure .wish-stage{grid-template-columns:1fr}#guild-adventure .banner-art{min-height:250px}#guild-adventure .banner-copy{padding:0 22px 22px;text-align:center}#guild-adventure .wish-footer{grid-template-columns:1fr}#guild-adventure textarea{font-size:16px}#guild-adventure .inventory-grid{grid-template-columns:1fr 1fr}#guild-adventure .equipment-strip{gap:6px}#guild-adventure .slot{padding:9px 3px}#guild-adventure .form-row{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:no-preference){#guild-adventure dialog[open]{animation:guild-reveal .35s ease-out}@keyframes guild-reveal{from{transform:translateY(14px) scale(.97)}to{transform:translateY(0) scale(1)}}}
+
+/* Character: restrained adaptation of the full-height Genshin character menu. */
+#guild-adventure .content-character{padding:0;background:#e5ece4}
+#guild-adventure .character-screen{position:relative;isolation:isolate;min-height:710px;background:radial-gradient(ellipse at 48% 76%,#eaf1e8 0%,#d2e3db 38%,#c0d9d4 72%,#bad4cf 100%);overflow:hidden;color:#344f49}
+#guild-adventure .character-screen[data-character-theme="teal"]{background:radial-gradient(ellipse at 48% 75%,#6fc4b3 0%,#338e86 43%,#246465 76%,#234b52 100%);color:#f0f6e6}
+#guild-adventure .character-sky{position:absolute;inset:0;z-index:-1;opacity:.5;background-image:radial-gradient(circle at 12% 16%,#fffef0 0 1px,transparent 2px),radial-gradient(circle at 56% 11%,#fffef0 0 1px,transparent 2px),radial-gradient(circle at 28% 77%,#fffef0 0 1px,transparent 2px),radial-gradient(circle at 83% 39%,#fffef0 0 1.5px,transparent 2.5px),radial-gradient(circle at 52% 47%,#fffef0 0 1px,transparent 2px);background-size:180px 165px,210px 200px,170px 220px,230px 160px,260px 240px}
+#guild-adventure .character-screen:after{content:"";position:absolute;left:21%;right:15%;bottom:60px;height:55px;border-radius:50%;border:1px solid #6e9d9144;box-shadow:0 13px 0 -12px #fbfff188;z-index:-1}
+#guild-adventure .character-inner{display:grid;grid-template-columns:112px minmax(160px,1fr) 220px;gap:12px;min-height:710px;padding:32px 22px 28px 15px}
+#guild-adventure .character-nav{display:flex;flex-direction:column;gap:8px;padding-top:18px;align-self:start}
+#guild-adventure .character-tab{background:none;border:0;text-align:left;color:inherit;padding:8px 0;font-size:11px;min-height:37px;opacity:.7}
+#guild-adventure .character-tab[aria-pressed="true"]{opacity:1;font-weight:600;text-shadow:0 0 12px #faffea}
+#guild-adventure .character-model{position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;align-self:stretch;min-width:0}
+#guild-adventure .character-model .hero-art{width:100%;max-width:350px;filter:drop-shadow(0 15px 15px #57766a20)}
+#guild-adventure .character-model-caption{position:absolute;bottom:23px;left:0;right:0;text-align:center;font:15px Georgia,serif}
+#guild-adventure .character-model-caption small{display:block;font:10px system-ui,sans-serif;margin-top:5px;opacity:.75}
+#guild-adventure .character-details{display:flex;flex-direction:column;align-self:start;min-width:0;padding:9px 0}
+#guild-adventure .character-details h1{font-size:31px;margin:8px 0}
+#guild-adventure .character-details .eyebrow{color:inherit;opacity:.7;font-size:9px;letter-spacing:.06em}
+#guild-adventure .character-details .level-line{margin-top:18px}
+#guild-adventure .character-details .tiny{font-size:10px;opacity:.8;color:inherit}
+#guild-adventure .character-details .materials span{background:#f6fff24d;color:inherit}
+#guild-adventure .character-details .materials{color:inherit}
+#guild-adventure .character-details .track{background:#73988c38}
+#guild-adventure .character-details .track span{background:#6f8c77}
+#guild-adventure .character-numbers{margin:22px 0 12px}
+#guild-adventure .character-numbers>div{display:flex;justify-content:space-between;gap:12px;font-size:11px;padding:5px 0}
+#guild-adventure .character-numbers b{font-weight:500;font-variant-numeric:tabular-nums}
+#guild-adventure .character-bio{font-size:11px;line-height:1.8;opacity:.8}
+#guild-adventure .character-details .level-button,#guild-adventure .character-details .ascend-button{background:#f6fae8;color:#3a534c;border-color:#f1f5e47a;border-radius:24px}
+#guild-adventure .character-details .ascend-button{margin-top:13px;box-shadow:0 1px 0 #50756733}
+#guild-adventure .ascension-block{margin-top:24px;padding-top:14px;border-top:1px solid #6d8f7b33}
+#guild-adventure .ascension-block .requirement{color:inherit;font-size:10px;padding:5px 0}
+#guild-adventure .character-details label{color:inherit}
+#guild-adventure .character-details input,#guild-adventure .character-details select{background:#f7fbf0;color:#344f49;border-color:#a9c3b2}
+#guild-adventure .content-character .closet{margin:0;padding:24px 25px;background:var(--g-bg)}
+#guild-adventure .demo-footnote{font-size:10px;color:var(--g-muted);padding:14px 24px;margin:0;background:var(--g-bg)}
+#guild-adventure .talent-entry{display:flex;gap:11px;margin:17px 0}
+#guild-adventure .talent-entry>span{font-size:28px}
+#guild-adventure .talent-entry p{font-size:11px;opacity:.8}
+#guild-adventure .character-orbit{display:flex;gap:8px;position:absolute;top:20px}
+#guild-adventure .orbit-slot{width:40px;height:40px;background:#f5f4da8a;display:grid;place-items:center;border-radius:50%;color:#566a55;border:1px solid #a8bba0}
+
+/* Wishes: banner selectors above, illustrated pool in the centre, actions below. */
+#guild-adventure .content-wishes{background:linear-gradient(130deg,#eef1ed,#dce6ed 50%,#e5e2ef);padding:22px}
+#guild-adventure .prayer-screen{display:flex;flex-direction:column;min-height:710px}
+#guild-adventure .prayer-top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+#guild-adventure .prayer-top h1{font-size:25px;margin:5px 0}
+#guild-adventure .prayer-top .eyebrow{font-size:9px}
+#guild-adventure .prayer-selectors{display:flex;gap:9px;flex-wrap:wrap}
+#guild-adventure .prayer-selector{background:#fbf9ee;border:1px solid #c7c9c0;border-radius:6px;padding:8px 12px;display:flex;align-items:center;gap:8px;min-height:45px;color:#536166}
+#guild-adventure .prayer-selector>span{font-size:25px;line-height:1}
+#guild-adventure .prayer-selector>strong{font-size:10px;font-weight:500}
+#guild-adventure .prayer-selector[aria-pressed="true"]{border-color:#8d83a2;background:#f3edf8;box-shadow:0 0 0 2px #fffdf1,0 0 0 3px #a8a1b8}
+#guild-adventure .prayer-poster{display:grid;grid-template-columns:.9fr 1.1fr;position:relative;border-radius:9px;border:1px solid #cac7d4;background:linear-gradient(110deg,#fffdf4 0%,#f3f0eb 35%,#e6deef 70%,#c5bedc 100%);overflow:hidden;min-height:480px}
+#guild-adventure .prayer-poster:before{content:"";position:absolute;right:-50px;top:-130px;width:430px;height:430px;border:1px solid #f9f6ec;border-radius:50%;box-shadow:0 0 0 32px #f2eef640,0 0 0 33px #f8f3e944}
+#guild-adventure .prayer-copy{position:relative;padding:28px 0 24px 25px;z-index:1}
+#guild-adventure .prayer-kicker{font-size:9px;letter-spacing:.12em;color:#85728e}
+#guild-adventure .prayer-copy h2{font:32px/1.12 Georgia,serif;color:#74638d;margin:13px 0 15px;letter-spacing:-.025em}
+#guild-adventure .prayer-copy p{font-size:11px;color:#626274;max-width:230px}
+#guild-adventure .prayer-guarantee{background:#8981ad;color:#fffdf3;padding:10px 12px;margin:18px -12px 10px -25px;font-size:12px;line-height:1.45}
+#guild-adventure .prayer-showcase{position:relative;align-self:start;min-width:0;min-height:330px;display:flex;justify-content:center}
+#guild-adventure .prayer-showcase .hero-art{position:relative;width:100%;max-width:310px;margin-top:-5px;margin-bottom:-20px;filter:drop-shadow(0 12px 6px #6f608c28)}
+#guild-adventure .prayer-feature-caption{position:absolute;left:0;right:10px;bottom:8px;padding:10px 12px;background:#f7f1e1db;border-radius:7px;text-align:center;box-shadow:0 2px 10px #6b658c12}
+#guild-adventure .prayer-feature-caption h3{font:22px Georgia,serif;margin:2px 0 4px;color:#4b4260}
+#guild-adventure .prayer-feature-caption>span:last-child{font-size:9px;color:#736c7b}
+#guild-adventure .prayer-feature-caption .rarity{font-size:13px}
+#guild-adventure .prayer-possible{display:flex;gap:7px;grid-column:1/-1;padding:0 14px 14px;z-index:1;flex-wrap:wrap}
+#guild-adventure .prayer-item{flex:1 1 75px;min-width:0;max-width:130px;background:#fffcf2b8;border:1px solid #d0c6da;border-radius:6px;padding:7px 5px;display:flex;flex-direction:column;align-items:center;gap:3px}
+#guild-adventure .prayer-item[aria-pressed="true"]{background:#fffcf4;border-color:#8f81aa;box-shadow:0 0 0 1px #9f91b5}
+#guild-adventure .prayer-item-symbol{font-size:21px;color:#8e79a4;line-height:1.2}
+#guild-adventure .prayer-item>.rarity{font-size:9px;letter-spacing:0}
+#guild-adventure .prayer-item>span:last-child{font-size:9px;line-height:1.25;text-align:center;overflow-wrap:anywhere}
+#guild-adventure .prayer-bottom{margin-top:auto;padding-top:22px;display:flex;align-items:flex-end;justify-content:space-between;gap:15px;flex-wrap:wrap}
+#guild-adventure .prayer-help{flex:1;min-width:140px}
+#guild-adventure .prayer-pity{font-size:10px;color:#62657a}
+#guild-adventure .prayer-help details{max-width:360px;font-size:10px}
+#guild-adventure .prayer-buttons{display:flex;gap:10px;flex-wrap:wrap}
+#guild-adventure .prayer-action{background:#fffbee;border:1px solid #bdbaad;border-radius:35px;min-width:150px;padding:10px 18px;box-shadow:0 2px 0 #a2a19b44;color:#4d5963}
+#guild-adventure .prayer-action small{font-size:10px;color:#8d7f57}
+#guild-adventure .prayer-action.gold{background:#fff4d2;border-color:#d4be7e}
+#guild-adventure .prayer-history{margin-top:18px;border-top:1px solid #c8cbd0;padding-top:4px}
+#guild-adventure .relic-showcase{position:relative;width:100%;min-height:340px;display:grid;place-items:center}
+#guild-adventure .relic-glow{position:absolute;width:190px;height:190px;background:#ece0f5;border:1px solid #baa4ce;border-radius:50%;box-shadow:0 0 0 18px #e0d0ed,0 0 0 19px #baa4ce}
+#guild-adventure .relic-main{position:relative;font:110px Georgia,serif;color:#9a7fb1;text-shadow:2px 3px #fff7e1}
+#guild-adventure .relic-small{position:absolute;font:45px Georgia,serif;color:#a58bb8}
+#guild-adventure .relic-left{top:75px;left:18px;transform:rotate(-20deg)}
+#guild-adventure .relic-right{top:85px;right:15px;transform:rotate(20deg)}
+#guild-adventure dialog.batch-drop{max-width:650px;padding:22px}
+#guild-adventure .batch-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:18px 0}
+#guild-adventure .batch-item{padding:10px 7px;border:1px solid #dfd3bc;border-radius:9px;background:#f6f1e7;min-width:0}
+#guild-adventure .batch-item>span:first-child{display:block;font-size:28px}
+#guild-adventure .batch-item strong{display:block;font-size:10px;line-height:1.4;font-weight:500;overflow-wrap:anywhere}
+#guild-adventure .batch-item small{font-size:9px;color:var(--g-muted)}
+
+/* Fictional curriculum map, deliberately schematic rather than geographic. */
+#guild-adventure .map-heading{margin-bottom:15px}
+#guild-adventure .map-heading h1{margin-bottom:0}
+#guild-adventure .map-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:10px;color:#5d6658;margin:16px 0}
+#guild-adventure .map-legend>span{display:flex;align-items:center;gap:6px}
+#guild-adventure .legend-shape{display:inline-grid;place-items:center;width:14px;height:14px;font-style:normal}
+#guild-adventure .teleport-shape{background:#d4ece9;border:2px solid #519a9d;transform:rotate(45deg);width:10px;height:10px;margin:2px}
+#guild-adventure .daily-shape{background:#9778b9;transform:rotate(45deg);width:11px;height:11px}
+#guild-adventure .repair-shape{background:#4b8cbe;color:#fffdf4;border-radius:4px;font-size:10px;font-weight:600}
+#guild-adventure .statue-shape{color:#8b7b49;font-size:20px}
+#guild-adventure .python-map{position:relative;min-height:470px;aspect-ratio:3/2;border:1px solid #a8bfc0;border-radius:12px;isolation:isolate;background:#b5d0d1;overflow:hidden}
+#guild-adventure .map-terrain{position:absolute;width:100%;height:100%;inset:0;z-index:-1}
+#guild-adventure .map-compass{position:absolute;right:14px;top:14px;color:#5a8185;text-align:center;font:14px Georgia,serif;line-height:1.6}
+#guild-adventure .map-region{position:absolute;transform:translate(-50%,-50%);font:12px Georgia,serif;color:#686c51;text-shadow:0 1px #fff8e8;white-space:nowrap;pointer-events:none}
+#guild-adventure .map-point{position:absolute;transform:translate(-50%,-50%);padding:0;border:0;background:none;min-width:40px;min-height:40px;color:#3b7273;display:flex;align-items:center;justify-content:center}
+#guild-adventure .point-symbol{display:grid;place-items:center;width:32px;height:32px;background:#eff9ec;border:2px solid #6faaa9;box-shadow:0 2px 3px #466e6c33;border-radius:7px;font-size:25px;line-height:1}
+#guild-adventure .map-daily{color:#8152ac}
+#guild-adventure .map-daily .point-symbol{background:#e7d5f4;border-color:#a47aca;font-size:25px;transform:rotate(45deg);border-radius:5px}
+#guild-adventure .map-repair{color:#3978a7}
+#guild-adventure .map-repair .point-symbol{background:#d8eafb;border-color:#5d9ac8;font-size:20px;font-weight:600;border-radius:8px 8px 12px 12px}
+#guild-adventure .map-statue{color:#857445}
+#guild-adventure .map-statue .point-symbol{background:#fcf6de;border-color:#9d9163;height:43px;width:36px;font-size:33px;border-radius:14px 14px 4px 4px}
+#guild-adventure .map-point.selected .point-symbol{outline:2px solid #fffdf3;outline-offset:3px;box-shadow:0 0 0 6px #737b6c40}
+#guild-adventure .map-point.locked{filter:grayscale(.8);opacity:.65}
+#guild-adventure .point-name{position:absolute;top:43px;left:50%;transform:translateX(-50%);font-size:9px;white-space:nowrap;color:#4a665f;text-shadow:0 1px #fffdf1,1px 0 #fffdf1,-1px 0 #fffdf1}
+#guild-adventure .map-statue .point-name{top:48px}
+#guild-adventure .map-selection{display:flex;justify-content:space-between;align-items:center;gap:20px;background:var(--g-paper);border:1px solid var(--g-line);border-radius:12px;padding:18px;margin-top:14px}
+#guild-adventure .map-selection-copy{max-width:480px}
+#guild-adventure .map-selection h2{font-size:21px}
+#guild-adventure .map-selection p{font-size:11px;color:var(--g-muted)}
+#guild-adventure .map-selection-actions{display:flex;flex-direction:column;gap:9px;min-width:165px}
+#guild-adventure .map-topic{margin-top:14px}
+#guild-adventure .world-restoration{margin-top:17px}
+@media(max-width:1000px){#guild-adventure .character-inner{grid-template-columns:95px minmax(125px,1fr) 205px;gap:8px;padding-left:12px;padding-right:16px}#guild-adventure .character-tab{font-size:10px}#guild-adventure .prayer-selector{padding:7px 9px}#guild-adventure .prayer-top{gap:10px}#guild-adventure .prayer-selector strong{font-size:9px}#guild-adventure .prayer-copy h2{font-size:29px}}
+@media(max-width:800px){#guild-adventure .character-inner{grid-template-columns:1fr 205px;min-height:710px;gap:12px;padding:15px}#guild-adventure .character-nav{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;padding-top:0;gap:12px}#guild-adventure .character-tab{font-size:11px;padding:5px 0}#guild-adventure .character-model-caption{bottom:15px;font-size:13px}#guild-adventure .character-details{padding-top:0}#guild-adventure .prayer-poster{grid-template-columns:1fr 1fr}#guild-adventure .prayer-copy{padding-left:17px}#guild-adventure .prayer-guarantee{margin-left:-17px}#guild-adventure .prayer-copy h2{font-size:26px}#guild-adventure .prayer-showcase .hero-art{margin-top:20px}#guild-adventure .map-selection{align-items:flex-start;flex-direction:column;gap:10px}#guild-adventure .map-selection-actions{flex-direction:row;flex-wrap:wrap}}
+@media(max-width:650px){#guild-adventure .character-inner{grid-template-columns:1fr;gap:10px;padding:18px}#guild-adventure .character-nav{gap:8px;justify-content:center}#guild-adventure .character-tab{font-size:11px;min-height:40px}#guild-adventure .character-model{min-height:390px}#guild-adventure .character-model .hero-art{max-width:290px}#guild-adventure .character-details{padding:10px 8px 15px}#guild-adventure .character-model-caption{bottom:0}#guild-adventure .character-details h1{font-size:28px}#guild-adventure .character-numbers{margin-top:15px}#guild-adventure .character-details .level-button,#guild-adventure .character-details .ascend-button{max-width:320px;align-self:center}#guild-adventure .character-screen:after{bottom:520px;left:15%;right:15%}#guild-adventure .content-wishes{padding:18px 14px}#guild-adventure .prayer-top{justify-content:center;text-align:center}#guild-adventure .prayer-selectors{justify-content:center;gap:8px}#guild-adventure .prayer-selector{padding:7px 10px}#guild-adventure .prayer-poster{grid-template-columns:1fr}#guild-adventure .prayer-copy{padding:20px 20px 0}#guild-adventure .prayer-copy h2{font-size:29px}#guild-adventure .prayer-copy p{max-width:none}#guild-adventure .prayer-guarantee{margin:13px -20px 5px;padding-left:20px}#guild-adventure .prayer-showcase{min-height:350px}#guild-adventure .prayer-showcase .hero-art{max-width:285px;margin-top:0}#guild-adventure .prayer-feature-caption{left:18px;right:18px}#guild-adventure .prayer-possible{padding:8px 10px 14px;gap:6px}#guild-adventure .prayer-item{flex-basis:75px;max-width:none}#guild-adventure .prayer-bottom{gap:12px;align-items:stretch}#guild-adventure .prayer-help{flex-basis:100%}#guild-adventure .prayer-buttons{width:100%;gap:8px}#guild-adventure .prayer-action{min-width:0;flex:1;padding:10px 7px;font-size:11px}#guild-adventure .python-map{min-height:560px;aspect-ratio:auto}#guild-adventure .map-region{display:none}#guild-adventure .point-name{display:none}#guild-adventure .map-point{min-width:44px;min-height:44px}#guild-adventure .map-legend{gap:10px;font-size:9px}#guild-adventure .map-selection{padding:15px}#guild-adventure .map-selection-actions{width:100%}#guild-adventure .map-selection-actions .button{flex:1}#guild-adventure .batch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#guild-adventure dialog.batch-drop{padding:18px}#guild-adventure .batch-item{padding:7px}#guild-adventure .batch-item>span:first-child{font-size:23px}}
+
+/* Five completed-topic badges: a cosmetic, freely editable showcase. */
+#guild-adventure .achievement-gallery{padding:25px 28px;background:#f8f4e7}
+#guild-adventure .achievement-showcase{text-align:center;padding:19px;background:linear-gradient(120deg,#eee7d3,#f8f3e3,#e8e4d6);border:1px solid #d7ccb2;border-radius:12px;margin:22px 0}
+#guild-adventure .achievement-showcase h2{font:21px Georgia,serif}
+#guild-adventure .achievement-slots{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;max-width:480px;margin:18px auto 13px}
+#guild-adventure .achievement-slot{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;padding:5px;color:#8a754e;min-width:0;min-height:54px}
+#guild-adventure .achievement-slot>span{width:52px;height:52px;border:1px solid #c2ae79;border-radius:50%;display:grid;place-items:center;background:#f9f1d8;box-shadow:inset 0 0 0 4px #e9dec1,0 3px 0 #c0b28e22;font:24px Georgia,serif}
+#guild-adventure .achievement-slot.selected>span{outline:2px solid #a28a52;outline-offset:3px}
+#guild-adventure .achievement-slot small{font-size:10px;color:#867c68}
+#guild-adventure .achievement-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:14px}
+#guild-adventure .achievement-card{text-align:center;display:flex;flex-direction:column;align-items:center;padding:20px 14px 15px;border:1px solid #dacfba;background:#fffdf3;border-radius:10px}
+#guild-adventure .achievement-medal{width:70px;height:70px;margin-bottom:20px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(#fcf4d9,#ddcca0);border:2px solid #b7a06a;box-shadow:0 0 0 5px #ece3ca;font:30px Georgia,serif;color:#8f733e}
+#guild-adventure .achievement-card h2{font:18px/1.25 Georgia,serif;min-height:44px;margin:9px 0}
+#guild-adventure .achievement-card .eyebrow{font-size:9px}
+#guild-adventure .achievement-card .achievement-topic{font-size:11px;margin:0 0 10px;color:#796c53}
+#guild-adventure .achievement-card .tiny{flex:1;margin-bottom:15px}
+#guild-adventure .achievement-card.unearned{background:#eeece4}
+#guild-adventure .achievement-card.unearned .achievement-medal{filter:grayscale(1);opacity:.5}
+#guild-adventure .achievement-card.unearned h2{color:#747568}
+#guild-adventure .character-model .achievement-slots.compact{position:absolute;bottom:15px;left:0;right:0;gap:3px;max-width:220px;margin:0 auto}
+#guild-adventure .achievement-slots.compact .achievement-slot{min-height:35px;padding:3px}
+#guild-adventure .achievement-slots.compact .achievement-slot>span{width:32px;height:32px;font-size:17px;box-shadow:inset 0 0 0 2px #e5dbc4}
+#guild-adventure .character-model-caption{bottom:75px}
+
+/* An open handbook, not a grid of dashboard cards. */
+#guild-adventure .content-tasks{background:radial-gradient(ellipse at 55% 30%,#e0e7dc,#b6c8c3);padding:40px 22px}
+#guild-adventure .quest-book-wrap{position:relative;padding-left:55px;max-width:100%;margin:0 auto}
+#guild-adventure .quest-book-tabs{position:absolute;left:0;top:38px;display:flex;flex-direction:column;gap:8px;width:65px;z-index:2}
+#guild-adventure .quest-book-tab{border:1px solid #7e8d68;border-radius:7px 0 0 7px;background:#657b60;color:#fff8df;font-size:10px;min-height:48px;padding:8px 7px;text-align:left;box-shadow:-3px 3px 0 #63725b33}
+#guild-adventure .quest-book-tab:nth-child(2){background:#9c8a60;border-color:#8b794f}
+#guild-adventure .quest-book-tab:nth-child(3){background:#7e7298;border-color:#6d6185}
+#guild-adventure .quest-book-tab[aria-pressed="true"]{background:#f8efd8;color:#706344;border-color:#baa87b;padding-left:11px;box-shadow:-4px 4px 0 #7a80552b}
+#guild-adventure .quest-book{position:relative;display:grid;grid-template-columns:.8fr 1.2fr;min-height:670px;border:9px solid #8d7752;border-radius:14px;background:#e8dcc0;box-shadow:6px 7px 0 #7c694d,11px 15px 0 #52675830;isolation:isolate}
+#guild-adventure .quest-book:before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;border:1px solid #c5b38d;border-radius:5px;box-shadow:inset 0 0 24px #a58b5626}
+#guild-adventure .book-leaf{position:relative;padding:25px 20px 28px;background:repeating-linear-gradient(0deg,#f3ead6 0,#f3ead6 3px,#f2e9d5 4px);min-width:0}
+#guild-adventure .book-left{background:linear-gradient(90deg,#eadebf,#f4ecd8 25%,#f4ecd8 82%,#d6c8a8);border-radius:5px 0 0 5px;text-align:center;padding-top:30px}
+#guild-adventure .book-right{background:linear-gradient(90deg,#cfc1a0,#eee4cc 6%,#f4ecd8 20%,#f4ecd8 90%,#e8dcc0);border-radius:0 5px 5px 0;padding-left:24px}
+#guild-adventure .book-left .eyebrow{font-size:8px;letter-spacing:.08em;color:#958364}
+#guild-adventure .book-left h1{font:27px Georgia,serif;color:#7e6c4d;margin:15px 0 25px}
+#guild-adventure .book-completion strong{font:46px Georgia,serif;color:#8d7957}
+#guild-adventure .book-completion strong>span{font-size:27px;color:#a18d69}
+#guild-adventure .book-completion p{font-size:10px;color:#9d8b6d;margin-top:2px}
+#guild-adventure .book-seals{display:flex;justify-content:center;gap:10px;font-size:24px;color:#a697b3;margin:18px 0}
+#guild-adventure .book-seals .checked{color:#8a73ad}
+#guild-adventure .book-rule{border:0;border-top:1px solid #cbb998;margin:22px 0}
+#guild-adventure .book-left h3{font:15px/1.4 Georgia,serif;color:#9a845e}
+#guild-adventure .book-rewards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin:20px 0}
+#guild-adventure .book-rewards>div{padding:8px 3px;background:#f9f3e2;border:1px solid #cbbd9d;border-radius:5px;display:flex;align-items:center;flex-direction:column;color:#9a824b}
+#guild-adventure .book-rewards span{display:block;width:33px;height:33px;background:#a5b38e;color:#fbf8df;border-radius:4px;font-size:24px;line-height:33px;margin-bottom:5px}
+#guild-adventure .book-rewards>div:first-child span{background:#89b4b4}
+#guild-adventure .book-rewards>div:nth-child(2) span{background:#b19a7c}
+#guild-adventure .book-rewards b{font-size:13px;font-weight:500}
+#guild-adventure .book-rewards small{font-size:8px;line-height:1.3;margin-top:4px}
+#guild-adventure .book-left-note{font-size:11px;line-height:1.8;color:#9b896a;margin-top:25px}
+#guild-adventure .book-page-number{position:absolute;bottom:20px;left:0;right:0;font:15px Georgia,serif;color:#aa9875}
+#guild-adventure .book-header{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+#guild-adventure .book-header .eyebrow{font-size:8px;letter-spacing:.07em;color:#aa9772}
+#guild-adventure .book-header p{font-size:10px;color:#aa9772;margin:4px 0}
+#guild-adventure .book-header select{width:auto;max-width:100%;font-size:10px;min-height:33px;padding:6px 8px;background:#eee1c6;border-color:#c7b38b;color:#826d48}
+#guild-adventure .sr-book-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+#guild-adventure .book-task{padding:10px 8px;margin-bottom:10px;border:1px solid #d1c2a4;background:#f6efdf;border-radius:4px;box-shadow:0 2px 0 #9b86522b}
+#guild-adventure .book-task.selected{border-color:#bda471;background:#fff6df}
+#guild-adventure .book-task-title{display:flex;align-items:center;gap:9px;padding:0;border:0;background:none;text-align:left;width:100%;color:#806b45;min-height:40px}
+#guild-adventure .book-task-title strong{display:block;font-size:11px;line-height:1.4;font-weight:500}
+#guild-adventure .book-task-title small{display:block;font-size:9px;margin-top:4px;color:#a38e69}
+#guild-adventure .book-task-marker{font-size:20px;min-width:23px;text-align:center;color:#9a875c}
+#guild-adventure .book-task-marker.purple{color:#9675b5}
+#guild-adventure .book-task-marker.blue{color:#6192b1}
+#guild-adventure .book-task.completed .book-task-marker{color:#8aa172}
+#guild-adventure .book-task-bottom{display:flex;justify-content:space-between;align-items:center;gap:6px;margin-top:8px}
+#guild-adventure .book-task-bottom>span{font-size:10px;color:#a38b54}
+#guild-adventure .book-task-bottom .button{font-size:9px;min-height:30px;padding:5px 8px;border-color:#c9b68c;background:#eee1bd;color:#8c784d}
+#guild-adventure .book-task-detail{margin-top:22px;padding-top:15px;border-top:1px solid #d4c4a2}
+#guild-adventure .book-task-detail h2{font:18px Georgia,serif;color:#897047}
+#guild-adventure .book-task-detail p{font-size:10px;color:#a38e68}
+#guild-adventure .book-task-detail .tiny{font-size:9px;color:#a38e68}
+#guild-adventure .book-task-detail .eyebrow{font-size:8px;color:#a38e68}
+#guild-adventure .book-bottom-line{position:absolute;bottom:15px;left:24px;right:20px;display:flex;justify-content:space-between;gap:8px;font-size:8px;color:#ae9a76}
+
+/* Shared material-selection screen for the heroine and all equipment. */
+#guild-adventure .content-enhance{padding:0}
+#guild-adventure .enhance-screen{padding:20px 24px;min-height:760px;background:radial-gradient(ellipse at 35% 70%,#e4eee6,#c5ddd7 60%,#b2d2cc);color:#3c5b53}
+#guild-adventure .enhance-header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11px;margin-bottom:20px}
+#guild-adventure .enhance-header .button{background:#f6f8e6;border-radius:22px;border-color:#9eb9aa;min-height:33px}
+#guild-adventure .enhance-kind-tabs{display:flex;gap:14px;flex-wrap:wrap;border-bottom:1px solid #8cb4a655;padding-bottom:10px}
+#guild-adventure .enhance-kind-tabs button{background:none;border:0;font-size:11px;color:#4b7266;padding:7px 0;opacity:.6}
+#guild-adventure .enhance-kind-tabs button[aria-pressed="true"]{opacity:1;font-weight:600;box-shadow:0 2px 0 #738d67}
+#guild-adventure .enhance-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:25px;min-height:620px;margin-top:24px}
+#guild-adventure .enhance-model{position:relative;display:flex;justify-content:center;align-items:center;min-width:0}
+#guild-adventure .enhance-model .hero-art{width:100%;max-width:350px}
+#guild-adventure .enhance-model-caption{position:absolute;bottom:30px;left:0;right:0;text-align:center;font:18px Georgia,serif}
+#guild-adventure .enhance-model-caption .rarity{display:block;margin:8px}
+#guild-adventure .enhance-controls{align-self:start;min-width:0;padding-top:8px}
+#guild-adventure .enhance-level{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+#guild-adventure .enhance-level strong{font:27px Georgia,serif;font-weight:400}
+#guild-adventure .enhance-level .enhance-after{color:#6f8d4f}
+#guild-adventure .enhance-level small{font-size:10px;margin-left:auto}
+#guild-adventure .enhance-controls .track{background:#6b958657}
+#guild-adventure .enhance-controls .track span{background:#a3b76e}
+#guild-adventure .enhance-controls .tiny{color:#5b7c6e;font-size:10px}
+#guild-adventure .enhance-stat-lines{border-bottom:1px solid #6a948444;margin:18px 0 25px;padding-bottom:18px}
+#guild-adventure .enhance-stat-lines>div{display:grid;grid-template-columns:1fr auto 15px auto;gap:10px;font-size:11px;padding:5px 0}
+#guild-adventure .enhance-stat-lines b{font-weight:500;font-variant-numeric:tabular-nums}
+#guild-adventure .enhance-stat-lines b:last-child{color:#698744}
+#guild-adventure .enhance-material-heading{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:27px;margin-bottom:10px}
+#guild-adventure .enhance-material-heading h3{font-size:12px;font-weight:500;margin:0}
+#guild-adventure .enhance-material-heading>span{font-size:9px}
+#guild-adventure .enhance-materials{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:10px}
+#guild-adventure .enhance-material{min-width:0;text-align:center}
+#guild-adventure .material-picture{border:1px solid #a9ba92;border-radius:5px;background:linear-gradient(145deg,#efedcf,#becbb2);padding:11px 4px 6px;box-shadow:0 2px 0 #75978630}
+#guild-adventure .material-picture>span{display:block;font:38px Georgia,serif;color:#729581;line-height:1}
+#guild-adventure .material-picture small{display:block;font-size:9px;margin:8px 0 3px;color:#6d8b76}
+#guild-adventure .material-picture b{font-size:10px;font-weight:500;background:#f3f3d2;display:block;padding:2px;border-radius:3px;color:#728266}
+#guild-adventure .enhance-material label{font-size:9px;color:#5c7a6d;min-height:27px;line-height:1.3;margin:8px 0}
+#guild-adventure .material-counter{display:flex;align-items:center;border-radius:20px;background:#70958899;padding:2px;max-width:110px;margin:0 auto}
+#guild-adventure .material-counter button{border:0;border-radius:50%;width:23px;height:23px;background:#ecf0d8;color:#68856d;font-size:16px;flex-shrink:0;line-height:1;padding:0}
+#guild-adventure .material-counter input{appearance:textfield;-moz-appearance:textfield;min-height:25px;padding:0 2px;border:0;background:none;text-align:center;color:#fbffe8;border-radius:0;font-size:12px;width:100%;min-width:0}
+#guild-adventure .material-counter input::-webkit-inner-spin-button,#guild-adventure .material-counter input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+#guild-adventure .enhance-auto-row{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap;margin-top:16px}
+#guild-adventure .enhance-auto-row .button{background:#ebf2de;border-color:#9cbaa5;color:#63806a;border-radius:22px;font-size:9px;min-height:31px}
+#guild-adventure .enhance-note{font-size:10px;line-height:1.6;min-height:34px;margin:15px 0;color:#617d6a}
+#guild-adventure .enhance-confirm-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;border-top:1px solid #70968544;padding-top:18px;flex-wrap:wrap}
+#guild-adventure .enhance-confirm-row>span{font-size:10px}
+#guild-adventure .enhance-confirm-row .button{border-radius:24px;padding:10px 20px;background:#f3f4d7;color:#5c7764;border-color:#94ac8c;font-size:12px}
+#guild-adventure .enhance-controls>label{font-size:10px;color:#5b7c6e}
+#guild-adventure .enhance-controls>select{background:#eff4e4;color:#557b68;border-color:#abc4af;font-size:11px}
+#guild-adventure .weapon-model{position:relative;width:230px;height:420px;transform:rotate(18deg)}
+#guild-adventure .weapon-aura{position:absolute;inset:30px -30px;background:radial-gradient(#f4efd3aa,transparent 65%)}
+#guild-adventure .weapon-shaft{position:absolute;left:111px;top:130px;width:9px;height:255px;background:linear-gradient(90deg,#7e6b56,#d8bd78,#8b795c);border-radius:5px;box-shadow:3px 4px 2px #6a90722a}
+#guild-adventure .weapon-nib{position:absolute;left:75px;top:32px;width:80px;height:115px;border-radius:65px 65px 45px 45px;background:linear-gradient(145deg,#fff9da,#b3a0c5);border:3px solid #b8a264;display:grid;place-items:center;font:65px Georgia,serif;color:#947eb1}
+#guild-adventure .weapon-ribbon{position:absolute;left:104px;top:145px;width:20px;height:90px;background:#b4a0ba;clip-path:polygon(0 0,100% 0,75% 100%,40% 75%,0 100%)}
+#guild-adventure .enhance-relic{width:240px;height:270px;display:grid;place-items:center;background:radial-gradient(#f0e5b8aa,transparent 65%)}
+#guild-adventure .enhance-relic>span{font:140px Georgia,serif;color:#9c92a7;text-shadow:0 4px #f8eed0}
+
+/* Topographic map with a persistent, soft-edged fog mask. */
+#guild-adventure .content-world{background:#eeeadd;padding:22px}
+#guild-adventure .atlas-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+#guild-adventure .atlas-heading h1{font-size:29px;margin:6px 0}
+#guild-adventure .atlas-heading .eyebrow{font-size:9px}
+#guild-adventure .atlas-progress{text-align:right;font-size:10px;color:#77816c}
+#guild-adventure .atlas-progress strong{display:block;font:26px Georgia,serif;color:#65785d}
+#guild-adventure .atlas-progress span{font-size:9px}
+#guild-adventure .atlas-map{min-height:600px;height:600px;aspect-ratio:auto;border-color:#75856b;border-radius:8px;isolation:isolate;background:#24323e;touch-action:pan-y}
+#guild-adventure .atlas-map.zoomed{touch-action:none}
+#guild-adventure .atlas-world{position:absolute;inset:0;transform-origin:center;will-change:transform}
+#guild-adventure .atlas-terrain,#guild-adventure .atlas-fog{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#guild-adventure .atlas-terrain{z-index:0}
+#guild-adventure .atlas-fog{z-index:2}
+#guild-adventure .atlas-map .map-region{z-index:3;color:#e2d5a7;text-shadow:0 1px 2px #3b4c2b;font-size:12px}
+#guild-adventure .atlas-map .map-point{z-index:4}
+#guild-adventure .atlas-map .point-name{color:#e5e3bb;text-shadow:0 1px 2px #293f2c;font-size:9px}
+#guild-adventure .atlas-map .point-symbol{background:#b5d5cc;border-color:#e4eac9;color:#538080;border-radius:4px;width:27px;height:27px;font-size:22px;box-shadow:0 0 0 2px #54756880}
+#guild-adventure .atlas-map .map-statue .point-symbol{width:31px;height:38px;font-size:29px;color:#8b825d;background:#ded8b4;border-color:#ede8ca;border-radius:10px 10px 3px 3px}
+#guild-adventure .atlas-map .map-daily .point-symbol{color:#f1ddff;background:#8b6eaa;border-color:#d2b6eb;font-size:21px}
+#guild-adventure .atlas-map .map-repair .point-symbol{color:#edf2fb;background:#618fae;border-color:#c6dbe9;font-size:17px}
+#guild-adventure .atlas-map .fogged .point-symbol{color:#a7b8bb;background:#2a414d;border-color:#647c85;box-shadow:none;opacity:.85}
+#guild-adventure .atlas-map .map-daily.fogged .point-symbol{color:#b7a1cd;background:#3b354e;border-color:#84719b}
+#guild-adventure .atlas-map .map-repair.fogged .point-symbol{color:#a1bbd1;background:#293f53;border-color:#617f98}
+#guild-adventure .atlas-map .fogged .point-name{color:#a8b5b8;text-shadow:0 1px #1e303c}
+#guild-adventure .atlas-map .visited .point-symbol{box-shadow:0 0 9px #dcf5d4b3;background:#d2eadc}
+#guild-adventure .atlas-map .selected .point-symbol{outline:1px solid #f8f0cd;outline-offset:3px}
+#guild-adventure .atlas-coordinates{position:absolute;z-index:5;right:17px;top:15px;color:#bec4b2;text-align:center;pointer-events:none;line-height:1.2}
+#guild-adventure .atlas-coordinates span{font-size:10px;display:block}
+#guild-adventure .atlas-coordinates b{font:30px Georgia,serif;font-weight:400}
+#guild-adventure .atlas-zoom{position:absolute;left:14px;bottom:14px;z-index:6;display:flex;align-items:center;gap:7px;background:#23363ccc;padding:6px;border-radius:6px;color:#d5ddc8}
+#guild-adventure .atlas-zoom>button{background:#40575b;border:1px solid #71817a;border-radius:4px;color:#dbe1ce;min-width:29px;min-height:30px;font-size:17px;line-height:1;padding:3px 6px}
+#guild-adventure .atlas-zoom>span{font-size:10px}
+#guild-adventure .atlas-zoom>.button{font-size:10px}
+#guild-adventure .atlas-first-step{position:absolute;z-index:5;top:25px;left:16px;right:70px;max-width:460px;color:#c5d1d2;background:#182b35cc;padding:11px 14px;border-radius:6px;font-size:11px;line-height:1.7;pointer-events:none}
+#guild-adventure .atlas-map-caption{position:absolute;right:10px;bottom:14px;z-index:5;max-width:230px;text-align:right;font-size:9px;color:#b9c7c4;text-shadow:0 1px #182d31;pointer-events:none}
+@media(max-width:850px){#guild-adventure .quest-book{grid-template-columns:.75fr 1.25fr}#guild-adventure .book-leaf{padding-left:14px;padding-right:14px}#guild-adventure .book-bottom-line{left:14px;right:14px}#guild-adventure .book-left .eyebrow{font-size:7px}#guild-adventure .book-rewards{grid-template-columns:1fr 1fr}#guild-adventure .book-rewards>div:last-child{grid-column:1/-1}#guild-adventure .book-rewards>div:last-child span{display:none}#guild-adventure .enhance-grid{grid-template-columns:.75fr 1.25fr;gap:15px}#guild-adventure .enhance-screen{padding:18px}#guild-adventure .enhance-materials{gap:7px}#guild-adventure .achievement-gallery{padding:23px 20px}}
+@media(max-width:650px){#guild-adventure .achievement-gallery{padding:20px 15px}#guild-adventure .achievement-gallery h1{font-size:26px}#guild-adventure .achievement-slots{gap:4px}#guild-adventure .achievement-slot>span{width:40px;height:40px;font-size:20px}#guild-adventure .achievement-grid{grid-template-columns:1fr 1fr;gap:9px}#guild-adventure .achievement-card{padding:17px 10px 12px}#guild-adventure .achievement-medal{width:55px;height:55px;font-size:24px}#guild-adventure .achievement-card h2{font-size:16px}#guild-adventure .character-model-caption{bottom:60px}#guild-adventure .character-model .achievement-slots.compact{bottom:3px}#guild-adventure .content-tasks{padding:22px 12px}#guild-adventure .quest-book-wrap{padding-left:0;padding-top:44px}#guild-adventure .quest-book-tabs{top:0;left:10px;right:10px;width:auto;flex-direction:row;gap:6px}#guild-adventure .quest-book-tab{flex:1;border-radius:7px 7px 0 0;font-size:10px;text-align:center;min-height:45px;padding:7px}#guild-adventure .quest-book-tab[aria-pressed="true"]{padding-left:7px}#guild-adventure .quest-book{grid-template-columns:1fr;min-height:0;border-width:7px}#guild-adventure .book-left{padding:23px 18px 20px;background:linear-gradient(90deg,#e5d7b5,#f5ecd5 16%,#f5ecd5 88%,#e5d7b5);border-bottom:1px solid #c5b087}#guild-adventure .book-left h1{margin:8px 0 12px;font-size:26px}#guild-adventure .book-completion strong{font-size:35px}#guild-adventure .book-completion p{margin:0}#guild-adventure .book-seals{margin:7px 0;font-size:20px}#guild-adventure .book-rule{margin:12px 0}#guild-adventure .book-rewards{grid-template-columns:repeat(3,1fr);margin:12px 0}#guild-adventure .book-rewards>div:last-child{grid-column:auto}#guild-adventure .book-rewards>div:last-child span{display:block}#guild-adventure .book-left-note{font-size:10px;line-height:1.6;margin-top:12px}#guild-adventure .book-page-number{display:none}#guild-adventure .book-right{padding:20px 15px 45px;background:linear-gradient(90deg,#e6d9ba,#f5ecd5 14%,#f5ecd5 86%,#e5d8b9)}#guild-adventure .book-bottom-line{font-size:7px}#guild-adventure .book-task-detail{margin-top:16px}#guild-adventure .enhance-grid{grid-template-columns:1fr;min-height:0;gap:0}#guild-adventure .enhance-model{min-height:420px}#guild-adventure .enhance-model .hero-art{max-width:290px}#guild-adventure .enhance-model-caption{bottom:10px}#guild-adventure .enhance-controls{padding:20px 0}#guild-adventure .enhance-header{font-size:10px;gap:8px}#guild-adventure .enhance-kind-tabs{gap:12px}#guild-adventure .enhance-kind-tabs button{font-size:10px;min-height:35px}#guild-adventure .enhance-materials{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}#guild-adventure .material-counter{max-width:120px}#guild-adventure .material-counter button{width:30px;height:30px}#guild-adventure .material-counter input{font-size:16px}#guild-adventure .enhance-confirm-row .button{padding:9px 15px}#guild-adventure .content-world{padding:18px 14px}#guild-adventure .atlas-map{height:650px;min-height:650px}#guild-adventure .atlas-heading h1{font-size:25px}#guild-adventure .atlas-heading .eyebrow{font-size:8px}#guild-adventure .atlas-progress strong{font-size:22px}#guild-adventure .atlas-progress span{font-size:8px}#guild-adventure .atlas-map-caption{font-size:8px;bottom:60px;right:10px;max-width:160px}#guild-adventure .atlas-first-step{font-size:10px;max-width:none}#guild-adventure .atlas-zoom>button{min-width:32px;min-height:35px}}
+#guild-adventure .course-receipt{margin-bottom:18px;padding:12px 16px;background:#f4efe5;color:#454b40;border-radius:10px;font-size:13px}
+#guild-adventure .course-receipt summary{font-weight:600;line-height:1.6}
+#guild-adventure .course-receipt ul{padding:0;list-style:none;max-width:620px}
+#guild-adventure .course-receipt li{display:flex;justify-content:space-between;gap:16px;padding:5px 0}
+#guild-adventure .course-receipt li b{white-space:nowrap}
+#guild-adventure .prayer-screen[data-banner-theme="1"] .prayer-poster{background:linear-gradient(125deg,#f8eddf,#e9c7d4 58%,#bda2c5)}
+#guild-adventure .prayer-screen[data-banner-theme="2"] .prayer-poster{background:linear-gradient(125deg,#ebf5ed,#aedbd1 58%,#7bafbc)}
+#guild-adventure .prayer-screen[data-banner-theme="3"] .prayer-poster{background:linear-gradient(125deg,#f8ecda,#edc393 58%,#ce9ba7)}
+#guild-adventure .prayer-possible .prayer-item{cursor:default}
+#guild-adventure .tree-legend{display:flex;flex-wrap:wrap;gap:18px;margin:18px 0}
+#guild-adventure .tree-legend>span{display:flex;gap:8px;align-items:center;font-size:13px}
+#guild-adventure .tree-dot{width:10px;height:10px;border-radius:50%;background:#929792;display:inline-block}
+#guild-adventure .tree-dot.complete{background:#5b8664}
+#guild-adventure .quest-tree{position:relative;margin-top:30px;isolation:isolate}
+#guild-adventure .tree-spine{position:absolute;left:calc(50% - 3px);width:6px;top:20px;bottom:30px;background:#bdad86;z-index:-1;border-radius:8px}
+#guild-adventure .quest-tree-stage{position:relative;padding:0 0 32px}
+#guild-adventure .tree-exam{width:230px;max-width:90%;margin:0 auto 28px}
+#guild-adventure .tree-exam .quest-node{border:2px solid #b6a681;background:#f7f1df}
+#guild-adventure .tree-branches{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px}
+#guild-adventure .tree-branch{position:relative;min-width:0}
+#guild-adventure .tree-branch:before{content:"";position:absolute;top:14px;width:40px;height:2px;background:#bdad86;left:-40px}
+#guild-adventure .tree-branch:first-child:before{left:auto;right:-40px}
+#guild-adventure .tree-branch h2{margin:0 0 14px;font-size:17px;background:#eeebdf;padding:4px 0}
+#guild-adventure .quest-node{display:flex;flex-direction:column;gap:7px;text-align:left;width:100%;margin:0 0 12px;padding:16px;background:#e8e8e2;border:1px solid #bfc3bc;border-left:4px solid #9bA198;border-radius:8px;color:#4f574e;line-height:1.4;overflow-wrap:anywhere;font:inherit}
+#guild-adventure .quest-node strong{font-size:14px}
+#guild-adventure .quest-node small,#guild-adventure .quest-node-state{font-size:12px}
+#guild-adventure .quest-node.complete{background:#e2ecdf;border-color:#92ac8e;border-left-color:#5b8664;color:#37583e}
+#guild-adventure .quest-node:hover:not(:disabled){filter:brightness(1.025)}
+#guild-adventure .quest-node:disabled{opacity:.7}
+#guild-adventure .quest-node:focus-visible{outline:2px solid #567668;outline-offset:3px}
+#guild-adventure .tree-next{font-size:13px;background:#eeebdf;padding:15px 0;color:#73776d}
+@media(max-width:600px){
+ #guild-adventure .tree-spine{left:7px}
+ #guild-adventure .tree-exam{margin:0 0 24px 25px;width:calc(100% - 25px);max-width:none}
+ #guild-adventure .tree-branches{grid-template-columns:minmax(0,1fr);gap:18px;padding-left:26px}
+ #guild-adventure .tree-branch:before,#guild-adventure .tree-branch:first-child:before{left:-16px;right:auto;width:16px}
+ #guild-adventure .tree-branch h2{font-size:16px}
+}
+#guild-adventure .inventory-screen{background:linear-gradient(140deg,#edf1e7,#e4e9e9);padding:20px;border-radius:12px}
+#guild-adventure .inventory-tabs,#guild-adventure .inventory-filters{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+#guild-adventure .inventory-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(230px,1fr);gap:22px;align-items:start}
+#guild-adventure .item-picker-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px}
+#guild-adventure .item-picker{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:8px 5px;border:2px solid transparent;border-radius:8px;color:#414638;min-width:0;background:#e5e8dd}
+#guild-adventure .star-3{background:linear-gradient(150deg,#dce5dc,#b8ccbd)}
+#guild-adventure .star-4{background:linear-gradient(150deg,#e8dcf0,#b9a1cd)}
+#guild-adventure .star-5{background:linear-gradient(150deg,#f6ecd4,#d9bf83)}
+#guild-adventure .item-picker.selected{border-color:#faf8e9;box-shadow:0 0 0 2px #728b7c}
+#guild-adventure .item-picker.unowned{opacity:.65}
+#guild-adventure .item-picker .item-picture{font-size:38px;min-height:55px;color:#6a7158}
+#guild-adventure .item-picker strong{font-size:11px;line-height:1.3;overflow-wrap:anywhere}
+#guild-adventure .item-picker small{font-size:11px}
+#guild-adventure .item-worn{font-size:10px;background:#f7f4e6;padding:2px 6px;border-radius:8px;margin-top:3px}
+#guild-adventure .item-inspector{background:#f6f0e0;border-radius:9px;overflow:hidden;min-width:0}
+#guild-adventure .item-inspector-title{padding:17px}
+#guild-adventure .item-inspector-title h2{font-size:24px;overflow-wrap:anywhere}
+#guild-adventure .item-inspector-art{height:200px;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse,#f9f3e7,#e4e7d7)}
+#guild-adventure .item-inspector-art .hero-art{height:190px;max-width:100%}
+#guild-adventure .inventory-relic{font-size:95px;color:#9a81ab;text-shadow:0 3px 12px #c4b994}
+#guild-adventure .inventory-weapon{position:relative;width:110px;height:180px;transform:rotate(24deg)}
+#guild-adventure .inventory-weapon .weapon-shaft{height:125px;top:42px;left:52px;position:absolute}
+#guild-adventure .inventory-weapon .weapon-nib{position:absolute;top:0;left:28px;font-size:70px;color:#ac88b5}
+#guild-adventure .item-facts{padding:10px 17px}
+#guild-adventure .item-facts p{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+#guild-adventure .item-inspector>.tiny,#guild-adventure .item-inspector>.notice{margin:0 17px 16px}
+#guild-adventure .item-inspector-actions{padding:0 17px 17px;display:flex;flex-direction:column;gap:8px}
+#guild-adventure .item-inspector>.button{margin:0 17px 17px;width:calc(100% - 34px)}
+@media(max-width:760px){#guild-adventure .inventory-layout{grid-template-columns:1fr}#guild-adventure .inventory-screen{padding:14px}#guild-adventure .item-picker-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr))}#guild-adventure .item-inspector-art{height:160px}}
+#guild-adventure .course-screen{max-width:960px;margin:auto}
+#guild-adventure .course-heading{display:flex;justify-content:space-between;align-items:start;gap:15px}
+#guild-adventure .course-heading h1{max-width:650px}
+#guild-adventure .course-plan{display:flex;flex-wrap:wrap;gap:15px;font-size:12px;color:#69725d;padding:16px 0}
+#guild-adventure .course-toc{display:flex;flex-direction:row;gap:8px;flex-wrap:wrap;margin:6px 0 24px}
+#guild-adventure .course-toc .button{flex:1;min-width:160px}
+#guild-adventure .course-block>p{max-width:760px;margin:14px 0;line-height:1.8}
+#guild-adventure .course-example{background:#f9f5e9;padding:18px;border-radius:10px;margin-top:23px}
+#guild-adventure .course-example pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.6;background:#eaeede;padding:15px;border-radius:7px}
+#guild-adventure .course-example-output{border-left:3px solid #7d9b80;padding-left:15px;margin-top:15px}
+#guild-adventure .course-trace{padding:22px 0;margin:5px 0 18px}
+#guild-adventure .trace-track{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}
+#guild-adventure .trace-step{background:#dfE3d7;border:0;border-radius:50%;width:36px;min-height:36px;text-align:center;flex-shrink:0}
+#guild-adventure .trace-step.active{background:#3e514a;color:#fff9e8}
+#guild-adventure .trace-step.past{background:#b8cbb5}
+#guild-adventure .trace-current{min-height:78px;background:#e8eddf;padding:17px;border-left:4px solid #93ad87;border-radius:0 8px 8px 0;line-height:1.65}
+#guild-adventure .course-practice-list{display:grid;gap:13px}
+#guild-adventure .course-practice{display:flex;align-items:center;gap:20px;justify-content:space-between;background:#f8f4e8;padding:18px;border-radius:10px;border-left:4px solid #aeb3a4}
+#guild-adventure .course-practice.complete{border-left-color:#6a9467;background:#e4eddc}
+#guild-adventure .course-practice h3{font-size:17px;margin:5px 0}
+#guild-adventure .course-practice .button{flex-shrink:0}
+#guild-adventure .course-pause{font-size:13px;color:#647458;padding:10px 0}
+#guild-adventure .course-reference{border-top:1px solid #d9d4c2;padding:17px 0}
+#guild-adventure .course-reference summary{font-weight:600;line-height:1.5}
+#guild-adventure .course-reference li{margin:12px 0;line-height:1.7;overflow-wrap:anywhere}
+#guild-adventure .course-reference p{line-height:1.75}
+#guild-adventure .course-reference a{color:#4f6e7a;text-decoration:underline;text-underline-offset:3px}
+#guild-adventure .course-final{padding:25px 0}
+#guild-adventure .course-final h2{margin-bottom:18px}
+@media(max-width:650px){#guild-adventure .course-heading{display:block}#guild-adventure .course-heading>.tag{margin-bottom:12px}#guild-adventure .course-practice{flex-direction:column;align-items:stretch;gap:12px}#guild-adventure .course-example{padding:12px}#guild-adventure .course-toc .button{min-width:120px}#guild-adventure .trace-step{width:40px;min-height:40px}#guild-adventure .course-screen pre{font-size:12px}}
+#guild-adventure .lesson-description,#guild-adventure .course-practice .tiny{white-space:pre-line;line-height:1.75}
+#guild-adventure .notebook-page{max-width:980px;margin:auto;background:#fffdf7;color:#343d37;padding:34px 38px;border-radius:12px}
+#guild-adventure .nb-cover{padding:5px 0 30px;border-bottom:1px solid #e0e3d9}
+#guild-adventure .nb-cover h1{font-size:38px;max-width:760px;margin-top:16px}
+#guild-adventure .nb-cover>p{font-size:17px;color:#68776b}
+#guild-adventure .nb-cover-meta{display:flex;flex-wrap:wrap;gap:10px 24px;margin:19px 0;font-size:12px;color:#758071}
+#guild-adventure .nb-toc{display:flex;flex-direction:row;flex-wrap:wrap;gap:10px 18px;margin-top:23px}
+#guild-adventure .nb-toc a{font-size:12px;color:#4b7161;text-decoration:none;border-bottom:1px solid #bacdbd;padding-bottom:4px}
+#guild-adventure .nb-welcome{background:#edf3e9;padding:20px 22px;border-radius:10px;margin:25px 0 15px}
+#guild-adventure .nb-welcome p{font-size:13px;line-height:1.8}
+#guild-adventure .nb-reward-rule{display:flex;flex-wrap:wrap;gap:10px 22px;padding:12px 0;font-size:13px}
+#guild-adventure .nb-reward-rule small{flex-basis:100%;color:#77816f}
+#guild-adventure .nb-preview-note{font-size:12px;color:#7d775f;padding:12px 0;line-height:1.75}
+#guild-adventure .nb-section{padding:36px 0 12px;scroll-margin-top:18px}
+#guild-adventure .nb-section-heading{display:flex;gap:18px;align-items:start;margin-bottom:28px}
+#guild-adventure .nb-section-number{font:32px Georgia,serif;color:#8a9d85;line-height:1.3;min-width:42px}
+#guild-adventure .nb-section-heading h2{font-size:29px;margin:7px 0 11px}
+#guild-adventure .nb-section-heading p{font-size:13px;color:#6c7768;max-width:650px;line-height:1.7}
+#guild-adventure .nb-concept{margin:22px 0}
+#guild-adventure .nb-concept h3,#guild-adventure .nb-text-heading{font-size:18px;font-weight:600;margin:20px 0 12px}
+#guild-adventure .nb-concept p,#guild-adventure .nb-more p,#guild-adventure .nb-section>p{line-height:1.85;font-size:14px}
+#guild-adventure .nb-concept blockquote{margin:18px 0;padding:12px 19px;border-left:3px solid #9cb394;color:#526c57;background:#f2f5ed;font-size:14px;line-height:1.8}
+#guild-adventure .nb-table-scroll{overflow:auto;margin:19px 0 23px}
+#guild-adventure .nb-table{width:100%;border-collapse:collapse;text-align:left;font-size:13px;line-height:1.75;table-layout:fixed}
+#guild-adventure .nb-table th{background:#edf1e8;color:#576c59;font-weight:600}
+#guild-adventure .nb-table td,#guild-adventure .nb-table th{padding:13px 14px;border-bottom:1px solid #e4e7df;vertical-align:top;overflow-wrap:anywhere}
+#guild-adventure .nb-table tbody tr:nth-child(even){background:#fafbf5}
+#guild-adventure .nb-key-idea{display:flex;gap:20px;align-items:center;background:#f6f0df;padding:18px 21px;margin:24px 0;border-radius:9px}
+#guild-adventure .nb-key-idea>span{font-size:10px;letter-spacing:.09em;color:#98824c;flex-shrink:0}
+#guild-adventure .nb-key-idea p{margin:0;line-height:1.8;font-size:14px}
+#guild-adventure .nb-code-cell{margin:24px 0 33px;min-width:0}
+#guild-adventure .nb-cell-header{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 13px}
+#guild-adventure .nb-cell-kind{font-size:10px;letter-spacing:.09em;color:#71886b;font-weight:600}
+#guild-adventure .nb-cell-reward{font-size:11px;color:#8d794f}
+#guild-adventure .practice-cell{border-top:1px solid #dfe5d8;padding-top:24px}
+#guild-adventure .practice-cell>h3{font-size:21px;font-family:Georgia,serif;margin:5px 0 14px;font-weight:400}
+#guild-adventure .nb-task-description{white-space:pre-line;line-height:1.85;font-size:13px;margin-bottom:19px}
+#guild-adventure .nb-editor{position:relative;background:#eef2e9;border-radius:9px;padding:13px 15px 14px 49px}
+#guild-adventure .nb-execution-mark{position:absolute;left:12px;top:41px;font:12px monospace;color:#88927f}
+#guild-adventure .nb-code-label{display:block;font-size:10px;letter-spacing:.05em;color:#78866d;margin:0 0 10px}
+#guild-adventure textarea[data-cell-code]{display:block;width:100%;resize:vertical;min-height:160px;border:0;background:transparent;padding:0;color:#354438;font:13px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;tab-size:4;border-radius:0;white-space:pre;overflow:auto}
+#guild-adventure .nb-cell-actions{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin:12px 0}
+#guild-adventure .nb-run-note{font-size:10px;color:#86907c}
+#guild-adventure .nb-output{background:#f4f5ee;border-left:3px solid #b0c2a9;padding:13px 17px;margin:16px 0}
+#guild-adventure .nb-output.has-error{background:#fbefea;border-color:#c77d6c}
+#guild-adventure .nb-output>span{font-size:10px;letter-spacing:.08em;color:#75866a}
+#guild-adventure .nb-output pre,#guild-adventure .nb-test-panel pre{font:12px/1.7 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;margin:9px 0 0}
+#guild-adventure .nb-explanation-label{display:block;font-size:12px;color:#68765f;margin:21px 0 7px}
+#guild-adventure .nb-explanation-label span{font-size:10px;margin-left:8px;color:#8a9181}
+#guild-adventure textarea.nb-reason{display:block;width:100%;min-height:60px;background:#fafbf6;border:1px solid #e0e5d9;border-radius:6px;padding:10px;font-size:12px;resize:vertical}
+#guild-adventure .nb-test-area{margin:22px 0 12px}
+#guild-adventure .nb-test-heading{display:flex;justify-content:space-between;font-size:12px;gap:15px;margin-bottom:12px}
+#guild-adventure .nb-test-heading small{color:#7f8a76}
+#guild-adventure .nb-test-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:0}
+#guild-adventure .nb-test-tab{border:1px solid #d9e0d3;border-radius:6px 6px 0 0;background:#f0f3eb;color:#75806b;padding:9px 10px;font-size:11px;min-height:36px}
+#guild-adventure .nb-test-tab span{margin-right:5px}
+#guild-adventure .nb-test-tab.passed{background:#dfefdd;color:#416d43;border-color:#a6c99e}
+#guild-adventure .nb-test-tab.failed{background:#f6e0da;color:#a04d40;border-color:#d7a49a}
+#guild-adventure .nb-test-tab[aria-selected="true"]{box-shadow:inset 0 -3px currentColor}
+#guild-adventure .nb-test-panel{padding:15px;background:#f8f9f3;border-radius:0 7px 7px 7px;min-height:68px;font-size:12px;line-height:1.8}
+#guild-adventure .nb-test-panel .nb-table{font-size:11px}
+#guild-adventure .nb-test-error{color:#a04d40}
+#guild-adventure .nb-stale{color:#9d7948;font-size:11px;padding:6px 0}
+#guild-adventure .nb-award-note{font-size:12px;color:#5f8256;padding-top:8px}
+#guild-adventure .nb-ai-review{background:#f5f0fa;border-radius:8px;padding:17px 19px;margin-top:14px;font-size:12px;line-height:1.8}
+#guild-adventure .nb-ai-review h4{font-size:13px;margin:0;color:#6b5d7b}
+#guild-adventure .nb-ai-wait{font-size:10px;color:#92849d}
+#guild-adventure textarea.nb-prompt{width:100%;min-height:190px;font:11px/1.7 ui-monospace,monospace;resize:vertical;background:#fffcff;border:1px solid #dfd6e6;padding:10px;border-radius:5px;margin:12px 0}
+#guild-adventure .nb-trace,#guild-adventure .nb-more{padding:13px 0;margin:14px 0;color:#687e5e;font-size:13px}
+#guild-adventure .nb-trace summary,#guild-adventure .nb-more summary{font-weight:500}
+#guild-adventure .nb-hint{background:#f8f1de;color:#756b4f;padding:14px 17px;font-size:12px;line-height:1.75;margin:13px 0}
+#guild-adventure .nb-break{display:flex;gap:17px;background:#f1f4ea;padding:18px 20px;border-radius:10px;margin:30px 0 20px}
+#guild-adventure .nb-break>span{font-size:24px}
+#guild-adventure .nb-break strong{font-size:13px;color:#677b5d}
+#guild-adventure .nb-break p{font-size:12px;color:#808b74;line-height:1.8;margin-bottom:0}
+#guild-adventure .nb-reference{padding-top:30px;border-top:1px solid #dde4d5;margin-top:26px}
+#guild-adventure .nb-reference details{padding:18px 0;font-size:13px;line-height:1.85}
+#guild-adventure .nb-reference a{color:#4b7462;overflow-wrap:anywhere}
+@media(max-width:760px){#guild-adventure .notebook-page{padding:20px 17px}#guild-adventure .nb-cover h1{font-size:31px}#guild-adventure .nb-section-heading h2{font-size:25px}#guild-adventure .nb-key-idea{display:block}#guild-adventure .nb-key-idea>span{display:block;margin-bottom:8px}#guild-adventure .nb-table td,#guild-adventure .nb-table th{padding:10px 8px}#guild-adventure .nb-editor{padding-left:31px}#guild-adventure .nb-execution-mark{left:7px}#guild-adventure textarea[data-cell-code]{font-size:13px}#guild-adventure .nb-test-tab{font-size:11px}}
+@media(max-width:400px){#guild-adventure .notebook-page{padding:18px 11px}#guild-adventure .nb-section-heading{gap:10px}#guild-adventure .nb-section-number{min-width:28px;font-size:26px}#guild-adventure .nb-section-heading h2{font-size:23px}#guild-adventure .nb-cell-actions>.button{flex-grow:1}#guild-adventure .nb-table{font-size:11px}#guild-adventure .nb-cover h1{font-size:28px}}
+#guild-adventure .nb-library-entry{display:flex;gap:18px;align-items:center;justify-content:space-between;padding:18px 0 23px;margin-bottom:15px;border-bottom:1px solid #dfe3d6}
+#guild-adventure .nb-library-entry h2{font-size:23px}
+#guild-adventure .nb-library-entry p{font-size:12px;color:#7c876f}
+#guild-adventure .nb-library-entry .button{flex-shrink:0}
+@media(max-width:500px){#guild-adventure .nb-library-entry{display:block}#guild-adventure .nb-library-entry .button{margin-top:10px}}
+#guild-adventure .nb-cell-actions .ai-review-button{background:#eee6f5;border-color:#d0c0df;color:#6d5184}
+#guild-adventure .nb-cell-actions .ai-help-button{background:#fcf0d4;border-color:#d8be7f;color:#88692f}
+#guild-adventure .nb-ai-review.help-mode{background:#fcf3df}
+#guild-adventure .nb-hidden-case>p{font-size:12px;line-height:1.8}
+#guild-adventure .nb-hidden-case .button{margin:6px 8px 0 0}
+#guild-adventure .nb-hint-warning{background:#fcf0d0;border-left:3px solid #c4a86a;padding:13px 15px;color:#8a713f}
+#guild-adventure .nb-quality-guide{font-size:12px;line-height:1.85;padding:13px 0 17px;color:#697b60}
+#guild-adventure .nb-quality-guide a{color:#537561}
+#guild-adventure .nb-ai-review.help-mode h4{color:#8a713f}
+#guild-adventure .nb-ai-control{position:relative;display:inline-flex;flex-direction:column;align-items:stretch;gap:5px;min-width:0}
+#guild-adventure .wb-ai-form{margin:16px 0;padding:14px;border:1px solid var(--wb-line,#dcdfd4);border-radius:8px;background:var(--wb-code,#f3f6ed)}
+#guild-adventure .wb-ai-form .wb-ai-question{display:block;margin:0;font-size:12px}
+#guild-adventure .wb-ai-form textarea{display:block;box-sizing:border-box;width:100%;margin:8px 0 12px}
+#guild-adventure .wb-ai-form-actions{display:flex;gap:8px;flex-wrap:wrap}
+#guild-adventure .nb-ai-progress{height:3px;border-radius:3px;background:var(--wb-line,#ddd);overflow:hidden}
+#guild-adventure .nb-ai-progress::after{content:"";display:block;height:100%;width:35%;border-radius:inherit;background:var(--wb-green,#608b64);animation:guild-ai-progress 1.3s ease-in-out infinite alternate}
+#guild-adventure .nb-ai-control-status{font-size:10px;line-height:1.4}
+#guild-adventure .nb-ai-control-status.complete{color:var(--wb-green,#466c45)}
+#guild-adventure .nb-ai-control-status.failed{color:var(--wb-gold,#8c723c)}
+#guild-adventure .nb-ai-state{display:flex;align-items:center;gap:8px;font-size:12px;margin-bottom:10px;color:var(--wb-green,#466c45)}
+#guild-adventure .nb-ai-state-failed{color:var(--wb-gold,#8c723c)}
+#guild-adventure .nb-ai-spinner{width:13px;height:13px;flex:none;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:guild-ai-spin .8s linear infinite}
+#guild-adventure .nb-ai-review{scroll-margin-top:20px}
+@keyframes guild-ai-progress{from{transform:translateX(0)}to{transform:translateX(180%)}}
+@keyframes guild-ai-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){#guild-adventure .nb-ai-progress::after,#guild-adventure .nb-ai-spinner{animation:none}}
+
+#guild-adventure .atlas-routes{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+#guild-adventure .atlas-route path{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+#guild-adventure .atlas-route .route-shadow{stroke:#203b3c;stroke-width:7;opacity:.6}
+#guild-adventure .atlas-route .route-line{stroke:#f7dfa0;stroke-width:2.6}
+#guild-adventure .atlas-route.complete .route-line{stroke:#bfe3bd}
+#guild-adventure .atlas-route.side-route .route-line{stroke-dasharray:4 6;stroke-width:2}
+#guild-adventure .atlas-route.next .route-line{stroke:#f7dfa0}
+#guild-adventure .atlas-start{position:absolute;z-index:4;transform:translate(-50%,-50%);color:#ffedb6;text-shadow:0 1px 3px #142e35;display:grid;justify-items:center;pointer-events:none}
+#guild-adventure .atlas-start>span{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#354e43;border:2px solid #ead59b;font-size:24px}
+#guild-adventure .atlas-start>strong{position:absolute;top:36px;white-space:nowrap;font-size:11px;font-weight:500}
+#guild-adventure .atlas-map .map-point:hover,#guild-adventure .atlas-map .map-point:focus-visible{z-index:8;opacity:1;filter:none}
+#guild-adventure .map-lesson-tooltip{display:none;position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);width:210px;max-width:65vw;padding:11px 13px;border:1px solid #b7c3a1;border-radius:7px;background:#fffbed;color:#314c44;text-shadow:none;text-align:left;pointer-events:none;box-shadow:0 5px 16px #152f3a44;font-size:12px;line-height:1.5;white-space:normal}
+#guild-adventure .map-lesson-tooltip strong,#guild-adventure .map-lesson-tooltip span,#guild-adventure .map-lesson-tooltip small{display:block}
+#guild-adventure .map-lesson-tooltip strong{font-size:13px;font-weight:600}
+#guild-adventure .map-lesson-tooltip small{margin-top:5px;font-size:11px;color:#63705a}
+#guild-adventure .map-point:hover .map-lesson-tooltip,#guild-adventure .map-point:focus-visible .map-lesson-tooltip{display:block}
+#guild-adventure .map-point.tooltip-right .map-lesson-tooltip{left:0;transform:none}
+#guild-adventure .map-point.tooltip-left .map-lesson-tooltip{left:auto;right:0;transform:none}
+#guild-adventure .route-legend{color:#586c4d}
+@media(hover:none){#guild-adventure .map-point.selected .map-lesson-tooltip{display:block}}
+
+#guild-adventure .nb-trace-player{margin:20px 0 28px;padding:20px;background:#eff3e9;border-radius:10px;border-left:3px solid #809776}
+#guild-adventure .nb-trace-player h3{margin-top:0}
+#guild-adventure .nb-trace-note{font-size:12px;color:#66765d}
+#guild-adventure .nb-trace-scenarios,#guild-adventure .nb-trace-controls{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+#guild-adventure .nb-trace-values{display:flex;flex-wrap:wrap;gap:8px;padding:12px 0 4px}
+#guild-adventure .nb-trace-value{display:flex;flex-direction:column;align-items:center;min-width:48px;max-width:85px;flex:0 1 60px;gap:3px;font-family:monospace}
+#guild-adventure .nb-trace-value small{font-size:11px;color:#64725c}
+#guild-adventure .nb-trace-value strong{display:grid;place-items:center;min-width:36px;min-height:36px;padding:5px;background:#fffdf3;color:#405b4b;border-radius:5px;font-size:16px;font-weight:500}
+#guild-adventure .nb-trace-value.active strong{background:#3e5b4d;color:#fffdf3;outline:2px solid #a9bd87;outline-offset:2px}
+#guild-adventure .nb-trace-value span{font-size:11px;min-height:18px;overflow-wrap:anywhere}
+#guild-adventure .nb-trace-state{min-height:145px}
+#guild-adventure .nb-trace-source pre{max-width:100%;overflow-x:auto;font-size:12px;line-height:1.7;padding:12px 0;background:#fffdf7}
+#guild-adventure .nb-trace-line{display:block;min-width:max-content;padding:0 10px}
+#guild-adventure .nb-trace-line.current{background:#dce8c9;color:#233e2f;box-shadow:inset 3px 0 #68845b}
+#guild-adventure .nb-trace-line b{display:inline-block;width:23px;color:#6f7a64;font-weight:400;user-select:none}
+@media(max-width:650px){#guild-adventure .nb-trace-player{padding:14px 10px}#guild-adventure .nb-trace-value{min-width:35px;flex-basis:38px}#guild-adventure .nb-trace-values{gap:7px}}
+
+#guild-adventure .nb-resume-bar{position:sticky;top:8px;z-index:9;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:20px 0;padding:10px 14px;border:1px solid #d6dfca;border-radius:9px;background:#fffdf5;box-shadow:0 3px 12px #32463412;font-size:12px;color:#556d51}
+#guild-adventure .nb-code-cell{scroll-margin-top:100px}
+#guild-adventure .practice-cell{border:1px solid #d2ddc8;border-left:4px solid #6b885e;border-radius:12px;padding:22px;margin:30px 0 42px;background:#f9fbf5;box-shadow:0 5px 18px #405b3c08}
+#guild-adventure .example-cell{border:1px solid #d6e0e1;border-left:4px solid #6f9296;border-radius:10px;padding:20px;background:#f3f8f8}
+#guild-adventure .example-cell .nb-cell-kind{color:#507d83}
+#guild-adventure .practice-cell .nb-cell-kind{background:#e5eedb;padding:5px 8px;border-radius:4px;color:#4b6a40}
+#guild-adventure .nb-task-end{margin-top:22px;padding-top:13px;border-top:1px solid #d8e0d0;font-size:11px;color:#748268}
+#guild-adventure .nb-concept{padding:18px 0 15px;margin-top:30px;border-top:2px solid #e9ddbf}
+#guild-adventure .nb-block-label{display:inline-block;background:#f3ecd8;color:#876f3a;font-size:10px;letter-spacing:.08em;padding:5px 8px;border-radius:4px}
+#guild-adventure .notebook-page code{font: .95em/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;padding:1px 5px;border-radius:4px;background:#e9eee1;color:#365b48;overflow-wrap:anywhere}
+#guild-adventure textarea[data-cell-code],#guild-adventure textarea#guild-code{resize:none;overflow:hidden;white-space:pre-wrap;overflow-wrap:anywhere;min-height:100px}
+#guild-adventure .nb-editor{position:relative}
+#guild-adventure .nb-completions{margin-top:8px;display:grid;max-width:340px;padding:5px;border:1px solid #c8d6bc;border-radius:7px;background:#fffef7;box-shadow:0 4px 12px #263b2420;font-size:12px;line-height:1.6}
+#guild-adventure .nb-completions button{background:transparent;border:0;border-radius:3px;text-align:left;padding:5px 10px;font-family:monospace}
+#guild-adventure .nb-completions button[aria-selected="true"]{background:#dce8cf;color:#2b5138}
+#guild-adventure .nb-completions small{padding:5px;color:#68785f;font-size:11px}
+@media(max-width:650px){#guild-adventure .practice-cell,#guild-adventure .example-cell{padding:14px 10px}#guild-adventure .nb-resume-bar{top:3px;padding:8px;font-size:11px}#guild-adventure textarea[data-cell-code]{font-size:16px}}
+#guild-adventure .shell.lesson-shell{overflow:clip}
+
+/* Alternative practice layout, alongside the notebook lesson. */
+#guild-adventure .workbench{--wb-bg:#18191b;--wb-panel:#242527;--wb-raised:#2d2f31;--wb-line:#393c3e;--wb-ink:#e8e9e8;--wb-muted:#a3aaa6;--wb-green:#9cc9a1;--wb-soft:#283d30;--wb-code:#1e2022;--wb-gold:#d9b774;background:var(--wb-bg);color:var(--wb-ink);min-height:100vh;padding:0 12px 16px;font:14px/1.7 system-ui,-apple-system,sans-serif}
+#guild-adventure .workbench[data-wb-theme="light"]{--wb-bg:#eff0eb;--wb-panel:#fffef9;--wb-raised:#f4f4ee;--wb-line:#dcdfd4;--wb-ink:#323d35;--wb-muted:#697367;--wb-green:#466c45;--wb-soft:#e5eedc;--wb-code:#f3f6ed;--wb-gold:#8c723c}
+#guild-adventure .wb-topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 12px}
+#guild-adventure .wb-brand{display:flex;gap:12px;align-items:center;font-size:17px}
+#guild-adventure .wb-brand>b{font-size:30px;font-weight:400;color:var(--wb-gold)}
+#guild-adventure .wb-brand small{display:block;color:var(--wb-muted);font-size:11px;letter-spacing:.02em}
+#guild-adventure .wb-top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+#guild-adventure .wb-progress{font-size:12px;color:var(--wb-muted);margin-right:12px}
+#guild-adventure .wb-layout{display:grid;grid-template-columns:205px minmax(0,1fr) minmax(0,1.1fr);gap:12px;align-items:start}
+#guild-adventure .wb-sidebar{padding:12px 2px;min-width:0}
+#guild-adventure .wb-sidebar summary{font-weight:500;display:flex;justify-content:space-between;padding:7px 10px;color:var(--wb-ink);font-size:13px}
+#guild-adventure .wb-sidebar summary>span{color:var(--wb-muted);font-size:11px}
+#guild-adventure .wb-topic{padding:10px 0 12px;border-bottom:1px solid var(--wb-line)}
+#guild-adventure .wb-topic h2{margin:0;font:13px/1.6 system-ui,sans-serif}
+#guild-adventure .wb-topic h2 button{width:100%;background:transparent;border:0;display:flex;gap:7px;padding:6px;color:var(--wb-muted);text-align:left;align-items:baseline}
+#guild-adventure .wb-topic h2 button>span{font-size:10px;color:var(--wb-gold)}
+#guild-adventure .wb-topic h2 small{margin-left:auto;white-space:nowrap;font-size:10px}
+#guild-adventure .wb-topic.current h2 button{color:var(--wb-ink)}
+#guild-adventure .wb-topic-tasks{display:grid;gap:4px;margin-top:7px}
+#guild-adventure .wb-task{display:flex;align-items:baseline;gap:8px;padding:9px 8px;border:1px solid transparent;border-radius:6px;background:transparent;color:var(--wb-muted);text-align:left;font-size:12px;line-height:1.5}
+#guild-adventure .wb-task.selected{background:var(--wb-soft);color:var(--wb-green);border-color:var(--wb-line)}
+#guild-adventure .wb-task-status{font:11px/1.5 monospace;min-width:13px}
+#guild-adventure .wb-sidebar-note{padding:20px 9px;font-size:11px;color:var(--wb-muted)}
+#guild-adventure .wb-statement,#guild-adventure .wb-code-panel{min-width:0;border:1px solid var(--wb-line);border-radius:9px;background:var(--wb-panel);overflow:clip}
+#guild-adventure .wb-panel-tabs{display:flex;gap:0;border-bottom:1px solid var(--wb-line);background:var(--wb-raised)}
+#guild-adventure .wb-panel-tabs button{padding:12px 15px;font-size:12px;background:transparent;border:0;border-bottom:2px solid transparent;color:var(--wb-muted)}
+#guild-adventure .wb-panel-tabs button[aria-selected="true"]{border-color:var(--wb-green);color:var(--wb-ink)}
+#guild-adventure .wb-material{padding:24px;min-height:650px}
+#guild-adventure .wb-kicker{font-size:10px;letter-spacing:.06em;color:var(--wb-muted)}
+#guild-adventure .wb-task-heading h1{font:600 27px/1.3 system-ui,sans-serif;letter-spacing:-.03em;margin:12px 0 17px;color:var(--wb-ink)}
+#guild-adventure .wb-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px}
+#guild-adventure .wb-tags>span{border-radius:5px;padding:3px 8px;background:var(--wb-raised);font-size:11px;color:var(--wb-muted)}
+#guild-adventure .wb-tags>span:first-child,#guild-adventure .wb-tags>.wb-solved{color:var(--wb-green);background:var(--wb-soft)}
+#guild-adventure .wb-description{line-height:1.9;font-size:14px}
+#guild-adventure .wb-material h2{font:500 16px/1.5 system-ui,sans-serif;margin:28px 0 12px;color:var(--wb-ink)}
+#guild-adventure .wb-material blockquote{margin:22px 0;padding-left:15px;border-left:2px solid var(--wb-green);color:var(--wb-muted)}
+#guild-adventure .wb-contract{margin:25px 0}
+#guild-adventure .workbench code{font: .95em/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;padding:2px 5px;border-radius:4px;background:var(--wb-raised);color:var(--wb-green);overflow-wrap:anywhere}
+#guild-adventure .workbench .nb-table{color:var(--wb-ink)}
+#guild-adventure .workbench .nb-table th,#guild-adventure .workbench .nb-table td{background:transparent;border-color:var(--wb-line);padding:10px 8px;overflow-wrap:anywhere}
+#guild-adventure .workbench .nb-table th{color:var(--wb-muted);background:var(--wb-raised)}
+#guild-adventure .wb-note{font-size:11px;color:var(--wb-muted)}
+#guild-adventure .wb-friendly{margin-top:28px;padding:15px;background:var(--wb-soft);border-radius:6px;font-size:12px;color:var(--wb-green)}
+#guild-adventure .wb-friendly p{margin-bottom:0}
+#guild-adventure .wb-statement-footer{padding:14px 18px;border-top:1px solid var(--wb-line);display:flex;justify-content:space-between;gap:12px}
+#guild-adventure .workbench .button{background:var(--wb-raised);border-color:var(--wb-line);color:var(--wb-ink);font-size:12px;min-height:36px;box-shadow:none}
+#guild-adventure .workbench .button.primary{background:var(--wb-soft);color:var(--wb-green);border-color:var(--wb-line)}
+#guild-adventure .wb-code-title{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 18px;background:var(--wb-raised);border-bottom:1px solid var(--wb-line)}
+#guild-adventure .wb-code-title strong{font-size:13px;font-weight:500;color:var(--wb-green)}
+#guild-adventure .wb-code-title span{font-size:11px;color:var(--wb-muted)}
+#guild-adventure .wb-editor-intro{padding:10px 18px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--wb-muted);font-size:10px;border-bottom:1px solid var(--wb-line)}
+#guild-adventure .wb-editor-intro small{font-size:10px}
+#guild-adventure .wb-code-panel .practice-cell{padding:16px;margin:0;border:0;background:transparent;box-shadow:none;border-radius:0}
+#guild-adventure .wb-code-panel .practice-cell>h3,#guild-adventure .wb-code-panel .practice-cell>.nb-task-description,#guild-adventure .wb-code-panel .practice-cell>.nb-task-end,#guild-adventure .wb-code-panel .nb-cell-kind{display:none}
+#guild-adventure .wb-code-panel .nb-cell-header{justify-content:flex-end;margin-bottom:10px}
+#guild-adventure .wb-code-panel .nb-cell-reward{color:var(--wb-gold);font-size:10px}
+#guild-adventure .wb-code-panel .nb-editor{background:var(--wb-code);padding:13px 15px 15px 34px;border-radius:4px}
+#guild-adventure .wb-code-panel .nb-execution-mark{left:8px;color:var(--wb-muted)}
+#guild-adventure .wb-code-panel .nb-code-label{color:var(--wb-muted);letter-spacing:0}
+#guild-adventure .wb-code-panel textarea[data-cell-code]{color:var(--wb-ink);min-height:340px;font-size:13px;line-height:1.8}
+#guild-adventure .wb-code-panel .nb-run-note,#guild-adventure .wb-code-panel .nb-test-heading small{color:var(--wb-muted);font-size:11px}
+#guild-adventure .wb-code-panel .nb-test-area{border-color:var(--wb-line)}
+#guild-adventure .wb-code-panel .nb-test-tab{color:var(--wb-muted);background:var(--wb-raised);border-color:var(--wb-line);font-size:11px}
+#guild-adventure .wb-code-panel .nb-test-tab.passed{color:var(--wb-green);background:var(--wb-soft)}
+#guild-adventure .wb-code-panel .nb-test-tab.failed{color:#efb3a4;background:#63362f}
+#guild-adventure .wb-code-panel .nb-test-panel,#guild-adventure .wb-code-panel .nb-output,#guild-adventure .wb-code-panel .nb-ai-review,#guild-adventure .wb-code-panel .nb-hint{background:var(--wb-code);color:var(--wb-ink);border-color:var(--wb-line)}
+#guild-adventure .workbench pre{color:var(--wb-ink);background:var(--wb-raised)}
+#guild-adventure .workbench textarea.nb-prompt,#guild-adventure .workbench textarea.nb-reason{background:var(--wb-code);color:var(--wb-ink);border-color:var(--wb-line)}
+#guild-adventure .workbench .nb-completions{background:var(--wb-raised);border-color:var(--wb-line);color:var(--wb-ink)}
+#guild-adventure .workbench .nb-completions button[aria-selected="true"]{color:var(--wb-green);background:var(--wb-soft)}
+#guild-adventure .workbench .nb-trace-player{padding:15px;background:var(--wb-code);border-color:var(--wb-green)}
+#guild-adventure .workbench .nb-trace-value strong{background:var(--wb-raised);color:var(--wb-ink)}
+#guild-adventure .workbench .nb-trace-value.active strong,#guild-adventure .workbench .nb-trace-line.current{color:var(--wb-green);background:var(--wb-soft)}
+#guild-adventure .workbench .nb-trace-note,#guild-adventure .workbench .nb-trace-value small{color:var(--wb-muted)}
+#guild-adventure .workbench .nb-trace-source pre{background:var(--wb-raised)}
+@media(max-width:1100px){#guild-adventure .wb-layout{grid-template-columns:170px minmax(0,1fr) minmax(0,1.05fr);gap:8px}#guild-adventure .wb-material{padding:18px}#guild-adventure .wb-task-heading h1{font-size:24px}#guild-adventure .wb-panel-tabs button{padding:12px 10px}}
+@media(max-width:950px){#guild-adventure .wb-layout{grid-template-columns:170px minmax(0,1fr)}#guild-adventure .wb-sidebar{grid-row:1 / span 2}#guild-adventure .wb-code-panel{grid-column:2}#guild-adventure .wb-material{min-height:0}}
+@media(max-width:650px){#guild-adventure .workbench{padding:0 8px 12px}#guild-adventure .wb-topbar{padding:12px 4px}#guild-adventure .wb-brand{font-size:16px}#guild-adventure .wb-layout{grid-template-columns:minmax(0,1fr)}#guild-adventure .wb-sidebar{grid-row:auto}#guild-adventure .wb-code-panel{grid-column:1}#guild-adventure .wb-sidebar-note{display:none}#guild-adventure .wb-sidebar details:not([open]){padding-bottom:8px}#guild-adventure .wb-task-heading h1{font-size:23px}#guild-adventure .wb-code-panel textarea[data-cell-code]{font-size:16px}#guild-adventure .wb-progress{font-size:11px}#guild-adventure .wb-material{padding:18px 15px}}
+#guild-adventure .workbench .nb-table tbody tr:nth-child(even){background:var(--wb-code)}
+/* A single lesson: distinct reading, practice, and reference blocks. */
+#guild-adventure .wb-brand h1{font:650 25px/1.25 system-ui,sans-serif;margin:5px 0;color:var(--wb-ink)}
+#guild-adventure .wb-route-note{font-size:12px;color:var(--wb-muted);margin:0 12px 20px;max-width:1000px}
+#guild-adventure .wb-outline-title{font:600 13px/1.5 system-ui,sans-serif;padding:0 8px;margin:4px 0 14px;color:var(--wb-ink)}
+#guild-adventure .wb-outline{display:grid;gap:9px}
+#guild-adventure .wb-outline-item{display:flex;gap:9px;text-align:left;padding:12px 9px;min-width:0;border:1px solid var(--wb-line);border-left:3px solid #7c91a4;border-radius:8px;background:var(--wb-panel);color:var(--wb-ink);font:13px/1.55 system-ui,sans-serif;cursor:pointer}
+#guild-adventure .wb-outline-item small{display:block;font-size:9px;letter-spacing:.08em;color:var(--wb-muted);margin-bottom:4px}
+#guild-adventure .wb-outline-item>span:first-child{color:#7c91a4}
+#guild-adventure .wb-outline-item.selected{outline:2px solid var(--wb-green);outline-offset:1px}
+#guild-adventure .wb-outline-practice{border-left-color:var(--wb-green);background:var(--wb-soft);margin-top:8px}
+#guild-adventure .wb-outline-reference{border-left-color:var(--wb-gold);margin-top:8px}
+#guild-adventure .wb-block-title{font:650 23px/1.35 system-ui,sans-serif!important;margin:12px 0 22px!important;color:var(--wb-ink)}
+#guild-adventure .wb-material{font-size:14px;line-height:1.9;min-height:650px}
+#guild-adventure .wb-material h3{font:600 15px/1.55 system-ui,sans-serif;margin:26px 0 12px;color:var(--wb-ink)}
+#guild-adventure .wb-theory-example{margin-top:28px;border-top:1px solid var(--wb-line);padding-top:8px}
+#guild-adventure .wb-theory-example pre{padding:14px 10px;overflow-x:auto;font:12px/1.9 ui-monospace,SFMono-Regular,Menlo,monospace;border-radius:7px;white-space:pre}
+#guild-adventure .wb-source-line{display:inline}
+#guild-adventure .wb-source-line b{font-weight:400;opacity:.5;margin-right:8px}
+#guild-adventure .wb-source-line.current{background:var(--wb-soft);color:var(--wb-green)}
+#guild-adventure .wb-trace{border:1px solid var(--wb-line);border-left:3px solid var(--wb-green);padding:0 13px 14px;margin-top:22px;border-radius:7px;background:var(--wb-code)}
+#guild-adventure .wb-trace-buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+#guild-adventure .wb-workflow{display:flex;gap:8px 20px;flex-wrap:wrap;padding:12px 18px 5px 34px;margin:0;color:var(--wb-muted);font-size:11px}
+#guild-adventure .wb-effort{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:14px 18px;border-bottom:1px solid var(--wb-line);font-size:12px;color:var(--wb-ink)}
+#guild-adventure .wb-effort select{padding:7px;border:1px solid var(--wb-line);border-radius:5px;background:var(--wb-code);color:var(--wb-ink);font:inherit}
+#guild-adventure .wb-effort small{flex-basis:100%;font-size:10px;color:var(--wb-muted)}
+#guild-adventure .wb-ai-question{display:block;color:var(--wb-muted);font-size:12px;margin-top:14px}
+#guild-adventure .wb-ai-question textarea{width:100%;margin-top:6px}
+#guild-adventure .wb-completed{padding:18px;margin:0 16px 16px;background:var(--wb-soft);color:var(--wb-green);border-radius:8px;font-size:13px}
+#guild-adventure .wb-completed p{margin-bottom:0}
+#guild-adventure .wb-pitfall{padding:0 15px 10px;border-left:3px solid var(--wb-gold);background:var(--wb-code)}
+#guild-adventure .wb-statement-footer{flex-wrap:wrap}
+#guild-adventure .wb-topbar .button{white-space:normal}
+#guild-adventure .wb-code-panel textarea[data-cell-code]{min-height:260px;overflow-y:hidden}
+#guild-adventure .wb-material .nb-table{min-width:0;width:100%;table-layout:fixed}
+@media(min-width:1500px){#guild-adventure .wb-layout{grid-template-columns:215px minmax(0,1fr) minmax(0,1fr)}}
+@media(max-width:650px){#guild-adventure .wb-outline{grid-template-columns:repeat(2,minmax(0,1fr))}#guild-adventure .wb-outline-item{font-size:12px;margin-top:0}#guild-adventure .wb-brand h1{font-size:23px}#guild-adventure .wb-material{min-height:0}#guild-adventure .wb-route-note{margin:0 4px 15px}#guild-adventure .wb-statement-footer .button{flex:1;font-size:11px;padding:8px}}
+#guild-adventure .wb-mobile-guide,#guild-adventure .wb-mobile-code{display:none}
+@media(max-width:950px){#guild-adventure .wb-desktop-guide{display:none}#guild-adventure .wb-mobile-guide{display:inline}#guild-adventure .wb-mobile-code{display:inline-flex;margin-top:12px}}
+/* Minimal reading and practice layouts. */
+#guild-adventure .workbench{padding:0 8px 12px}
+#guild-adventure .wb-topbar{padding:10px 4px 16px;flex-wrap:nowrap;gap:10px}
+#guild-adventure .wb-brand h1{font-size:20px;line-height:1.3;margin:0}
+#guild-adventure .wb-top-actions{margin-left:auto;gap:0}
+#guild-adventure .wb-top-actions .button{border:0;background:transparent;padding:0 6px;min-height:28px;font-size:19px}
+#guild-adventure .wb-layout{grid-template-columns:190px minmax(0,1fr) minmax(0,1fr);gap:14px}
+#guild-adventure .wb-reading-mode .wb-layout{grid-template-columns:190px minmax(0,1fr)}
+#guild-adventure .wb-sidebar{padding:0}
+#guild-adventure .wb-outline{gap:6px}
+#guild-adventure .wb-outline-item{padding:9px;border:0;border-left:2px solid transparent;border-radius:5px;background:transparent;line-height:1.5;font-size:12px}
+#guild-adventure .wb-outline-item small{font-size:9px;margin-bottom:2px;letter-spacing:.04em}
+#guild-adventure .wb-outline-item:not(.selected):hover{background:var(--wb-raised)}
+#guild-adventure .wb-outline-item.selected{background:var(--wb-raised);border-left-color:#7c91a4;outline:1px solid #7c91a4;outline-offset:-1px}
+#guild-adventure .wb-outline-item.wb-progress-complete,#guild-adventure .wb-outline-item.wb-progress-complete:hover{background:var(--wb-soft);color:var(--wb-green)}
+#guild-adventure .wb-outline-item.wb-progress-complete small,#guild-adventure .wb-outline-item.wb-progress-complete>span:first-child{color:var(--wb-green)}
+#guild-adventure .wb-outline-item.wb-progress-retry,#guild-adventure .wb-outline-item.wb-progress-retry:hover{background:#493d22;color:#f2d58d}
+#guild-adventure .wb-outline-item.wb-progress-retry small,#guild-adventure .wb-outline-item.wb-progress-retry>span:first-child{color:inherit}
+#guild-adventure .workbench[data-wb-theme="light"] .wb-outline-item.wb-progress-retry{background:#fff0c7;color:#785a16}
+#guild-adventure .wb-outline-item.wb-progress-reading,#guild-adventure .wb-outline-item.wb-progress-reading:hover{background:#493d22;color:#f2d58d;border-left-color:#e4bc61;outline-color:#e4bc61}
+#guild-adventure .wb-outline-item.wb-progress-reading small,#guild-adventure .wb-outline-item.wb-progress-reading>span:first-child{color:inherit}
+#guild-adventure .workbench[data-wb-theme="light"] .wb-outline-item.wb-progress-reading,#guild-adventure .workbench[data-wb-theme="light"] .wb-outline-item.wb-progress-reading:hover{background:#fff0c7;color:#785a16;border-left-color:#bd923c;outline-color:#bd923c}
+#guild-adventure .wb-outline-practice,#guild-adventure .wb-outline-reference{margin-top:6px}
+#guild-adventure .wb-reading-mode .wb-statement{max-width:940px}
+#guild-adventure .wb-material{padding:24px;min-height:0}
+#guild-adventure .wb-reading-mode .wb-material{padding:24px 32px}
+#guild-adventure .wb-block-title{font-size:22px!important;margin:0 0 20px!important}
+#guild-adventure .wb-material p{margin:12px 0;font-size:14px;line-height:1.8}
+#guild-adventure .wb-short-copy{max-width:740px;margin:22px 0}
+#guild-adventure .wb-statement-footer{padding:10px 18px}
+#guild-adventure .wb-statement-footer .button{min-height:32px;padding:5px 10px}
+#guild-adventure .wb-extra,#guild-adventure .wb-theory-example,#guild-adventure .wb-resources{border:0;border-top:1px solid var(--wb-line);margin:0;padding:13px 0;font-size:13px}
+#guild-adventure .workbench summary{cursor:pointer;font-size:13px;color:var(--wb-muted)}
+#guild-adventure .wb-theory-example pre{font-size:12px;line-height:1.6}
+#guild-adventure .concept-demo{margin:0;padding:20px;background:var(--wb-code);border:1px solid var(--wb-line);border-radius:10px}
+#guild-adventure .concept-demo figcaption{font-weight:550;font-size:14px;margin-bottom:18px}
+#guild-adventure .concept-flow{display:grid;grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr);gap:12px;align-items:center;min-height:100px}
+#guild-adventure .concept-orders{display:flex;flex-wrap:wrap;gap:7px;font-size:12px}
+#guild-adventure .concept-orders>span{padding:6px 9px;border:1px solid var(--wb-line);border-radius:5px;background:var(--wb-panel)}
+#guild-adventure .concept-arrow{font-size:24px;color:var(--wb-muted);text-align:center}
+#guild-adventure .concept-dict{display:flex;flex-direction:column;gap:8px;min-width:0}
+#guild-adventure .concept-pair{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--wb-line);border-radius:7px;background:var(--wb-panel);min-width:0}
+#guild-adventure .concept-pair>span,#guild-adventure .concept-pair>strong{padding:9px 15px;font-size:16px}
+#guild-adventure .concept-pair>strong{font-size:24px;border-left:1px solid var(--wb-line);min-width:85px;text-align:center;background:var(--wb-soft);color:var(--wb-green)}
+#guild-adventure .concept-pair small{display:block;font:10px/1.3 system-ui,sans-serif;color:var(--wb-muted);margin-top:2px}
+#guild-adventure .concept-pair.changed{outline:2px solid var(--wb-green);animation:count-flash .5s ease-out}
+#guild-adventure .concept-actions,#guild-adventure .concept-choice{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+#guild-adventure .concept-caption{font-size:11px!important;color:var(--wb-muted);margin:12px 0 0!important}
+#guild-adventure .concept-empty{display:flex;gap:14px;align-items:center;padding:20px;color:var(--wb-muted)}
+#guild-adventure .concept-empty code{font-size:26px}
+#guild-adventure .concept-summary{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px;text-align:center}
+#guild-adventure .concept-summary>div:first-child{grid-column:1/-1;text-align:left}
+#guild-adventure .concept-summary small{display:block;font-size:11px;color:var(--wb-muted);margin-bottom:6px}
+#guild-adventure .concept-summary strong{font-size:40px;font-weight:500;display:block;color:var(--wb-green);line-height:1.4}
+#guild-adventure .concept-summary span{font-size:12px;display:block;margin-bottom:6px}
+#guild-adventure .concept-summary code{font-size:11px}
+#guild-adventure .concept-choice{margin-top:0}
+#guild-adventure .concept-choice button[aria-pressed="true"]{background:var(--wb-soft);border-color:var(--wb-green);color:var(--wb-green)}
+#guild-adventure .wb-trace{padding:18px;margin:0;border:1px solid var(--wb-line);border-radius:9px;background:var(--wb-code)}
+#guild-adventure .trace-position{display:flex;gap:10px;align-items:center;margin-bottom:16px;font-size:13px}
+#guild-adventure .trace-position>span{color:var(--wb-muted);font-size:11px;white-space:nowrap}
+#guild-adventure .concept-current{display:flex;gap:8px 20px;flex-wrap:wrap;font-size:13px;margin-bottom:14px}
+#guild-adventure .concept-current>span{color:var(--wb-muted)}
+#guild-adventure .wb-video{margin-top:16px;max-width:520px}
+#guild-adventure .wb-video>button{position:relative;display:block;width:100%;padding:0;overflow:hidden;border:0;border-radius:8px;background:var(--wb-code);color:var(--wb-ink);text-align:left}
+#guild-adventure .wb-video img{width:100%;max-height:200px;object-fit:cover;display:block}
+#guild-adventure .wb-video>button>span{display:block;padding:12px;font-size:13px}
+#guild-adventure .wb-video iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
+#guild-adventure .wb-video a{display:block;margin:10px 0;font-size:12px}
+#guild-adventure .workbench a{color:var(--wb-green)}
+#guild-adventure .wb-code-panel .nb-cell-header,#guild-adventure .wb-code-panel .nb-code-label,#guild-adventure .wb-code-panel .nb-execution-mark{display:none}
+#guild-adventure .wb-code-panel .practice-cell{padding:14px}
+#guild-adventure .wb-code-panel .nb-editor{padding:12px;margin-top:0}
+#guild-adventure .wb-code-panel textarea[data-cell-code]{min-height:210px;line-height:1.7;font-size:13px}
+#guild-adventure .wb-code-panel .nb-cell-actions{gap:7px;margin:12px 0}
+#guild-adventure .wb-code-panel .nb-run-note{font-size:11px;margin:6px 0}
+#guild-adventure .wb-effort{padding:0;margin:18px 0 10px;border:0;font-size:11px}
+#guild-adventure .wb-effort select{width:auto;padding:4px 6px;font-size:11px;min-height:28px}
+#guild-adventure .wb-codex-settings{padding:14px 0 0;border-top:1px solid var(--wb-line);margin-top:18px}
+#guild-adventure .wb-completed{margin:12px 14px;padding:10px;font-size:12px}
+@keyframes count-flash{from{background:var(--wb-soft);transform:scale(1.025)}to{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){#guild-adventure .concept-pair.changed{animation:none}}
+@media(max-width:1100px){#guild-adventure .wb-layout{grid-template-columns:155px minmax(0,1fr) minmax(0,1fr)}#guild-adventure .wb-reading-mode .wb-layout{grid-template-columns:155px minmax(0,1fr)}}
+@media(max-width:950px){#guild-adventure .wb-layout,#guild-adventure .wb-reading-mode .wb-layout{grid-template-columns:155px minmax(0,1fr)}#guild-adventure .wb-code-panel{grid-column:2}#guild-adventure .wb-reading-mode .wb-material{padding:22px}}
+@media(max-width:650px){#guild-adventure .wb-layout,#guild-adventure .wb-reading-mode .wb-layout{grid-template-columns:minmax(0,1fr)}#guild-adventure .wb-code-panel{grid-column:1}#guild-adventure .wb-reading-mode .wb-material,#guild-adventure .wb-material{padding:18px 14px}#guild-adventure .wb-outline{grid-template-columns:repeat(2,minmax(0,1fr))}#guild-adventure .wb-outline-item{margin:0}#guild-adventure .wb-brand h1{font-size:18px}#guild-adventure .wb-block-title{font-size:20px!important}#guild-adventure .concept-flow{grid-template-columns:1fr}#guild-adventure .concept-arrow{transform:rotate(90deg)}#guild-adventure .concept-demo{padding:14px}#guild-adventure .concept-summary{gap:12px}#guild-adventure .wb-code-panel textarea[data-cell-code]{font-size:14px}}
+#guild-adventure .wb-material>.wb-extra,#guild-adventure .wb-material>.wb-theory-example,#guild-adventure .wb-material>.wb-resources{padding:0}
+#guild-adventure .wb-material>details>summary{padding:12px 0}
+#guild-adventure .wb-test-data{padding:5px 0}
+#guild-adventure .wb-test-data>summary{font-size:11px;padding:6px 0}
+#guild-adventure .wb-codex-settings{padding:10px 14px}
+#guild-adventure .wb-top-actions .wb-continue{font-size:11px;padding:4px 8px;margin-right:10px;border:1px solid var(--wb-line);border-radius:5px;white-space:nowrap}
+#guild-adventure .wb-task-count{font-size:11px!important;color:var(--wb-muted);margin:-10px 0 18px!important}
+#guild-adventure .wb-break{font-size:12px;padding:12px;margin-top:20px;border-left:2px solid var(--wb-gold);background:var(--wb-raised)}
+#guild-adventure .wb-reading-mode .nb-trace-player{margin:0 0 20px}
+#guild-adventure .wb-statement .wb-description li{margin:8px 0;line-height:1.8}
+#guild-adventure .wb-reading-mode .nb-trace-values{overflow-x:auto}
+#guild-adventure .wb-brand{min-width:0}
+@media(max-width:650px){#guild-adventure .wb-top-actions .wb-continue{max-width:88px;white-space:normal;font-size:10px}#guild-adventure .workbench{padding-left:2px;padding-right:2px}#guild-adventure .wb-code-panel .practice-cell{padding:8px}#guild-adventure .wb-code-panel .nb-editor{padding:8px}#guild-adventure .wb-code-panel textarea[data-cell-code]{font-size:12px}#guild-adventure .wb-brand h1{overflow-wrap:anywhere}}
+
+/* Literal expression results keep spaces visible in the string examples. */
+#guild-adventure .wb-expression-table code{white-space:pre-wrap;overflow-wrap:anywhere}
+#guild-adventure .wb-teaching-block{margin-top:28px;padding-top:20px;border-top:1px solid var(--wb-line)}
+#guild-adventure .wb-teaching-block h3{font-size:20px;margin:0 0 16px}
+#guild-adventure .wb-teaching-block .wb-trace{margin:18px 0}
+#guild-adventure .wb-teaching-block pre{overflow-x:auto;line-height:1.55}
+#guild-adventure .wb-task-part{margin:20px 0}
+#guild-adventure .wb-task-part h3{font-size:14px;color:var(--wb-muted);margin:0 0 5px}
+#guild-adventure .wb-task-part p{margin:0}
+#guild-adventure .wb-error-example pre{white-space:pre-wrap;overflow-wrap:anywhere}
+#guild-adventure .wb-active-line{margin:12px 0;padding:10px 12px;border-left:3px solid var(--wb-gold);background:var(--wb-panel);white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.55}
+
+/* Keep the whole program and the state after its highlighted line together. */
+#guild-adventure .wb-trace-heading{font-size:12px;font-weight:600;margin-bottom:10px;color:var(--wb-muted)}
+#guild-adventure .workbench pre.wb-trace-code{margin:0 0 16px;padding:9px 0;overflow-x:auto;border:1px solid var(--wb-line);border-radius:6px;font:12px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre}
+#guild-adventure .wb-trace-code>code{display:block;padding:0;background:transparent;color:inherit;font:inherit;overflow-wrap:normal}
+#guild-adventure .wb-trace-code-line{display:flex;min-width:max-content;padding:1px 12px 1px 0;border-left:3px solid transparent}
+#guild-adventure .wb-trace-code-line>b{flex:0 0 36px;text-align:right;padding-right:12px;font-weight:400;color:var(--wb-muted);user-select:none}
+#guild-adventure .wb-trace-code-line.current{background:var(--wb-soft);border-left-color:var(--wb-green);color:var(--wb-green)}
+#guild-adventure .wb-trace-code-line.current>b{color:var(--wb-green);font-weight:600}
+#guild-adventure .wb-trace-state .trace-position{margin-bottom:5px;flex-wrap:wrap}
+#guild-adventure .wb-trace-moment{font-size:11px;color:var(--wb-muted);margin:0 0 9px}
+#guild-adventure .wb-trace-explanation{font-size:13px;margin:0 0 12px;line-height:1.65}
+#guild-adventure .wb-trace-variables{font-size:12px;margin:0}
+#guild-adventure .workbench .wb-trace-variables th,#guild-adventure .workbench .wb-trace-variables td{padding:7px 9px}
+#guild-adventure .workbench .wb-trace-variables tbody th{font-weight:400;background:transparent}
+#guild-adventure .workbench .wb-trace-variables tr.changed{background:var(--wb-soft)}
+#guild-adventure .wb-trace-variables td small{display:inline-block;margin-left:10px;color:var(--wb-green);font:10px/1.5 system-ui,sans-serif}
+#guild-adventure .wb-trace-output{margin-top:13px}
+#guild-adventure .wb-trace-output h4{font:600 11px/1.5 system-ui,sans-serif;color:var(--wb-muted);margin:0 0 5px}
+#guild-adventure .wb-trace-output pre{font-size:12px;line-height:1.55;padding:8px 10px;margin:0;white-space:pre-wrap;overflow-wrap:anywhere;border-radius:4px}
+#guild-adventure .wb-trace-output p,#guild-adventure .wb-trace-empty{margin:0;font-size:12px;color:var(--wb-muted)}
+@media(max-width:650px){#guild-adventure .wb-trace{padding:12px}#guild-adventure .wb-trace-code-line>b{flex-basis:30px;padding-right:9px}}
+
+/* One editable textarea remains the source of truth; colour layer is decorative. */
+#guild-adventure .guild-code-surface{position:relative;min-width:0}
+#guild-adventure .guild-code-surface textarea[data-cell-code],#guild-adventure .guild-code-surface textarea#guild-code,#guild-adventure .guild-code-colors{font:14px/1.75 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace!important;letter-spacing:normal;tab-size:4;white-space:pre-wrap;overflow-wrap:anywhere;word-break:normal;padding:0!important;border:0!important;border-radius:0;margin:0;text-align:left;box-sizing:border-box}
+#guild-adventure .guild-code-surface textarea[data-cell-code],#guild-adventure .guild-code-surface textarea#guild-code{position:relative;z-index:1;display:block;background:transparent;color:transparent;caret-color:var(--wb-ink,#24382d);resize:none;overflow:hidden;min-height:210px;isolation:isolate}
+#guild-adventure .guild-code-surface textarea::selection{background:rgba(87,137,204,.28)}
+#guild-adventure .guild-code-colors{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:transparent;pointer-events:none;color:var(--wb-ink,#24382d)}
+#guild-adventure .guild-caret-mirror{visibility:hidden;height:auto;bottom:auto}
+#guild-adventure .py-keyword{color:#8643a1}
+#guild-adventure .py-builtin{color:#2362a1}
+#guild-adventure .py-string{color:#306e42}
+#guild-adventure .py-comment{color:#687363}
+#guild-adventure .py-number{color:#a44c18}
+#guild-adventure .py-operator{color:#62617a}
+#guild-adventure [data-wb-theme="dark"] .py-keyword{color:#d9a6f1}
+#guild-adventure [data-wb-theme="dark"] .py-builtin{color:#9acbff}
+#guild-adventure [data-wb-theme="dark"] .py-string{color:#aed797}
+#guild-adventure [data-wb-theme="dark"] .py-comment{color:#9eaca0}
+#guild-adventure [data-wb-theme="dark"] .py-number{color:#efb782}
+#guild-adventure [data-wb-theme="dark"] .py-operator{color:#c0bad9}
+#guild-adventure .guild-editor-tools{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px 12px;margin-top:10px;color:var(--wb-muted,#65715f);font-size:11px}
+#guild-adventure .guild-editor-tools label{display:flex;gap:6px;align-items:center;cursor:pointer}
+#guild-adventure .guild-editor-tools input{width:14px;height:14px;margin:0;accent-color:var(--wb-green,#487254)}
+#guild-adventure .guild-completions{position:absolute;z-index:5;width:300px;max-width:100%;padding:4px;border:1px solid var(--wb-line,#c3cdbf);border-radius:6px;box-shadow:0 6px 18px #0002;background:var(--wb-panel,#fffef9);color:var(--wb-ink,#24382d)}
+#guild-adventure .guild-completions[hidden]{display:none}
+#guild-adventure .guild-completions [role="option"]{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 8px;border-radius:3px;cursor:pointer}
+#guild-adventure .guild-completions [aria-selected="true"],#guild-adventure .guild-completions [role="option"]:hover{background:var(--wb-soft,#e6eddc)}
+#guild-adventure .guild-completions code{font:13px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;color:inherit;background:none;padding:0;overflow-wrap:anywhere}
+#guild-adventure .guild-completions small{font-size:10px;color:var(--wb-muted,#65715f);white-space:nowrap}
+#guild-adventure .guild-completions p{font-size:10px!important;margin:5px 8px!important;color:var(--wb-muted,#65715f);line-height:1.5}
+@media(max-width:650px){#guild-adventure .guild-code-surface textarea[data-cell-code],#guild-adventure .guild-code-surface textarea#guild-code,#guild-adventure .guild-code-colors{font-size:16px!important}}
+@media(forced-colors:active){#guild-adventure .guild-code-colors{display:none}#guild-adventure .guild-code-surface textarea[data-cell-code],#guild-adventure .guild-code-surface textarea#guild-code{color:CanvasText;caret-color:CanvasText}}
+/* Static Python diagnostics decorate the mirror, leaving textarea text intact. */
+#guild-adventure .guild-code-colors .py-diagnostic{text-decoration-line:underline;text-decoration-style:wavy;text-decoration-color:#c83e3e;text-decoration-thickness:1.5px;text-underline-offset:3px}
+#guild-adventure .guild-code-problems{margin:0 0 12px;padding:8px 12px;border-left:2px solid #c83e3e;color:#a33333;font-size:12px;line-height:1.5}
+#guild-adventure .guild-code-problems[hidden]{display:none}
+#guild-adventure .guild-code-problems summary{cursor:pointer}
+#guild-adventure .guild-code-problems ul{padding-left:16px;margin:8px 0}
+#guild-adventure .guild-code-problems p{margin:4px 0}
+#guild-adventure .guild-code-problems button{border:0;background:transparent;padding:3px 0;color:inherit;text-align:left;font:inherit;cursor:pointer}
+#guild-adventure [data-wb-theme="dark"] .guild-code-problems{color:#f29b92}

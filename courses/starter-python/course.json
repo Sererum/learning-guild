@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "version": 1,
+  "id": "starter-python",
+  "title": "Технический пример курса",
+  "learnerName": "Исследователь",
+  "runtime": "basic-python",
+  "entry": "index.mjs",
+  "fixture": true,
+  "legacyStorageMigration": false
+}

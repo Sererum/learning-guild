@@ -1,0 +1,24 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {normalizeAiEfforts} from './ai-policy.mjs';
+
+const defaults=Object.freeze({dailyCalls:12,dailyTokens:200000,autoResume:true,retentionDays:30});
+const read=(file,fallback)=>{try{return JSON.parse(fs.readFileSync(file,'utf8'));}catch(error){if(error.code==='ENOENT')return fallback;throw Error('Не удалось прочитать локальные ограничения ИИ. Исправь файл настроек перед запуском.');}};
+function write(file,value){fs.mkdirSync(path.dirname(file),{recursive:true});const temp=file+'.tmp';fs.writeFileSync(temp,JSON.stringify(value,null,2)+'\n',{mode:0o600});fs.renameSync(temp,file);}
+const budgetError=message=>Object.assign(Error(message),{code:'GUILD_BUDGET_LIMIT'});
+const dayAt=date=>date.toISOString().slice(0,10);
+export function createGenerationControl(directory,{clock=()=>new Date(),reservationTokens=50000,readAiEfforts=()=>({})}={}){
+ const settingsFile=path.join(directory,'generation-settings.json'),usageFile=path.join(directory,'generation-usage.json');
+ const settings=()=>({...defaults,...read(settingsFile,{})});
+ function ledger(){const value=read(usageFile,{schemaVersion:1,entries:[]});if(!Array.isArray(value.entries))throw Error('Некорректный журнал расходов ИИ.');return value;}
+ function management(){const efforts=normalizeAiEfforts(readAiEfforts()),config=settings(),entries=ledger().entries,day=dayAt(clock()),today=entries.filter(item=>item.day===day),calls=today.length,tokens=today.filter(item=>item.status!=='reserved').reduce((sum,item)=>sum+(item.tokens||0),0),reservedTokens=today.filter(item=>item.status==='reserved').reduce((sum,item)=>sum+item.reservedTokens,0);return {settings:config,usage:{day,calls,tokens,reservedTokens,remainingCalls:Math.max(0,config.dailyCalls-calls),remainingTokens:Math.max(0,config.dailyTokens-tokens-reservedTokens)},activeReservations:today.filter(item=>item.status==='reserved').map(({id,kind,createdAt,reservedTokens})=>({id,kind,createdAt,reservedTokens})),modelPolicy:{effort:efforts.lessonGeneration,lessonEffort:efforts.lessonGeneration,programEffort:efforts.program,tutorEffort:efforts.tutorReview,efforts,tools:'disabled',independentReview:'separate-context',tokenLimit:'estimated-reservation'}};}
+ function manage(input={}){if(input.action!=='set-limits')throw Error('Неизвестное действие с ограничениями ИИ.');const next=settings();for(const [name,min,max]of [['dailyCalls',0,100],['dailyTokens',0,2000000],['retentionDays',7,365]])if(input[name]!==undefined){if(!Number.isInteger(input[name])||input[name]<min||input[name]>max)throw Error(`Поле ${name}: нужно целое число от ${min} до ${max}.`);next[name]=input[name];}if(input.autoResume!==undefined){if(typeof input.autoResume!=='boolean')throw Error('Некорректная настройка восстановления.');next.autoResume=input.autoResume;}write(settingsFile,next);return management();}
+ function reserve({kind='generation',maxTokens=reservationTokens}={}){if(!Number.isInteger(maxTokens)||maxTokens<1||maxTokens>200000)throw Error('Некорректный резерв токенов.');const view=management();if(view.usage.remainingCalls<1)throw budgetError('Дневной лимит обращений к ИИ исчерпан. Продолжить можно завтра или изменить лимит в настройках.');if(view.usage.remainingTokens<maxTokens)throw budgetError('Недостаточно дневного резерва токенов ИИ. Продолжить можно завтра или изменить лимит в настройках.');const ticket={id:crypto.randomBytes(12).toString('hex'),kind:String(kind).slice(0,80),day:view.usage.day,createdAt:clock().toISOString(),reservedTokens:maxTokens,status:'reserved'},value=ledger();value.entries.push(ticket);write(usageFile,value);return {id:ticket.id};}
+ function settle(ticket,{usage,status='complete'}={}){const value=ledger(),entry=value.entries.find(item=>item.id===ticket?.id);if(!entry)throw Error('Резерв обращения к ИИ не найден.');if(entry.status!=='reserved')return management();const input=usage?.input_tokens,output=usage?.output_tokens,known=Number.isFinite(input)&&Number.isFinite(output)&&input>=0&&output>=0;entry.tokens=known?Math.ceil(input+output):entry.reservedTokens;entry.accounting=known?'reported':'reserved-estimate';entry.status=status==='complete'?'complete':'failed';entry.finishedAt=clock().toISOString();write(usageFile,value);return management();}
+ // A killed process may never report usage. Keep its reservation charged on
+ // restart rather than making repeated crashes a free-budget bypass.
+ function recover(){const value=ledger();let changed=false;for(const entry of value.entries)if(entry.status==='reserved'){entry.status='interrupted';entry.tokens=entry.reservedTokens;entry.accounting='reserved-estimate';entry.finishedAt=clock().toISOString();changed=true;}if(changed)write(usageFile,value);}
+ recover();
+ return {management,manage,reserve,settle};
+}

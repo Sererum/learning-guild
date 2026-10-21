@@ -1,0 +1,76 @@
+/* Shared hand-drawn fantasy interface. Course and save logic live elsewhere. */
+:root{--ink:#344058;--muted:#788395;--paper:#f8f3e7;--line:#d8cfb9;--green:#3f5b71;--gold:#ac8a4b;--sage:#e8ebe1;--lavender:#e7e5ef;--shadow:0 10px 28px #18263b13;background:#e7e6df;color:var(--ink)}body{background:radial-gradient(ellipse at 55% 0,#f5f0e4 0,#e9e8df 62%,#e2e4dc)}.sidebar{color:#eae3d0;background:radial-gradient(ellipse at 20% 5%,#3b4b65 0,transparent 60%),linear-gradient(165deg,#29374e,#1c293f);border-right:1px solid #b59f6c77;padding-top:25px;box-shadow:4px 0 30px #15223815}.sidebar:after{content:'';position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle at 20% 25%,#d5c79866 .7px,transparent 1px),radial-gradient(circle at 80% 66%,#95bbcc55 .8px,transparent 1px);background-size:91px 137px,123px 183px;opacity:.3}.sidebar>*{position:relative;z-index:1}.sidebar-toggle{background:#eff0e40a;border-color:#d4c39244;color:#e5d4a5;border-radius:50%;font-size:20px;width:31px;height:31px}.brand{color:#f3ead4;gap:9px;margin-bottom:40px}.brand strong{font-size:20px;line-height:1.2}.brand small{color:#b6b6ac;font-size:8px;letter-spacing:.16em}.brand-mark{display:block;width:39px;height:47px;font-size:0;background:#ddc691;mask:url('/assets/nav-seal.svg') center/contain no-repeat;flex-shrink:0}.sidebar-label{color:#a9b4ba;font-size:9px}.nav{gap:9px}.nav button{color:#c5cfcd;border:1px solid transparent;border-radius:5px;position:relative;gap:13px;padding:13px 11px;min-height:48px}.nav button.active{background:linear-gradient(90deg,#e3d5ac,#f0e9d6);color:#35465a;border-color:#e2ce95;box-shadow:0 2px 12px #07162524}.nav button.active:after{content:'';width:6px;height:6px;transform:rotate(45deg);position:absolute;right:8px;background:#ac8b4e}.nav button:hover{background:#cbd5cf12;border-color:#d4c39233}.nav button.active:hover{background:#efe5cb}.nav button span:first-child{display:block;flex-shrink:0;width:25px!important;height:25px;font-size:0!important;background:currentColor;mask-position:center;mask-size:contain;mask-repeat:no-repeat}.nav button[data-page=world] span:first-child{mask-image:url('/assets/nav-map.svg')}.nav button[data-page=book] span:first-child{mask-image:url('/assets/nav-book.svg')}.nav button[data-page=hero] span:first-child{mask-image:url('/assets/nav-hero.svg')}.nav button[data-page=achievements] span:first-child{mask-image:url('/assets/nav-medal.svg')}.nav button[data-page=wishes] span:first-child{mask-image:url('/assets/nav-wish.svg')}.sidebar-bottom{border-color:#d4c39233}.sidebar-profile strong{color:#f1e6d0}.sidebar-profile small,.local-badge{color:#a7b5bc}.profile-orb{width:38px;height:38px;background:#d8c38d;color:#30405b;border:2px solid #eee5c7;box-shadow:0 0 0 3px #c4ba9833}.local-dot{background:#83c9bc}.topbar{height:69px;background:#f8f4e8e8;box-shadow:0 2px 12px #1d2c3e05;border-bottom:1px solid #b7b9a978;backdrop-filter:blur(14px)}.breadcrumbs{color:#7d8890;font-size:10px;letter-spacing:.03em}.balances{gap:15px}.balance{border:1px solid #d7ceb8;background:#fffaf0;border-radius:20px;padding:6px 12px;box-shadow:inset 0 1px 2px #fff9}.balance b{font-size:12px;color:#405268;margin-left:5px}.balance i{color:#b39351}.balance:first-child i{color:#4e9bba}.balance:first-child{border-color:#c4d7d9}.content{padding:25px 28px}.page-heading{margin-bottom:21px}.page-heading h1{color:#304059;font-size:34px}.page-heading .eyebrow{font-size:9px}.page-heading p{font-size:12px}.heading-seal{border-radius:0;border:0;width:45px;height:45px;font-size:0;background:#bca365;mask:url('/assets/nav-seal.svg') center/contain no-repeat}.panel{border-radius:10px;border-color:#cfc7b3;background:#f8f3e7;box-shadow:0 7px 28px #22304b0d}.button{background:#3b4e68;border-color:#4d5d74;color:#f7f0db;border-radius:22px;padding:10px 21px;font-size:12px;min-height:40px;box-shadow:inset 0 0 0 2px #f7e8c40a,0 2px 6px #14203910}.button:hover:not(:disabled){background:#4e647e;transform:translateY(-1px);border-color:#a5a47f}.button.secondary,.button.ghost{color:#516277;background:#f7f0dd;border-color:#bfc4b5}.button.secondary:hover,.button.ghost:hover{background:#eee9d8}.button:focus-visible,button:focus-visible{outline:2px solid #8fcfdd;outline-offset:3px}.footer-note{color:#879099;font-size:9px}.eyebrow{color:#ac8d56;font-size:9px;letter-spacing:.16em}input,select,textarea{border-color:#c9c8b9;background:#fffaf0;color:#3a4b62}.skip-link{color:#293f55}.app-layout.is-sidebar-collapsed .nav button.active:after{right:1px;width:4px;height:4px}.app-layout.is-sidebar-collapsed .sidebar{background:linear-gradient(165deg,#29374e,#1c293f)}#toast{background:#263b53;color:#f5ead2;border:1px solid #c3ac78;border-radius:6px;box-shadow:0 15px 60px #10233644}.workspace:has(.hero-game) .page-heading{display:none}.workspace:has(.stellar-page) .page-heading{display:none}.workspace:has(.hero-game) .footer-note{color:#a5a998}.workspace:has(.hero-game) .content{padding-top:22px}.world-heading h1{font-size:clamp(26px,2.9vw,38px);color:#35435c}.world-progress strong{color:#456a79}.world-atlas.panel{border-color:#a5ad9a;box-shadow:0 10px 32px #16233724}.world-map-top,.world-map-bottom{background:#f5f0df;border-color:#bfc3aa}.world-map-top>span:first-child{color:#465262}.world-map-hint{font-size:9px}.world-region{opacity:.7}.topic-card.panel{background:linear-gradient(125deg,#fcf8eb,#efeddf);border-color:#c8c3ab}.topic-card h2{color:#3b4e62}.topic-practice{background:#eef0e5;border-left:3px solid #b49b61}.topic-reward strong{color:#708c96}.topic-card .button{border-radius:22px}.world-point.world-locked{opacity:.55;filter:grayscale(.5) drop-shadow(0 2px 2px #101d35)}
+/* Unexplored land is opaque midnight, rather than a translucent grey wash.
+   Keep the existing state-driven mask and visible-region navigation unchanged. */
+.world-fog{mix-blend-mode:normal!important}.world-fog>rect[mask]{fill:#101727!important;fill-opacity:1!important}.world-canvas{background:#101727}.world-viewport{background:#101727}.world-tooltip{background:#24334bee;border:1px solid #a7b1b8;color:#f6efdb}.world-tooltip small{color:#b9c9cd}.world-lock-badge{background:#2f4052;border-color:#acb3aa;color:#d5d7c5}.world-controls button{color:#536a78;background:#fcf7e9}.world-controls button:hover:not(:disabled){background:#e7eddf}.topic-card-actions{border-color:#d9ceb7}.world-start span{background:#2b3b4deb}.world-legend{color:#7c867e}@media(max-width:1000px){.content{padding:22px 19px}.nav button{gap:9px;padding:12px 9px}.brand strong{font-size:18px}.topbar{padding:0 19px}.balances{gap:8px}.balance{padding:5px 10px}.balance b{font-size:11px}}@media(max-width:700px){.sidebar{background:linear-gradient(165deg,#29374e,#1c293f)!important}.content{padding:17px 11px}.topbar{height:58px;padding:0 10px}.balance{padding:4px 7px}.balance b{font-size:10px}.balances{gap:5px}.breadcrumbs{font-size:9px}.nav button{font-size:11px}.nav button span:first-child{width:23px!important;height:23px}.world-heading h1{font-size:25px}.world-map-top{padding:12px}.world-map-top>span{font-size:10px}.page-heading h1{font-size:28px}.workspace:has(.hero-game) .content{padding:12px 8px}.app-layout.is-sidebar-collapsed .nav button.active:after{display:none}}@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Partial mastery stays illuminated without certifying completion. */
+.world-point.world-partial:not(.world-done){opacity:1;filter:drop-shadow(0 0 6px #edbd4b99)}
+.world-point.world-partial:not(.world-done) .world-point-icon{opacity:1;filter:drop-shadow(0 0 5px #ffd66d)}
+.world-point.world-partial:not(.world-done):is(:hover,:focus-visible){filter:drop-shadow(0 0 10px #ffe39bcc)}
+.world-point.world-partial:not(.world-done) .world-lock-badge{background:#f4ca60;border:1.5px solid #fff0b1;color:#513b19;font-weight:900;box-shadow:0 0 7px #f4ca6099}
+.world-legend-partial{color:#957126}.world-legend-partial b{display:inline-grid;place-items:center;width:17px;height:17px;border-radius:50%;background:#f4ca60;color:#513b19;font-weight:900}
+.topic-status.partial{background:#fff0c4;color:#805a16;border-color:#dbb35b}
+
+.primogem-icon{display:inline-block;width:1.35em;height:1.35em;object-fit:contain;vertical-align:-.3em;flex-shrink:0;filter:drop-shadow(0 1px 1px #315e8333)}
+.balance .primogem-icon{width:23px;height:23px;vertical-align:middle}.stellar-fate .primogem-icon{width:42px;height:42px}.stellar-fate{transform:none}.stellar-wallet .primogem-icon{width:27px;height:27px}.book-reward-art .primogem-icon{transform:none}.topic-reward .primogem-icon{width:29px;height:29px}
+
+.resource-icon{display:inline-block;width:1.5em;height:1.5em;object-fit:contain;vertical-align:-.35em;flex-shrink:0}.balance .resource-icon{width:26px;height:26px;vertical-align:middle}.hero-material-art .resource-icon{width:56px;height:56px}.hero-cost-total .resource-icon{width:26px;height:26px}
+
+/* Painted navigation assets — generated as individual transparent illustrations. */
+.sidebar .brand-mark{width:47px;height:49px;background:none;mask:none;display:grid;place-items:center}
+.sidebar .brand-mark img{display:block;width:47px;height:47px;object-fit:contain;filter:drop-shadow(0 2px 3px #0c192666)}
+.sidebar .nav button .nav-painted-icon{width:34px!important;height:34px;background:none;mask:none!important;display:grid;place-items:center;overflow:visible}
+.nav-painted-icon img{display:block;width:34px;height:34px;object-fit:contain;filter:drop-shadow(0 2px 2px #0e1b3080);transition:transform .16s ease}
+.nav button:is(:hover,:focus-visible) .nav-painted-icon img{transform:scale(1.08)}
+.nav button.active .nav-painted-icon img{filter:drop-shadow(0 1px 1px #7d693455)}
+.sidebar .profile-orb{background:#253851;border:1px solid #bca577;overflow:hidden;flex-shrink:0}
+.profile-orb img{display:block;object-fit:contain;width:36px;height:36px}
+.page-heading .heading-seal{mask:none;background:none}
+.heading-seal img{width:45px;height:45px;object-fit:contain}
+@media(max-width:700px){.sidebar .nav button .nav-painted-icon,.nav-painted-icon img{width:29px!important;height:29px}.app-layout.is-sidebar-collapsed .nav button{padding-left:2px;padding-right:2px}}
+
+.topic-card .topic-practice{border-top:0;border-radius:12px;padding:12px 15px;overflow:hidden}
+.topic-card .topic-practice h3{margin-top:0}.topic-card .topic-practice p:last-child{margin-bottom:0}
+
+/* Laptop shell: the atlas occupies the available window, with scrolling owned
+   by each page's content instead of an oversized document. */
+@media (min-width:901px){
+  html,body,#app{min-height:100%;margin:0}
+  .app-layout{height:100dvh;min-height:0;align-items:stretch}
+  .app-layout>.sidebar{position:relative;height:100%;min-height:0;overflow-y:auto;overflow-x:hidden;padding-top:14px;padding-bottom:12px;scrollbar-width:thin;scrollbar-color:#b7ad8d66 transparent}
+  .sidebar>.brand,.sidebar>.sidebar-toggle,.sidebar>.sidebar-label,.sidebar>.nav,.sidebar>.sidebar-bottom{flex-shrink:0}
+  .sidebar .sidebar-toggle{margin-bottom:12px}
+  .sidebar .brand{margin-bottom:24px}
+  .sidebar .sidebar-bottom{padding-top:14px}
+  .sidebar .local-badge{margin-top:10px}
+  .workspace{display:flex;flex-direction:column;height:100%;min-height:0;min-width:0}
+  .workspace>.topbar{height:42px;min-height:42px;flex:0 0 42px;padding:0 20px}
+  .topbar .balances{gap:10px}
+  .topbar .balance{padding:2px 9px;display:inline-flex;align-items:center;min-height:29px}
+  .topbar .balance .primogem-icon,.topbar .balance .resource-icon{width:22px;height:22px}
+  .topbar .balance b{font-size:11px;margin-left:4px}
+  .workspace>.content,.workspace:has(.hero-game)>.content{width:100%;max-width:none;flex:1;min-height:0;margin:0;padding:16px 20px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#b6aa8d transparent}
+  .workspace>.content>.footer-note{display:none}
+  /* Lesson reading and Codex review use document coordinates in their adapter. */
+  .app-layout:has(.integrated-lesson){height:auto;min-height:100dvh;align-items:start}
+  .app-layout:has(.integrated-lesson)>.sidebar{position:sticky;height:100dvh}
+  .workspace:has(.integrated-lesson){height:auto;min-height:100dvh}
+  #app .workspace:has(.integrated-lesson)>.topbar{flex-basis:34px;min-height:34px}
+  #app .workspace:has(.integrated-lesson)>.content{flex:initial;overflow:visible;padding:8px 10px}
+}
+@media (min-width:901px) and (max-height:760px){
+  .sidebar .brand{margin-bottom:15px}
+  .sidebar .nav{gap:5px}
+  .sidebar .nav button{padding-top:9px;padding-bottom:9px;min-height:45px}
+  .sidebar .sidebar-label{margin-bottom:9px}
+  .sidebar .local-badge{font-size:8px}
+  .workspace>.content,.workspace:has(.hero-game)>.content{padding:12px 16px}
+}
+/* Keep the wallet inside the remaining width beside the mobile sidebar. */
+@media (max-width:550px){
+  #app .workspace>.topbar,#app .workspace:has(.integrated-lesson)>.topbar{height:auto;min-height:42px;padding:6px 8px}
+  #app .topbar .breadcrumbs{display:none}
+  #app .topbar .balances{width:100%;min-width:0;flex-wrap:wrap;justify-content:flex-end;gap:5px}
+  #app .topbar .balance{white-space:nowrap}
+}

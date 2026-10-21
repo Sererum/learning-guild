@@ -1,0 +1,528 @@
+{
+  "schemaVersion": 1,
+  "source": "python_roadmap.md",
+  "sourceReviewedAt": "2026-10-17",
+  "description": "Программа курса, а не результаты ученицы. Фактический прогресс и предпочтения читаются только из локального профиля.",
+  "roadmap": [
+    {
+      "id": "lesson-01-01",
+      "title": "1.1 · Переменные, типы данных и память",
+      "kind": "lesson",
+      "prerequisites": [],
+      "pointId": "variables",
+      "learningGoals": [
+        "Различать имя, значение и тип",
+        "Сохранять результат выражения"
+      ],
+      "runtime": "basic-python",
+      "afterLessonIds": []
+    },
+    {
+      "id": "lesson-01-02",
+      "title": "1.2 · Арифметика и логика",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-01-01"
+      ],
+      "pointId": "math",
+      "learningGoals": [
+        "Выбирать арифметическую операцию по смыслу",
+        "Объяснять результат сравнения"
+      ],
+      "runtime": "basic-python",
+      "afterLessonIds": [
+        "lesson-01-01"
+      ]
+    },
+    {
+      "id": "lesson-01-03",
+      "title": "1.3 · Условия и вложенность",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-01-02"
+      ],
+      "pointId": "conditions",
+      "learningGoals": [
+        "Выбирать ветви if/elif/else",
+        "Различать независимые и взаимоисключающие проверки"
+      ],
+      "runtime": "basic-python",
+      "afterLessonIds": [
+        "lesson-01-02"
+      ]
+    },
+    {
+      "id": "lesson-01-04",
+      "title": "1.4 · Строки, индексы, срезы и методы",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-01-03"
+      ],
+      "pointId": "index",
+      "learningGoals": [
+        "Объяснять индекс и срез",
+        "Показывать исходную строку, вызов метода и результат"
+      ],
+      "runtime": "basic-python",
+      "afterLessonIds": [
+        "lesson-01-03"
+      ]
+    },
+    {
+      "id": "block-01-final",
+      "title": "Финал блока 1 · Анализатор текста",
+      "kind": "exam",
+      "prerequisites": [
+        "lesson-01-04"
+      ],
+      "pointId": "foundation-archon",
+      "lessonId": "foundations-final",
+      "learningGoals": [
+        "Объединять условия и обработку строк",
+        "Выводить вычисленный мини-отчёт"
+      ],
+      "runtime": "basic-python",
+      "afterLessonIds": [
+        "lesson-01-04"
+      ]
+    },
+    {
+      "id": "lesson-02-01",
+      "title": "2.1 · Списки и цикл for",
+      "kind": "lesson",
+      "prerequisites": [
+        "block-01-final"
+      ],
+      "pointId": "for",
+      "learningGoals": [
+        "Обходить список",
+        "Различать накопитель суммы и счётчик"
+      ],
+      "runtime": "basic-python",
+      "afterLessonIds": [
+        "foundations-final",
+        "block-01-final"
+      ]
+    },
+    {
+      "id": "lesson-02-02",
+      "title": "2.2 · Цикл while, счётчики и флаги",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-02-01"
+      ],
+      "pointId": "while",
+      "learningGoals": [
+        "Отслеживать состояние до и после шага",
+        "Объяснять остановку и ноль кругов"
+      ],
+      "runtime": "basic-python",
+      "afterLessonIds": [
+        "lesson-02-01"
+      ]
+    },
+    {
+      "id": "lesson-02-03",
+      "title": "2.3 · Словари и множества",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-02-02"
+      ],
+      "pointId": "keys",
+      "learningGoals": [
+        "Различать ключ и значение",
+        "Объяснять безопасное чтение, частоты и уникальность"
+      ],
+      "runtime": "basic-python",
+      "afterLessonIds": [
+        "lesson-02-02"
+      ]
+    },
+    {
+      "id": "lesson-02-04",
+      "title": "2.4 · Базовые алгоритмы",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-02-03"
+      ],
+      "pointId": "algorithms",
+      "lessonId": "algorithms",
+      "learningGoals": [
+        "Находить максимум и минимальный подходящий элемент",
+        "Искать подстроку и объяснять границы",
+        "Объяснять движение двух указателей"
+      ],
+      "runtime": "basic-python",
+      "afterLessonIds": [
+        "lesson-02-03"
+      ]
+    },
+    {
+      "id": "block-02-final",
+      "title": "Финал блока 2 · Программа-анализатор текста (Full Logic)",
+      "kind": "exam",
+      "prerequisites": [
+        "lesson-02-04"
+      ],
+      "learningGoals": [
+        "Самостоятельно объединять изученные структуры данных, циклы и обработку текста",
+        "Проверять обычные, граничные и пустые данные",
+        "Выводить понятный аналитический мини-отчёт"
+      ],
+      "runtime": "basic-python",
+      "afterLessonIds": [
+        "algorithms",
+        "lesson-02-04"
+      ],
+      "pointId": "archon"
+    },
+    {
+      "id": "lesson-03-01",
+      "title": "3.1 · Функции: def, return и print",
+      "kind": "lesson",
+      "prerequisites": [
+        "block-02-final"
+      ],
+      "learningGoals": [
+        "Объяснять назначение функции и аргументов",
+        "Различать возвращённое значение и напечатанный текст",
+        "Переиспользовать логику без копирования"
+      ],
+      "runtime": "basic-python",
+      "afterLessonIds": [
+        "block-02-final"
+      ]
+    },
+    {
+      "id": "lesson-03-02",
+      "title": "3.2 · Области видимости и обработка ошибок",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-03-01"
+      ],
+      "learningGoals": [
+        "Различать локальные и внешние имена",
+        "Объяснять конкретное исключение и обработку try/except"
+      ],
+      "runtime": "basic-python",
+      "afterLessonIds": [
+        "lesson-03-01"
+      ]
+    },
+    {
+      "id": "lesson-04-01",
+      "title": "4.1 · SQL: SELECT, WHERE, ORDER BY",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-03-02"
+      ],
+      "learningGoals": [
+        "Выбирать строки и колонки через SQL",
+        "Объяснять фильтрацию и сортировку через таблицы Excel"
+      ],
+      "runtime": "sqlite-python",
+      "requiresRuntime": true,
+      "afterLessonIds": [
+        "lesson-03-02"
+      ]
+    },
+    {
+      "id": "lesson-04-02",
+      "title": "4.2 · SQL: GROUP BY и HAVING",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-04-01"
+      ],
+      "learningGoals": [
+        "Объяснять группировку через сводную таблицу",
+        "Различать отбор строк и отбор групп"
+      ],
+      "runtime": "sqlite-python",
+      "requiresRuntime": true,
+      "afterLessonIds": [
+        "lesson-04-01"
+      ]
+    },
+    {
+      "id": "lesson-04-03",
+      "title": "4.3 · SQL: JOIN",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-04-02"
+      ],
+      "learningGoals": [
+        "Соединять записи по ключу",
+        "Объяснять результат соединения через ВПР"
+      ],
+      "runtime": "sqlite-python",
+      "requiresRuntime": true,
+      "afterLessonIds": [
+        "lesson-04-02"
+      ]
+    },
+    {
+      "id": "block-04-final",
+      "title": "Финал блока 4 · SQL-анализ зарплат",
+      "kind": "exam",
+      "prerequisites": [
+        "lesson-04-03"
+      ],
+      "learningGoals": [
+        "Собрать SQL-анализ и объяснить полученный отчёт"
+      ],
+      "runtime": "sqlite-python",
+      "requiresRuntime": true,
+      "afterLessonIds": [
+        "lesson-04-03"
+      ]
+    },
+    {
+      "id": "lesson-05-01",
+      "title": "5.1 · NumPy и векторизация",
+      "kind": "lesson",
+      "prerequisites": [
+        "block-04-final"
+      ],
+      "learningGoals": [
+        "Объяснять поэлементную обработку массива и смысл векторизации"
+      ],
+      "runtime": "data-python",
+      "requiresRuntime": true,
+      "afterLessonIds": [
+        "block-04-final"
+      ]
+    },
+    {
+      "id": "lesson-05-02",
+      "title": "5.2 · Series и DataFrame",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-05-01"
+      ],
+      "learningGoals": [
+        "Создавать таблицу и выбирать данные",
+        "Различать loc и iloc"
+      ],
+      "runtime": "data-python",
+      "requiresRuntime": true,
+      "afterLessonIds": [
+        "lesson-05-01"
+      ]
+    },
+    {
+      "id": "lesson-05-03",
+      "title": "5.3 · Очистка данных",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-05-02"
+      ],
+      "learningGoals": [
+        "Объяснять пропуски, дубликаты и типы",
+        "Проверять эффект очистки"
+      ],
+      "runtime": "data-python",
+      "requiresRuntime": true,
+      "afterLessonIds": [
+        "lesson-05-02"
+      ]
+    },
+    {
+      "id": "lesson-05-04",
+      "title": "5.4 · Группировка и слияние таблиц",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-05-03"
+      ],
+      "learningGoals": [
+        "Объяснять groupby и merge через сводные таблицы и ВПР"
+      ],
+      "runtime": "data-python",
+      "requiresRuntime": true,
+      "afterLessonIds": [
+        "lesson-05-03"
+      ]
+    },
+    {
+      "id": "block-05-final",
+      "title": "Финал блока 5 · EDA грязного датасета",
+      "kind": "exam",
+      "prerequisites": [
+        "lesson-05-04"
+      ],
+      "learningGoals": [
+        "Пройти путь от очистки данных до обоснованного отчёта"
+      ],
+      "runtime": "data-python",
+      "requiresRuntime": true,
+      "afterLessonIds": [
+        "lesson-05-04"
+      ]
+    },
+    {
+      "id": "lesson-06-01",
+      "title": "6.1 · Описательная статистика и распределения",
+      "kind": "lesson",
+      "prerequisites": [
+        "block-05-final"
+      ],
+      "learningGoals": [
+        "Интерпретировать описательные показатели и гистограммы"
+      ],
+      "runtime": "data-python",
+      "requiresRuntime": true,
+      "afterLessonIds": [
+        "block-05-final"
+      ]
+    },
+    {
+      "id": "lesson-06-02",
+      "title": "6.2 · Визуализация: Boxplot и Scatter",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-06-01"
+      ],
+      "learningGoals": [
+        "Выбирать график под вопрос",
+        "Объяснять выбросы и совместное изменение величин"
+      ],
+      "runtime": "data-python",
+      "requiresRuntime": true,
+      "afterLessonIds": [
+        "lesson-06-01"
+      ]
+    },
+    {
+      "id": "lesson-06-03",
+      "title": "6.3 · Проверка гипотез: p-value и ЦПТ",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-06-02"
+      ],
+      "learningGoals": [
+        "Объяснять смысл гипотезы, случайной вариации и p-value на примерах"
+      ],
+      "runtime": "data-python",
+      "requiresRuntime": true,
+      "afterLessonIds": [
+        "lesson-06-02"
+      ]
+    },
+    {
+      "id": "lesson-06-04",
+      "title": "6.4 · Статистические тесты в Python",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-06-03"
+      ],
+      "learningGoals": [
+        "Выбирать и объяснять t-тест, Манна—Уитни и хи-квадрат"
+      ],
+      "runtime": "data-python",
+      "requiresRuntime": true,
+      "afterLessonIds": [
+        "lesson-06-03"
+      ]
+    },
+    {
+      "id": "lesson-06-05",
+      "title": "6.5 · A/B-тестирование",
+      "kind": "lesson",
+      "prerequisites": [
+        "lesson-06-04"
+      ],
+      "learningGoals": [
+        "Объяснять дизайн теста, MDE и интерпретацию результата"
+      ],
+      "runtime": "data-python",
+      "requiresRuntime": true,
+      "afterLessonIds": [
+        "lesson-06-04"
+      ]
+    },
+    {
+      "id": "block-06-final",
+      "title": "Финал блока 6 · Полный цикл A/B-теста",
+      "kind": "exam",
+      "prerequisites": [
+        "lesson-06-05"
+      ],
+      "learningGoals": [
+        "Объединить очистку данных, анализ и обоснованный вывод"
+      ],
+      "runtime": "data-python",
+      "requiresRuntime": true,
+      "afterLessonIds": [
+        "lesson-06-05"
+      ]
+    },
+    {
+      "id": "lesson-07-01",
+      "title": "7.1 · Классы, объекты, __init__ и self",
+      "kind": "lesson",
+      "prerequisites": [
+        "block-06-final"
+      ],
+      "learningGoals": [
+        "Читать простой класс в документации",
+        "Объяснять объект и его состояние"
+      ],
+      "runtime": "object-python",
+      "requiresRuntime": true,
+      "afterLessonIds": [
+        "block-06-final"
+      ]
+    }
+  ],
+  "requirements": {
+    "language": "ru",
+    "authoringStandard": "AUTHORING.md",
+    "ordinaryLesson": "Небольшие блоки: понятная теория, разобранный пример, три самостоятельные задачи с ростом сложности; в конце шпаргалка, типичные ошибки и мини-проект.",
+    "correctiveLesson": "Отдельная ветка у исходной темы. При большой нагрузке: одна-две идеи, до трёх коротких задач и задача на уверенность вместо большого проекта.",
+    "targetDifficulty": "3–4 из 5 при успешном переносе навыка; не снижать сложность только из-за запроса подсказки.",
+    "examples": "Каждое новое понятие подкреплено конкретным входом, выражением, точным результатом и объяснением. Ручные шаги и Python должны совпадать.",
+    "transfer": "Одна задача переноса меняет сценарий или требуемый результат, а не только числа. Все переменные и требуемый вывод названы явно.",
+    "review": "Автор и независимый субагент проверяют каждую задачу: ясность новичку, простейшее законное решение, обход учебной цели, 2–3 ошибочных варианта на настоящих тестах. До независимой проверки материал остаётся черновиком.",
+    "boundaries": "Не включать прежние сложные места в новую тему; для них отдельный разбор или закрепляющий урок. Не использовать ещё не объяснённые приёмы.",
+    "runtime": "Не устанавливать библиотеки автоматически. Будущая тема с другим runtime остаётся планом до подключения и проверки исполнителя.",
+    "rewards": "Награды берутся из правил курса, начисляются сервером однократно и не меняются из-за отзыва или решения ИИ.",
+    "materialShapes": {
+      "lesson": {
+        "miniBlocks": 3,
+        "tasksPerBlock": 3,
+        "finalProjects": 1
+      },
+      "exam": {
+        "preparationBlocks": 1,
+        "finalProjects": 1
+      },
+      "reinforcement": {
+        "minTasks": 3,
+        "maxTasks": 6,
+        "breaks": true
+      },
+      "repair": {
+        "minTasks": 1,
+        "maxTasks": 3
+      }
+    },
+    "reinforcementReward": "160 примогемов за каждый мини-блок закрепляющего урока; обычная работа над ошибками — 40 за весь разбор."
+  },
+  "evidencePolicy": {
+    "factsSource": "Локальные сохранённые проверки, отправленные работы и отзывы с указанием автора и времени.",
+    "missingFeedback": "unknown",
+    "passingTestsIsNotMastery": true,
+    "skippingFeedbackIsNotFailure": true,
+    "personalizationFirst": true,
+    "repairAndNextAreSeparateBranches": true,
+    "universalRulesRequireReview": true,
+    "studentHistoryIsNotCourseConfig": true
+  },
+  "rewards": {
+    "miniBlock": 160,
+    "repair": 40,
+    "reinforcement": 160,
+    "exam": 640,
+    "ordinaryQualityCap": 10,
+    "finalQualityCap": 20
+  }
+}

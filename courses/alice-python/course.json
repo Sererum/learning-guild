@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "version": 1,
+  "id": "alice-python",
+  "title": "Гильдия Python",
+  "learnerName": "Ученик",
+  "runtime": "basic-python",
+  "entry": "index.mjs",
+  "legacyStorageMigration": false,
+  "world": "world.json",
+  "rules": "rules.json",
+  "adaptation": "adaptation.json"
+}

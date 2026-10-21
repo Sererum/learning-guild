@@ -1,0 +1,13 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>Перенос черновиков Гильдии</title><script src="/storage.js"></script><script>
+const oldOrigin='http://127.0.0.1:4317';
+if(parent!==window){parent.postMessage({type:'guild-drafts-ready'},oldOrigin);window.addEventListener('message',async event=>{
+ if(event.origin!==oldOrigin||event.source!==parent||event.data?.type!=='guild-migrate-drafts')return;
+ let migrated=0;try{
+  const snapshot=await(await fetch('/api/state')).json();if(snapshot.course?.legacyStorageMigration!==true)return;window.guildStorage.configure(snapshot);const localStorage=window.guildStorage;
+  const source=event.data.drafts;if(!source||typeof source!=='object'||JSON.stringify(source).length>1000000)throw Error('Некорректные черновики');
+  const target=JSON.parse(localStorage.getItem('alice-guild-drafts-v1')||'{}');for(const [id,code] of Object.entries(source))if(/^[a-z0-9-]+$/.test(id)&&typeof code==='string'&&code.length<=20000&&target[id]===undefined){target[id]=code;migrated++;}localStorage.setItem('alice-guild-drafts-v1',JSON.stringify(target));
+  const selected=event.data.selected;if(!localStorage.getItem('python-guild-app:lesson-selection:v2')&&typeof selected==='string'&&/^[a-z0-9-]+$/.test(selected)){const points={lesson:'keys',repair:'repair-point',daily:'daily-point',exam:'archon','foundations-exam':'foundation-archon'};localStorage.setItem('python-guild-app:lesson-selection:v2',JSON.stringify({task:selected,point:selected.startsWith('algo-')?'algorithms':points[selected]||null}));}
+  parent.postMessage({type:'guild-drafts-migrated',migrated},oldOrigin);
+ }catch{parent.postMessage({type:'guild-drafts-migrated',migrated:0},oldOrigin);}
+ });}
+</script></html>

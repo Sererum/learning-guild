@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "coordinateSystem": "source pixels, origin upper-left",
+  "assets": [
+    {
+      "id": "quill",
+      "file": "public/assets/equipment/worn-quill-v1.png",
+      "width": 1024,
+      "height": 1536,
+      "grip": [
+        512,
+        1245
+      ],
+      "bounds": {
+        "x": 0,
+        "y": 38,
+        "right": 999,
+        "bottom": 1535
+      },
+      "solidBounds": {
+        "x": 339,
+        "y": 47,
+        "right": 685,
+        "bottom": 1486
+      },
+      "zeroAlphaPixels": 1445386,
+      "translucentPixels": 20507
+    },
+    {
+      "id": "archive-quill",
+      "file": "public/assets/equipment/worn-archive-quill-v1.png",
+      "width": 1024,
+      "height": 1536,
+      "grip": [
+        512,
+        1240
+      ],
+      "bounds": {
+        "x": 41,
+        "y": 36,
+        "right": 993,
+        "bottom": 1511
+      },
+      "solidBounds": {
+        "x": 399,
+        "y": 47,
+        "right": 625,
+        "bottom": 1491
+      },
+      "zeroAlphaPixels": 1452273,
+      "translucentPixels": 28216
+    },
+    {
+      "id": "moon-quill",
+      "file": "public/assets/equipment/worn-moon-quill-v1.png",
+      "width": 1024,
+      "height": 1536,
+      "grip": [
+        512,
+        1215
+      ],
+      "bounds": {
+        "x": 113,
+        "y": 22,
+        "right": 955,
+        "bottom": 1515
+      },
+      "solidBounds": {
+        "x": 300,
+        "y": 33,
+        "right": 726,
+        "bottom": 1501
+      },
+      "zeroAlphaPixels": 1404893,
+      "translucentPixels": 33013
+    },
+    {
+      "id": "dawn-quill",
+      "file": "public/assets/equipment/worn-dawn-quill-v1.png",
+      "width": 1024,
+      "height": 1536,
+      "grip": [
+        512,
+        760
+      ],
+      "bounds": {
+        "x": 19,
+        "y": 22,
+        "right": 995,
+        "bottom": 1518
+      },
+      "solidBounds": {
+        "x": 368,
+        "y": 33,
+        "right": 658,
+        "bottom": 1499
+      },
+      "zeroAlphaPixels": 1442685,
+      "translucentPixels": 38454
+    }
+  ]
+}
