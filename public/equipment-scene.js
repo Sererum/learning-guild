@@ -2,7 +2,13 @@
 // are deliberately not a fallback: an unprepared worn sprite is not wearable art.
 const escape=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const finite=(value,fallback)=>Number.isFinite(value)?value:fallback;
-const safeAsset=value=>typeof value==='string'&&/^\/assets\/[A-Za-z0-9_/-]+\.(?:png|webp|svg)$/.test(value)&&!value.includes('..');
+// Private images carry the account in their URL so simultaneous course tabs
+// cannot accidentally fetch the other course's portrait. No other query is allowed.
+export function isSafeEquipmentAssetUrl(value){
+ if(typeof value!=='string'||value.includes('..'))return false;
+ const match=/^\/assets\/[A-Za-z0-9_/-]+\.(?:png|webp|svg)(?:\?account=([a-z0-9]+(?:-[a-z0-9]+)*))?$/.exec(value);
+ return !!match&&(!match[1]||match[1].length<=64);
+}
 const slotOf=item=>item.kind==='artifact'?item.slot:item.kind;
 const layerOrder={behind:0,body:20,front:40,hand:80};
 const layerValue=(value,fallback)=>layerOrder[value]??finite(value,fallback);
@@ -10,7 +16,7 @@ const layerValue=(value,fallback)=>layerOrder[value]??finite(value,fallback);
 function placement(definition,anchor,resolveAsset){
  if(!definition||!anchor||!Number.isFinite(anchor.x)||!Number.isFinite(anchor.y))return null;
  const asset=resolveAsset(definition.asset,definition),width=finite(definition.width,0),height=finite(definition.height,0);
- if(!safeAsset(asset)||width<=0||height<=0)return null;
+ if(!isSafeEquipmentAssetUrl(asset)||width<=0||height<=0)return null;
  const pivot=definition.pivot||[width/2,height/2];
  if(!Array.isArray(pivot)||pivot.length!==2||!pivot.every(Number.isFinite))return null;
  const scale=finite(definition.scale,1)*finite(anchor.scale,1);

@@ -1,8 +1,9 @@
+import {fileURLToPath} from 'node:url';
 import {browserOptions} from './browser-runtime.mjs';
 import fs from 'node:fs';import os from 'node:os';import path from 'node:path';import assert from 'node:assert/strict';import {createRequire} from 'node:module';
 import {createGuildServer} from '../server.mjs';import {loadCourse} from '../course-loader.mjs';
 const require=createRequire(import.meta.url),{chromium}=require('playwright'),dir=fs.mkdtempSync(path.join(os.tmpdir(),'guild-editor-'));
-const course=await loadCourse({courseId:'starter-python'}),first=course.tasks[0];
+const course=await loadCourse({courseId:'starter-python',coursesRoot:fileURLToPath(new URL('../templates/',import.meta.url))}),first=course.tasks[0];
 course.tasks.push({...first,id:'editor-second',name:'Отдельная задача',starter:'private_other_task_name = 7\n'});course.lessons[0].taskIds.push('editor-second');
 const server=createGuildServer({course,stateFile:path.join(dir,'progress.json'),reviewEnabled:false});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const origin='http://127.0.0.1:'+server.address().port,browser=await chromium.launch(browserOptions());

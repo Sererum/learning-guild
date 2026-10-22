@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {resolveEquipmentLayers,renderEquipmentLayers} from '../public/equipment-scene.js';
+import {avatar} from '../public/pages/hero.js';
+import {equipmentManifest} from '../public/equipment-manifest.js';
 
 const catalog=[{id:'test-sword',kind:'weapon'},{id:'test-flower',kind:'artifact',slot:'flower'}];
 const state={equipped:{outfit:'test-coat',weapon:'test-sword',flower:'test-flower'}};
@@ -39,4 +41,37 @@ test('Shared/back layers surround trusted portrait markup and private grips need
  assert.ok(output.indexOf('test-flower.webp')<output.indexOf('id="portrait"'));
  assert.ok(output.indexOf('id="portrait"')<output.indexOf('test-sword.png'));
  assert.ok(output.indexOf('test-sword.png')<output.indexOf('grip-v1.png'));
+});
+
+test('Private portraits and grips retain their account-scoped URLs',()=>{
+ const account='other-course',outfitAsset=equipmentManifest.outfits.novice.asset;
+ const portraitState={equipped:{outfit:'novice'},profileAssets:{[outfitAsset]:'/assets/'+outfitAsset+'?account='+account}};
+ const output=avatar(portraitState,[{id:'novice',kind:'outfit',name:'Наряд',color:'#829b87'}]);
+ assert.ok(output.includes('href="/assets/'+outfitAsset+'?account='+account+'"'));
+ assert.equal(output.includes('hero-neutral-portrait'),false);
+ const privateManifest={...manifest,grips:{sword:{...manifest.grips.sword,asset:'grip-v1.png',private:true}}};
+ const supported={...state,profileAssets:{'grip-v1.png':'/assets/grip-v1.png?account='+account}};
+ const result=resolveEquipmentLayers(supported,catalog,privateManifest);
+ assert.deepEqual(result.issues,[]);
+ assert.equal(result.layers.find(layer=>layer.kind==='grip').asset,'/assets/grip-v1.png?account='+account);
+});
+
+test('Account image URLs reject foreign paths, malformed or additional query parameters',()=>{
+ const outfitAsset=equipmentManifest.outfits.novice.asset;
+ for(const url of [
+  'https://example.com/assets/'+outfitAsset+'?account=a',
+  '/assets/../'+outfitAsset+'?account=a',
+  '/assets/'+outfitAsset+'?account=a&account=b',
+  '/assets/'+outfitAsset+'?account=a&file=other',
+  '/assets/'+outfitAsset+'?account=../other',
+  '/assets/'+outfitAsset+'?account=a--b',
+  '/assets/'+outfitAsset+'?account=',
+  '/assets/'+outfitAsset+'?account='+('a'.repeat(65)),
+  '/assets/'+outfitAsset+'?account=a#fragment'
+ ]){
+  const output=avatar({equipped:{outfit:'novice'},profileAssets:{[outfitAsset]:url}},[{id:'novice',kind:'outfit',name:'Наряд',color:'#829b87'}]);
+  assert.equal(output.includes('hero-painted-outfit'),false,url);
+  const bad={...manifest,items:{...manifest.items,'test-flower':{...manifest.items['test-flower'],asset:url}}};
+  assert.equal(resolveEquipmentLayers(state,catalog,bad).layers.some(layer=>layer.slot==='flower'),false,url);
+ }
 });

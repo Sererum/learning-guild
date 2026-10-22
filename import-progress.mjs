@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createEngine} from './shared/engine-core.mjs';
-import defaultCourse from './courses/alice-python/index.mjs';
+import defaultCourse from './shared/blank-course.mjs';
 import {loadCourse} from './course-loader.mjs';
 import {readLocalConfig,resolveCourseSettings,profileStateFile,bindProfile,acquireProfileLock} from './local-config.mjs';
 const root=path.dirname(fileURLToPath(import.meta.url));

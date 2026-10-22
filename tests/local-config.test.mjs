@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {readLocalConfig,resolveCourseSettings,bindProfile,acquireProfileLock} from '../local-config.mjs';
 import {createGuildServer} from '../server.mjs';
-import starter from '../courses/starter-python/index.mjs';
+import starter from '../templates/starter-python/index.mjs';
 
 const temporary = work => {const dir=fs.mkdtempSync(path.join(os.tmpdir(),'guild-config-'));try{return work(dir);}finally{fs.rmSync(dir,{recursive:true,force:true});}};
 test('Local paths stay machine-specific and changing course/profile ignores the previous save override',()=>temporary(root=>{

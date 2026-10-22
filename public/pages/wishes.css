@@ -82,3 +82,16 @@
 }
 /* Four collections stay selectable on narrow desktop widths. */
 .stellar-toolbar{flex-wrap:wrap}.stellar-tablist{flex-wrap:wrap;min-width:0;flex:1}.stellar-wallet{margin-left:auto}
+
+/* Registered 10fps painted sequence, shared across every item and course. */
+.wish-painted-cinema{background:#0b1120}.wish-painted-cinema *{animation:none!important}
+.wish-painted-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.wish-painted-item{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);width:38%;height:74%;opacity:0;pointer-events:none}
+.wish-painted-item>.stellar-item-art,.wish-painted-item>img,.wish-painted-item>svg{display:block;width:100%;height:100%;object-fit:contain;max-width:none;max-height:none;filter:none}
+.wish-painted-cinema .wish-item-identity{position:absolute;bottom:2%;left:15%;right:15%;max-width:none;text-align:center;opacity:0;pointer-events:none}
+.wish-painted-cinema.is-identified .wish-item-identity{opacity:1}.wish-painted-cinema .wish-item-identity small{margin:0}.wish-painted-cinema .wish-item-identity h2{font-size:clamp(22px,3vw,38px);margin:6px 0}.wish-painted-cinema .wish-reveal-stars{font-size:18px;letter-spacing:5px}.wish-painted-cinema .wish-item-identity p{margin:4px 0}
+.wish-painted-cinema.is-revealed .wish-cinema-status{opacity:0}
+@media(max-aspect-ratio:1/1){.wish-painted-item{top:43%;width:64%;height:46%}.wish-painted-cinema .wish-item-identity{bottom:12%}}
+
+html:has(dialog.wish-cinematic-modal[open]),body:has(dialog.wish-cinematic-modal[open]){overflow:clip}
+@media(max-aspect-ratio:1/1){.wish-painted-video{object-fit:cover}.wish-painted-item{top:38%;width:76%;height:70%}}

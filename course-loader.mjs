@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 
-export const bundledCoursesRoot=fileURLToPath(new URL('./courses/',import.meta.url));
+export const bundledCoursesRoot=fileURLToPath(new URL('./local-courses/',import.meta.url));
 const slug=/^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const identifier=/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/;
 const unsafeKeys=new Set(['__proto__','prototype',...Object.getOwnPropertyNames(Object.prototype)]);
@@ -75,10 +75,12 @@ export function validateCourse(course){
  return course;
 }
 
-export async function loadCourse({courseId='alice-python',courseDir,coursesRoot=bundledCoursesRoot}={}){
+export async function loadCourse({courseId='new-course',courseDir,coursesRoot=bundledCoursesRoot}={}){
  if(!courseDir&&(typeof courseId!=='string'||!slug.test(courseId)))fail('courseId должен быть ASCII slug');
  const directory=await fs.realpath(courseDir?path.resolve(courseDir):path.join(coursesRoot,courseId));
  if(!courseDir&&!within(await fs.realpath(coursesRoot),directory))fail('courseId выходит за настроенную директорию courses');
+ let localManifest=false;try{await fs.lstat(path.join(directory,'manifest.json'));localManifest=true;}catch(error){if(error.code!=='ENOENT')throw error;}
+ if(localManifest){const {loadLocalCourseDirectory}=await import('./local-courses.mjs');return loadLocalCourseDirectory(directory,{accountId:courseDir?path.basename(directory):courseId}).course;}
  const manifest=JSON.parse(await fs.readFile(path.join(directory,'course.json'),'utf8'));
  if(typeof manifest.entry!=='string'||path.isAbsolute(manifest.entry)||path.extname(manifest.entry)!=='.mjs')fail('course.json: entry должен указывать локальный .mjs');
  const entry=await fs.realpath(path.resolve(directory,manifest.entry));if(!within(directory,entry))fail('entry выходит за директорию курса');

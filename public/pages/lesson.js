@@ -17,7 +17,7 @@ export function renderLesson(ctx){
  const legacy=data.presentation?.legacyLessonId;
  if(!lesson||lesson.id===legacy&&query().get('lesson')!==legacy){lesson=registry.find(l=>l.id===data.presentation?.currentLessonId)||data.activeLesson||registry[0];if(!lesson)return '<p>В этом курсе пока нет опубликованных уроков.</p>';selection={task:lesson.taskIds[0],point:data.presentation?.currentPointId||(data.courseMap?.points||[]).find(p=>p.lessonId===lesson.id)?.id};}
  const task=lesson.taskIds.includes(selection.task)?selection.task:lesson.taskIds[0];
- return `<section class="integrated-lesson"><iframe class="lesson-workbench-frame" title="${esc(lesson.title)}: теория, задания, Python и проверки" src="/lesson-workbench/index.html?lesson=${encodeURIComponent(lesson.id)}&task=${encodeURIComponent(task)}&point=${encodeURIComponent(selection.point||'')}#practice" style="height:1000px" loading="eager"></iframe></section>`;
+ return `<section class="integrated-lesson"><iframe class="lesson-workbench-frame" title="${esc(lesson.title)}: теория, задания, Python и проверки" src="/lesson-workbench/index.html?account=${encodeURIComponent(data.account?.id||'')}&lesson=${encodeURIComponent(lesson.id)}&task=${encodeURIComponent(task)}&point=${encodeURIComponent(selection.point||'')}#practice" style="height:1000px" loading="eager"></iframe></section>`;
 }
 const bindings=new WeakMap();
 export function bindLesson(root,ctx){

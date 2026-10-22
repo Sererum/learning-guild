@@ -17,3 +17,6 @@ __pycache__/
 *.key
 *.zip
 course-authoring/
+
+local-courses/
+local-learning-profiles/

@@ -12,9 +12,9 @@ import {findCodexExecutable} from '../codex-reviewer.mjs';
 export const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const deploymentFile = path.join(root, 'local-data', 'deployment.json');
 const processFile = path.join(root, 'local-data', 'deployment-process.json');
-const help = `Learning Guild — запуск на компьютере ученицы
+const help = `Learning Guild — одно приложение для всех локальных курсов
   node tools/deploy.mjs doctor [--python PATH] [--codex PATH]
-  node tools/deploy.mjs setup [--profile ID] [--state-file PATH] [--port 4327] [--python PATH] [--codex PATH]
+  node tools/deploy.mjs setup [--port 4327] [--python PATH] [--codex PATH]
   node tools/deploy.mjs start
   node tools/deploy.mjs status
   node tools/deploy.mjs smoke
@@ -51,7 +51,8 @@ function existingBinding(stateFile) {
   const file = path.join(directory, 'profile.json');
   if (!fs.existsSync(file)) return null;
   const binding = checkedJson(file);
-  if (binding.version !== 1 || binding.courseId !== 'alice-python') throw Error('Профиль относится к другому курсу или имеет неизвестный формат привязки.');
+  if (binding.version !== 1) throw Error('Неизвестный формат привязки профиля.');
+  validateProfileId(binding.courseId);
   validateProfileId(binding.profileId);
   return binding;
 }
@@ -73,20 +74,26 @@ export function validateDeploymentBinding(config) {
 }
 
 export function deploymentSelection(options = {}, {appRoot = root} = {}) {
-  const requested = options.profileId === undefined ? undefined : validateProfileId(options.profileId);
-  const stateFile = options.stateFile ? path.resolve(options.stateFile) : path.join(appRoot, 'profiles', 'alice-python', requested || 'default', 'progress.json');
-  if (options.stateFile && !fs.existsSync(stateFile)) throw Error('Указанный файл сохранения не найден. Сначала импортируй профиль и используй напечатанный путь.');
-  const binding = existingBinding(stateFile);
-  const profileId = requested || binding?.profileId || 'default';
-  return validateDeploymentBinding({courseId: 'alice-python', profileId, stateFile});
+  if (options.profileId !== undefined || options.stateFile !== undefined) {
+    throw Error('Запуск теперь общий для всех курсов. Сначала перенеси старый курс и полный профиль через tools/migrate-local-courses.mjs; затем используй setup без --profile и --state-file. Старые файлы не изменены.');
+  }
+  return {mode:'accounts', applicationRoot:path.resolve(appRoot)};
 }
 
 export function validateDeployment(config) {
-  if (config.version !== 1 || config.courseId !== 'alice-python') throw Error('Неизвестный формат настройки развёртывания.');
-  validateProfileId(config.profileId);
+  if (config.version === 1) throw Error('Это настройка прежнего сервера одного профиля. Останови его прежней версией deploy.mjs, сохрани резервную копию, перенеси курс и убери старый LaunchAgent. Затем архивируй deployment.json и выполни setup заново. Автоматическая перезапись не выполняется.');
+  if (config.version !== 2 || config.mode !== 'accounts') throw Error('Неизвестный формат настройки развёртывания.');
+  if (['courseId','profileId','stateFile'].some(key => Object.hasOwn(config,key))) throw Error('Общий запуск не может содержать выбор одного профиля. Выполни setup заново.');
   if (!Number.isInteger(config.port) || config.port < 1024 || config.port > 65535) throw Error('Порт: целое число от 1024 до 65535.');
-  for (const key of ['node', 'python', 'codex', 'stateFile']) if (!path.isAbsolute(config[key] || '')) throw Error(`В настройке ${key} нужен полный путь этого компьютера.`);
-  return validateDeploymentBinding(config);
+  for (const key of ['node', 'python', 'codex', 'applicationRoot']) if (!path.isAbsolute(config[key] || '')) throw Error(`В настройке ${key} нужен полный путь этого компьютера.`);
+  return config;
+}
+
+export function assertNoLegacyAutostarts({home=os.homedir()}={}) {
+  const folder=path.join(home,'Library','LaunchAgents');
+  if (!fs.existsSync(folder)) return;
+  const old=fs.readdirSync(folder).filter(name=>/^local\.learning-guild\..+\.plist$/.test(name));
+  if (old.length) throw Error('Найден прежний автозапуск одного профиля: '+old.join(', ')+'. Сначала останови и отключи его штатной командой старой установки. Новый запуск не включён.');
 }
 
 export async function assertPortFree(port) {
@@ -130,7 +137,9 @@ function writeJson(file, value) {
 
 function readConfig() {
   if (!fs.existsSync(deploymentFile)) throw Error('Сначала выполни setup на этом компьютере.');
-  return validateDeployment(JSON.parse(fs.readFileSync(deploymentFile, 'utf8')));
+  const config=validateDeployment(JSON.parse(fs.readFileSync(deploymentFile, 'utf8')));
+  if (path.resolve(config.applicationRoot)!==root) throw Error('Настройка создана для другой папки приложения. Сохрани её резервную копию и выполни setup в новой папке; запуск старой копии отменён.');
+  return config;
 }
 
 const xml = value => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
@@ -138,7 +147,7 @@ const xml = value => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').
 export function autostartPlan(config, {home = os.homedir(), appRoot = root, platform = process.platform} = {}) {
   validateDeployment(config);
   if (platform !== 'darwin') throw Error('Автозапуск этой защищённой сборки поддерживается только в macOS.');
-  const label = 'local.learning-guild.' + config.profileId;
+  const label = 'local.learning-guild';
   const logs = path.join(appRoot, 'local-data', 'logs');
   const env = {PATH: config.path || '/usr/bin:/bin:/usr/sbin:/sbin', GUILD_CODEX_BIN: config.codex, GUILD_PYTHON: config.python};
   if (config.dyldLibraryPath) env.DYLD_LIBRARY_PATH = config.dyldLibraryPath;
@@ -167,16 +176,13 @@ function managedProcess() {
 
 async function start(config) {
   if (managedProcess()) throw Error('Этот экземпляр уже запущен. Открой status или останови его через stop.');
+  assertNoLegacyAutostarts();
   const runtime = checkRuntime(config);
   await assertPortFree(config.port);
   process.env.GUILD_CODEX_BIN = runtime.codex;
   process.env.GUILD_PYTHON = runtime.python;
-  const {loadCourse} = await import('../course-loader.mjs');
-  const {createGuildServer} = await import('../server.mjs');
-  const course = await loadCourse({courseId: config.courseId});
-  const executionFile = path.join(path.dirname(config.stateFile), 'execution-settings.json');
-  if (fs.existsSync(executionFile) && JSON.parse(fs.readFileSync(executionFile, 'utf8')).mode !== 'isolated') throw Error('В профиле выбран доверенный режим. Автозапуск отказан: согласуй возврат к защищённому режиму.');
-  const server = createGuildServer({course, profileId: config.profileId, stateFile: config.stateFile, python: runtime.python, reviewExecutable: runtime.codex, learningExecutable: runtime.codex});
+  const {createAccountServer} = await import('../account-server.mjs');
+  const server = createAccountServer({root:config.applicationRoot, python:runtime.python, reviewExecutable:runtime.codex, learningExecutable:runtime.codex});
   const nonce = crypto.randomBytes(16).toString('hex');
   const stopFile = path.join(root, 'local-data', `stop-${nonce}`);
   let timer;
@@ -191,9 +197,9 @@ async function start(config) {
   process.once('SIGINT', stop);
   process.once('SIGTERM', stop);
   server.listen(config.port, '127.0.0.1', () => {
-    writeJson(processFile, {pid: process.pid, nonce, port: config.port, profileId: config.profileId});
+    writeJson(processFile, {pid: process.pid, nonce, port: config.port, mode:'accounts'});
     timer = setInterval(() => { if (fs.existsSync(stopFile)) stop(); }, 500);
-    console.log(`Learning Guild: http://127.0.0.1:${config.port}/#world\nПрофиль: ${config.profileId}; Python: защищённый.\nОстановка: node tools/deploy.mjs stop`);
+    console.log(`Learning Guild: http://127.0.0.1:${config.port}/#world\nВсе локальные курсы; Python: защищённый по умолчанию.\nОстановка: node tools/deploy.mjs stop`);
   });
 }
 
@@ -205,18 +211,18 @@ function launchctl(args, {allowMissing = false} = {}) {
 export async function smokeDeployment(config) {
   if (config.dyldLibraryPath) process.env.DYLD_LIBRARY_PATH = config.dyldLibraryPath;
   const runtime = checkRuntime(config);
-  const {createGuildServer, runPython} = await import('../server.mjs');
-  const {loadCourse} = await import('../course-loader.mjs');
+  const {runPython} = await import('../server.mjs');
+  const {createAccountServer} = await import('../account-server.mjs');
   const task = {tests: [{label: 'Smoke', inputs: {values: [2, 3]}, expected: {total: 5}}]};
   const result = await runPython(task, 'total = sum(values)\nprint(total)', runtime.python);
   if (!result.ok) throw Error('Защищённый smoke-тест Python не пройден: ' + (result.error || 'проверка не прошла'));
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'guild-deploy-smoke-'));
   let server;
   try {
-    const course = await loadCourse({courseId: config.courseId});
-    server = createGuildServer({course, stateFile: path.join(directory, 'progress.json'), profileId: 'smoke', python: runtime.python, importHistory: false, reviewProvider: 'off', learningProvider: 'off', sharedReviewProvider: 'off'});
+    server = createAccountServer({root:directory, python:runtime.python, importHistory:false, reviewProvider:'off', learningProvider:'off', sharedReviewProvider:'off'});
+    server.guildStore.create({id:'smoke',title:'Проверка установки',learnerName:'Тестовый профиль',goal:'Проверить локальную установку.',contentMode:'blank',preferencesMode:'new'});
     await new Promise((resolve, reject) => { server.once('error', reject); server.listen(0, '127.0.0.1', resolve); });
-    const response = await fetch(`http://127.0.0.1:${server.address().port}/api/state`);
+    const response = await fetch(`http://127.0.0.1:${server.address().port}/api/state?account=smoke`);
     if (!response.ok || !(await response.json()).state) throw Error('Не удалось получить состояние временного сервера.');
     console.log('Smoke пройден: защищённый Python, тесты и HTTP. Использован временный профиль, реальный прогресс не изменён.');
   } finally {
@@ -246,18 +252,20 @@ export async function main(args = process.argv.slice(2)) {
   const options = parseOptions(rest);
   if (['--help', 'help'].includes(command)) { console.log(help); return; }
   const allowed = {doctor: ['python', 'codex'], setup: ['profileId', 'stateFile', 'port', 'python', 'codex', 'dryRun'], autostart: ['dryRun'], 'uninstall-autostart': ['dryRun'], start: [], stop: [], status: [], smoke: []}[command];
-  if (allowed && Object.keys(options).some(key => !allowed.includes(key))) throw Error('Параметры не поддерживаются этой командой. Профиль и файл сохранения выбираются через setup.');
+  if (allowed && Object.keys(options).some(key => !allowed.includes(key))) throw Error('Параметры не поддерживаются этой командой. Курсы переключаются в приложении.');
   if (command === 'doctor') {
     const runtime = checkRuntime(options);
     console.log(`Проверки пройдены: Node ${process.versions.node}; Python 3.12; ${runtime.backend}; Codex авторизован.\nНичего не установлено и не запущено.`);
   } else if (command === 'setup') {
     const selection = deploymentSelection(options);
+    if (fs.existsSync(deploymentFile)) throw Error('Настройка уже существует. Сначала останови действующий сервер и сохрани её резервную копию. Автоматическая перезапись не выполняется.');
+    assertNoLegacyAutostarts();
     const runtime = checkRuntime(options);
-    const config = validateDeployment({version: 1, ...runtime, ...selection, port: Number(options.port || 4327), path: process.env.PATH || '/usr/bin:/bin', ...(process.env.DYLD_LIBRARY_PATH ? {dyldLibraryPath: process.env.DYLD_LIBRARY_PATH} : {})});
+    const config = validateDeployment({version: 2, ...runtime, ...selection, port: Number(options.port || 4327), path: process.env.PATH || '/usr/bin:/bin', ...(process.env.DYLD_LIBRARY_PATH ? {dyldLibraryPath: process.env.DYLD_LIBRARY_PATH} : {})});
     await assertPortFree(config.port);
     if (fs.existsSync(deploymentFile)) throw Error('Настройка уже существует. Не перезаписываю её: сначала останови сервер и проверь local-data/deployment.json.');
     if (!options.dryRun) writeJson(deploymentFile, config);
-    console.log(`${options.dryRun ? 'Проверено без записи' : 'Настройка сохранена'}: http://127.0.0.1:${config.port}/#world\nПрофиль: ${config.profileId}; сохранение: ${config.stateFile}\nЗатем: node tools/deploy.mjs start`);
+    console.log(`${options.dryRun ? 'Проверено без записи' : 'Настройка сохранена'}: http://127.0.0.1:${config.port}/#world\nКурсы: ${path.join(config.applicationRoot, 'local-courses')}\nЗатем: node tools/deploy.mjs start`);
   } else if (command === 'start') {
     const config = readConfig();
     if (config.dyldLibraryPath) process.env.DYLD_LIBRARY_PATH = config.dyldLibraryPath;
@@ -272,6 +280,7 @@ export async function main(args = process.argv.slice(2)) {
     const plan = autostartPlan(config);
     if (options.dryRun) { console.log(JSON.stringify(plan, null, 2)); return; }
     checkRuntime(config);
+    assertNoLegacyAutostarts();
     if (managedProcess()) throw Error('Сначала останови ручной запуск через stop; затем включи автозапуск.');
     await assertPortFree(config.port);
     if (fs.existsSync(plan.file)) throw Error('LaunchAgent уже существует. Для изменения сначала используй uninstall-autostart.');

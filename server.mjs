@@ -9,7 +9,7 @@ import crypto from 'node:crypto';
 import {spawn} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {createEngine} from './shared/engine-core.mjs';
-import defaultCourse from './courses/alice-python/index.mjs';
+import defaultCourse from './shared/blank-course.mjs';
 import {loadCourse,validateCourse} from './course-loader.mjs';
 import {readLocalConfig,resolveCourseSettings,profileStateFile,validateProfileId,bindProfile,acquireProfileLock,findPython312} from './local-config.mjs';
 import {createReviewBridge,codeHash,proposedRubric} from './review.mjs';
@@ -48,7 +48,7 @@ export function publicCourseTasks(tasks,revealed={},qualityCaps) {
  return tasks.map(source=>{const {tests}=source,task=Object.fromEntries(Object.entries(source).filter(([key])=>fields.has(key)));return {...task,...(qualityCaps?{qualityCap:qualityCaps[task.id]??0}:{}),
    scenarios:tests.map(test=>test.label),cases:tests.map((_,index)=>caseDetails(source,index,revealed))};});
 }
-export function createGuildServer({course=defaultCourse,profileId='default',stateFile=profileStateFile(course.id,profileId),python=findPython312(process.env.GUILD_PYTHON),importHistory=true,reviewProvider=process.env.GUILD_REVIEW_MODE||'codex',reviewEnabled=reviewProvider!=='off',reviewRubric=proposedRubric,reviewExecutable,learningProvider=process.env.GUILD_LEARNING_MODE||'codex',learningFixtureProvider,learningExecutable=reviewExecutable,learningTimeoutMs,learningExecutePython,programFixtureProvider,sharedDirectory,sharedReviewProvider=reviewProvider,sharedReviewFixture}={}){
+export function createGuildServer({course=defaultCourse,profileId='default',stateFile=profileStateFile(course.id,profileId),python=findPython312(process.env.GUILD_PYTHON),importHistory=true,reviewProvider=process.env.GUILD_REVIEW_MODE||'codex',reviewEnabled=reviewProvider!=='off',reviewRubric=proposedRubric,reviewExecutable,learningProvider=process.env.GUILD_LEARNING_MODE||'codex',learningFixtureProvider,learningExecutable=reviewExecutable,learningTimeoutMs,learningExecutePython,programFixtureProvider,sharedDirectory,sharedReviewProvider=reviewProvider,sharedReviewFixture,sharedPreferences,accountContext}={}){
  validateProfileId(profileId);course=loadCourseProfile(course,{stateFile,profileId});validateCourse(course);
  const baseCourse=course;
  let engine=createEngine(course),{initialState,normalizeState,importCourseHistory,act,claim,claimQuality,canStudyGate,catalog,banners,courseMap}=engine;
@@ -58,7 +58,7 @@ export function createGuildServer({course=defaultCourse,profileId='default',stat
  try {
  const existingSave=fs.existsSync(stateFile);
  let state=initialState();if(existingSave){state=JSON.parse(fs.readFileSync(stateFile,'utf8'));if(state.version!==1)throw Error('Неподдерживаемая версия сохранения');normalizeState(state);}
- const directory=path.dirname(stateFile),governance=createProfileGovernance({directory,courseId:course.id,profileId}),generationControl=createGenerationControl(directory,{readAiEfforts:()=>governance.settings().aiEfforts}),browserState=createBrowserState(directory,course.id+':'+profileId);
+ const directory=path.dirname(stateFile),governance=createProfileGovernance({directory,courseId:course.id,profileId,sharedPreferences}),generationControl=createGenerationControl(directory,{readAiEfforts:()=>governance.settings().aiEfforts}),browserState=createBrowserState(directory,course.id+':'+profileId);
  const seedFile=path.join(directory,'personalization-seed.json');
  if(fs.existsSync(seedFile))governance.importSeed(JSON.parse(fs.readFileSync(seedFile,'utf8')));
  const learner=()=>({...governance.resolveLearner(),name:state.name||course.manifest.learnerName||'Ученик'});
@@ -72,10 +72,10 @@ export function createGuildServer({course=defaultCourse,profileId='default',stat
  const versions=createContentVersions({directory,readCourse:()=>course,readState:()=>state,readChecked});versions.reconcile();
  const currentState=()=>versions.effectiveState(state),currentChecked=id=>versions.isCurrentProof(id,state.testProofs?.[id])?readChecked(id):null;
  let standards=null;
- const learning=createLearningService({directory,course:baseCourse,readCourse:()=>course,readCurriculum:()=>program.curriculum(),readState:currentState,readChecked:currentChecked,readContentVersion:versions.versionForTask,python,governance,generationControl,readCommonRules:()=>standards?.activeRules()||[],
-  provider:course.adaptation?.roadmap?.length?learningProvider:'off',fixtureProvider:learningFixtureProvider,executable:learningExecutable,timeoutMs:learningTimeoutMs,executePython:learningExecutePython||((input)=>executeGeneratedPython({...input,python,executionMode:executionMode()})),
+ const learning=createLearningService({directory,course:baseCourse,readCourse:()=>course,readCurriculum:options=>program.curriculum(options),readState:currentState,readChecked:currentChecked,readContentVersion:versions.versionForTask,python,governance,generationControl,readCommonRules:()=>standards?.activeRules()||[],
+  provider:learningProvider,fixtureProvider:learningFixtureProvider,executable:learningExecutable,timeoutMs:learningTimeoutMs,executePython:learningExecutePython||((input)=>executeGeneratedPython({...input,python,executionMode:executionMode()})),
   validateOverlay:overlay=>withLearningOverlay(baseCourse,overlay)});
- const program=createProgramService({directory,courseId:course.id,profileId,readCourse:()=>course,readState:currentState,learning,generationControl,readAiEfforts:()=>governance.settings().aiEfforts,provider:learningProvider,executable:learningExecutable,fixtureProvider:programFixtureProvider});
+ const program=createProgramService({directory,courseId:course.id,profileId,readCourse:()=>course,readState:currentState,learning,generationControl,readAiEfforts:()=>governance.settings().aiEfforts,readPreferences:()=>({about:governance.snapshot().about,rules:governance.snapshot().personalization.preferences.filter(r=>r.status==='active').map(r=>r.text)}),provider:learningProvider,executable:learningExecutable,fixtureProvider:programFixtureProvider});
  const personalNames=[course.manifest.learnerName,...governance.settings().authors.map(author=>author.name)].filter(Boolean);
  const localSharedDirectory=sharedDirectory||(!path.relative(root,path.resolve(stateFile)).startsWith('..')?path.join(root,'local-data','shared'):path.join(directory,'shared-rules'));
  standards=createSharedStandards({directory:localSharedDirectory,profileScope:course.id+':'+profileId,readProposals:()=>governance.snapshot().personalization.sharedProposals,resolveAuthor:learner,resolveLocalOwner:()=>({id:'local-owner',role:'local-owner'}),generationControl,executable:learningExecutable,provider:sharedReviewProvider,reviewFixture:sharedReviewFixture,personalNames,readAiEfforts:()=>governance.settings().aiEfforts});
@@ -96,6 +96,8 @@ export function createGuildServer({course=defaultCourse,profileId='default',stat
  }
  function settingsSnapshot(){return {ai:{roles:aiRoles,effortLabels:aiEffortLabels},profile:governance.snapshot(),generation:{...generationControl.management(),...learning.management?.()},shared:standards?.snapshot()||{proposals:[],activeRules:[],history:[]},versions:versions.snapshot(),execution:{mode:executionMode(),capabilities:getExecutionCapabilities({python})}};}
  async function settingsAction(input){
+  const affectsPreferences=input.area==='profile'||input.area==='generation'&&input.action==='confirm-personalization';
+  if(accountContext&&affectsPreferences){const sharing=accountContext.sharing();const changes=input.action!=='decide-changes'&&input.action!=='confirm-personalization'||input.acceptedIds?.length;if(changes){if(input.sharedProfileId!==sharing.id)throw Error('Связь профиля изменилась. Обновите страницу.');if(input.sharedRevision!==sharing.revision)throw Error('Настройки изменились. Обновите страницу перед сохранением.');if(sharing.courses.length>1&&(input.confirmShared!==true||JSON.stringify([...(input.sharedCourseIds||[])].sort())!==JSON.stringify(sharing.courses.map(c=>c.id).sort())))throw Error('Подтвердите изменение общего профиля для всех связанных курсов.');}}
   if(input.area==='browser-state'){if(input.action!=='save')throw Error('Неизвестное действие для черновиков.');browserState.save(input);return {message:'Черновики сохранены в локальном профиле.'};}
   if(input.area==='profile'){if(['set-author','add-author','update-author'].includes(input.action))throw Error('Отзывы оставляет ученик. Выбор автора больше не требуется.');const result=governance.act(input);personalNames.splice(0,personalNames.length,...[course.manifest.learnerName,...governance.settings().authors.map(author=>author.name)].filter(Boolean));return result;}
   if(input.area==='generation')return input.action==='set-limits'?generationControl.manage(input):await learning.manage(input);
@@ -107,7 +109,7 @@ export function createGuildServer({course=defaultCourse,profileId='default',stat
   }
   throw Error('Неизвестный раздел настроек.');
  }
- function snapshot(){refreshLearningCourse();versions.reconcile();const programState=program.snapshot(),earnedPresentation={...(course.presentation?.points||{})};for(const n of programState.nodes){if((n.jobId||n.excluded)&&n.pointId)earnedPresentation[n.pointId]={...earnedPresentation[n.pointId],available:n.available};if(n.masteryVia)for(const point of n.pointIds)earnedPresentation[point]={...earnedPresentation[point],phase:'mastered'};if(n.available&&n.prerequisites.some(id=>programState.nodes.find(x=>x.id===id)?.masteryVia)&&n.pointId)earnedPresentation[n.pointId]={...earnedPresentation[n.pointId],available:true};}return {program:programState,browserState:browserState.snapshot(),contentVersions:versions.snapshot(),settings:settingsSnapshot(),authors:{choices:[learner()],active:learner()},learning:{...learningSnapshot(),...(learningWarning?{warning:learningWarning}:{})},gameRules:course.engineConfig,course:{id:course.id,title:course.manifest.title,subject:course.manifest.subject||'Python',learnerName:state.name||course.manifest.learnerName,profileId,storageScope:course.id+':'+profileId,legacyStorageMigration:!!course.manifest.legacyStorageMigration&&profileId==='default',runtime:course.manifest.runtime,recurringTasks:course.engineConfig.recurringTasks||[]},presentation:{previous:course.engineConfig.pointPrerequisites||{},...(course.presentation||{}),points:earnedPresentation},state:withProfileAssets(currentState(),stateFile),catalog,banners,courseMap,repairPoints,feedbackTemplate:taskFeedbackTemplate,lesson:course.notebookLesson||lessons[0],activeLesson:course.activeLesson||lessons[0],lessons,tasks:publicCourseTasks(tasks,state.revealedTests||{},course.engineConfig.qualityCaps||{}),day:moscowDay(),reviewer:{enabled:reviewer.enabled,provider:reviewer.provider,rubric:reviewer.rubric,efforts:reviewer.efforts,defaultEffort:reviewer.defaultEffort,helpDefaultEffort:reviewer.helpDefaultEffort},mode:'local',contractVersion:2};}
+ function snapshot(){refreshLearningCourse();versions.reconcile();const programState=program.snapshot(),earnedPresentation={...(course.presentation?.points||{})};for(const n of programState.nodes){if((n.jobId||n.excluded)&&n.pointId)earnedPresentation[n.pointId]={...earnedPresentation[n.pointId],available:n.available};if(n.masteryVia)for(const point of n.pointIds)earnedPresentation[point]={...earnedPresentation[point],phase:'mastered'};if(n.available&&n.prerequisites.some(id=>programState.nodes.find(x=>x.id===id)?.masteryVia)&&n.pointId)earnedPresentation[n.pointId]={...earnedPresentation[n.pointId],available:true};}return {...(accountContext?{account:accountContext.snapshot()}:{}),program:programState,browserState:browserState.snapshot(),contentVersions:versions.snapshot(),settings:settingsSnapshot(),authors:{choices:[learner()],active:learner()},learning:{...learningSnapshot(),...(learningWarning?{warning:learningWarning}:{})},gameRules:course.engineConfig,course:{id:course.id,title:course.manifest.title,subject:course.manifest.subject||'Python',learnerName:state.name||course.manifest.learnerName,profileId,storageScope:course.id+':'+profileId,legacyStorageMigration:!!course.manifest.legacyStorageMigration&&profileId==='default',runtime:course.manifest.runtime,recurringTasks:course.engineConfig.recurringTasks||[]},presentation:{previous:course.engineConfig.pointPrerequisites||{},...(course.presentation||{}),points:earnedPresentation},state:accountContext?accountContext.assets(withProfileAssets(currentState(),stateFile)):withProfileAssets(currentState(),stateFile),catalog,banners,courseMap,repairPoints,feedbackTemplate:taskFeedbackTemplate,lesson:course.notebookLesson||lessons[0],activeLesson:course.activeLesson||lessons[0],lessons,tasks:publicCourseTasks(tasks,state.revealedTests||{},course.engineConfig.qualityCaps||{}),day:moscowDay(),reviewer:{enabled:reviewer.enabled,provider:reviewer.provider,rubric:reviewer.rubric,efforts:reviewer.efforts,defaultEffort:reviewer.defaultEffort,helpDefaultEffort:reviewer.helpDefaultEffort},mode:'local',contractVersion:2};}
  function reply(res,status,obj){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(obj));}
  const server=http.createServer(async(req,res)=>{
    res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('Referrer-Policy','no-referrer');
@@ -166,6 +168,17 @@ export function createGuildServer({course=defaultCourse,profileId='default',stat
      }catch(e){reply(res,400,{error:e.message});}return;
    }
    if(req.method!=='GET'){reply(res,405,{error:'Метод недоступен'});return;}
+   // Only public, versioned cinema files; never read profile media through this route.
+   if(/^\/assets\/wish-anime-[345]star-v[356]\.mp4$/.test(url.pathname)){
+     const file=path.join(root,'public',url.pathname.slice(1));if(!fs.existsSync(file)||!fs.lstatSync(file).isFile()||fs.lstatSync(file).isSymbolicLink()){reply(res,404,{error:'Анимация не найдена'});return;}
+     const size=fs.statSync(file).size,headers={'Content-Type':'video/mp4','Accept-Ranges':'bytes','Cache-Control':'public, max-age=0, must-revalidate'};
+     if(req.headers.range){const match=/^bytes=(\d*)-(\d*)$/.exec(req.headers.range);let start=0,end=size-1;
+       if(match){if(match[1]){start=Number(match[1]);if(match[2])end=Math.min(end,Number(match[2]));}else if(match[2])start=Math.max(0,size-Number(match[2]));}
+       if(!match||(!match[1]&&!match[2])||!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start<0||start>=size||end<start){res.writeHead(416,{'Content-Range':'bytes */'+size});res.end();return;}
+       res.writeHead(206,{...headers,'Content-Range':'bytes '+start+'-'+end+'/'+size,'Content-Length':end-start+1});fs.createReadStream(file,{start,end}).pipe(res);return;
+     }
+     res.writeHead(200,{...headers,'Content-Length':size});fs.createReadStream(file).pipe(res);return;
+   }
    if(/^\/assets\/(?:equipment\/)?[a-zA-Z0-9_-]+\.(png|svg|webp)$/.test(url.pathname)){
      const name=url.pathname.slice('/assets/'.length),privateAsset=readProfileAsset(stateFile,name);
      if(privateAsset){res.writeHead(200,{'Content-Type':'image/png','Content-Length':privateAsset.length,'Cache-Control':'no-store','Cross-Origin-Resource-Policy':'same-origin'});res.end(privateAsset);return;}
@@ -173,22 +186,34 @@ export function createGuildServer({course=defaultCourse,profileId='default',stat
      const asset=path.join(root,'public',url.pathname.slice(1));if(!fs.existsSync(asset)||!fs.lstatSync(asset).isFile()||fs.lstatSync(asset).isSymbolicLink()){reply(res,404,{error:'Иллюстрация не найдена'});return;}
      const type=asset.endsWith('.svg')?'image/svg+xml':asset.endsWith('.webp')?'image/webp':'image/png';res.writeHead(200,{'Content-Type':type,'Cache-Control':'no-cache'});res.end(fs.readFileSync(asset));return;
    }
-   const assets={'/equipment-scene.js':'equipment-scene.js','/equipment-manifest.js':'equipment-manifest.js','/pages/resource-guide.js':'pages/resource-guide.js','/pages/resource-guide.css':'pages/resource-guide.css','/pages/hero-equipment.js':'pages/hero-equipment.js','/pages/program.js':'pages/program.js','/pages/program-practice.js':'pages/program-practice.js','/pages/program.css':'pages/program.css','/pages/settings.js':'pages/settings.js','/pages/settings.css':'pages/settings.css','/storage.js':'storage.js','/lesson-workbench/feedback.js':'lesson-workbench/feedback.js','/pages/wishes.js':'pages/wishes.js','/pages/wishes.css':'pages/wishes.css','/pages/item-art.js':'pages/item-art.js','/pages/journal-presentation.js':'pages/journal-presentation.js','/pages/journal-theme.css':'pages/journal-theme.css','/pages/quest-art.js':'pages/quest-art.js','/fantasy-theme.css':'fantasy-theme.css',...{"/lesson-workbench/index.html":"lesson-workbench/index.html","/lesson-workbench/app.js":"lesson-workbench/app.js","/lesson-workbench/editor.js":"lesson-workbench/editor.js","/lesson-workbench/workspace.js":"lesson-workbench/workspace.js","/lesson-workbench/transport.js":"lesson-workbench/transport.js","/lesson-workbench/style.css":"lesson-workbench/style.css","/lesson-workbench/frame.js":"lesson-workbench/frame.js"},'/':'index.html','/app.js':'app.js','/journey.js':'journey.js','/legacy-drafts.html':'legacy-drafts.html','/style.css':'style.css','/transport.js':'transport.js','/pages/world.js':'pages/world.js','/pages/terrain.js':'pages/terrain.js','/pages/world.css':'pages/world.css','/pages/hero.js':'pages/hero.js','/pages/hero.css':'pages/hero.css','/pages/book.js':'pages/book.js','/pages/book.css':'pages/book.css','/pages/lesson.js':'pages/lesson.js','/pages/lesson.css':'pages/lesson.css'};
+   const assets={'/pages/wish-cinema.js':'pages/wish-cinema.js','/equipment-scene.js':'equipment-scene.js','/equipment-manifest.js':'equipment-manifest.js','/pages/resource-guide.js':'pages/resource-guide.js','/pages/resource-guide.css':'pages/resource-guide.css','/pages/hero-equipment.js':'pages/hero-equipment.js','/pages/program.js':'pages/program.js','/pages/program-practice.js':'pages/program-practice.js','/pages/program.css':'pages/program.css','/pages/settings.js':'pages/settings.js','/pages/settings.css':'pages/settings.css','/storage.js':'storage.js','/lesson-workbench/feedback.js':'lesson-workbench/feedback.js','/pages/wishes.js':'pages/wishes.js','/pages/wishes.css':'pages/wishes.css','/pages/item-art.js':'pages/item-art.js','/pages/journal-presentation.js':'pages/journal-presentation.js','/pages/journal-theme.css':'pages/journal-theme.css','/pages/quest-art.js':'pages/quest-art.js','/fantasy-theme.css':'fantasy-theme.css',...{"/lesson-workbench/index.html":"lesson-workbench/index.html","/lesson-workbench/app.js":"lesson-workbench/app.js","/lesson-workbench/editor.js":"lesson-workbench/editor.js","/lesson-workbench/workspace.js":"lesson-workbench/workspace.js","/lesson-workbench/transport.js":"lesson-workbench/transport.js","/lesson-workbench/style.css":"lesson-workbench/style.css","/lesson-workbench/frame.js":"lesson-workbench/frame.js"},'/':'index.html','/app.js':'app.js','/journey.js':'journey.js','/legacy-drafts.html':'legacy-drafts.html','/style.css':'style.css','/transport.js':'transport.js','/pages/world.js':'pages/world.js','/pages/terrain.js':'pages/terrain.js','/pages/world.css':'pages/world.css','/pages/hero.js':'pages/hero.js','/pages/hero.css':'pages/hero.css','/pages/book.js':'pages/book.js','/pages/book.css':'pages/book.css','/pages/lesson.js':'pages/lesson.js','/pages/lesson.css':'pages/lesson.css'};
    if(!assets[url.pathname]){reply(res,404,{error:'Не найдено'});return;}
    const file=assets[url.pathname];let content=fs.readFileSync(path.join(root,'public',file),'utf8');
-   if(file==='index.html'||file==='lesson-workbench/index.html')content=content.replace('__GUILD_TOKEN__',token);
+   if(file==='index.html'||file==='lesson-workbench/index.html')content=content.replace('__GUILD_TOKEN__',token).replace('__GUILD_ACCOUNT__',accountContext?.id||'');
+   if(accountContext&&(file==='index.html'||file==='lesson-workbench/index.html'))content=content.replaceAll('src="/rules.js"','src="/rules.js?account='+accountContext.id+'"');
    res.writeHead(200,{'Content-Type':file.endsWith('.css')?'text/css; charset=utf-8':file.endsWith('.js')?'text/javascript; charset=utf-8':'text/html; charset=utf-8','Cache-Control':'no-store'});res.end(content);
  });
- const closeProfile=()=>{program.close();learning.close();reviewer.close?.();standards?.close?.();releaseProfile();};server.once('close',closeProfile);server.once('error',closeProfile);
+ let profileClosed=false;const closeProfile=()=>{if(profileClosed)return;profileClosed=true;program.close();learning.close();reviewer.close?.();standards?.close?.();releaseProfile();};
+ server.guildClose=closeProfile;server.guildSnapshot=snapshot;server.guildPlan=input=>program.act(input);server.guildCourse=()=>{
+  refreshLearningCourse();const view=program.snapshot(),nodes=view.nodes;
+  // Copy curriculum, including optional branches and exclusions, without exporting
+  // progress, discussion, generated-job state or assessment evidence.
+  const keys=['id','title','lessonId','pointId','prerequisites','learningGoals','lessonPlan','main','parentId','blockId','runtime','requiresRuntime'];
+  return {...structuredClone(course),
+   program:{...structuredClone(course.program),blocks:structuredClone(view.blocks),excluded:nodes.filter(n=>n.excluded).map(n=>n.id),nodes:Object.fromEntries(nodes.map(n=>[n.id,{lessonPlan:n.lessonPlan,pointIds:n.pointIds}]))},
+   adaptation:{...structuredClone(course.adaptation),roadmap:nodes.map(n=>({...Object.fromEntries(keys.filter(k=>n[k]!==undefined).map(k=>[k,structuredClone(n[k])])),kind:n.kind||'lesson'}))}};
+ };server.once('close',closeProfile);server.once('error',closeProfile);
  return server;
  } catch(error) {releaseProfile();throw error;}
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
+ setImmediate(async()=>{
  try {
-  const chosen=readLocalConfig({args:process.argv.slice(2)}),course=await loadCourse(chosen),settings=resolveCourseSettings(chosen,course);
-  const python=findPython312(settings.python);
-  const server=createGuildServer({...settings,course,python});
-  server.listen(settings.port,'127.0.0.1',()=>console.log(`${course.manifest.title}: http://127.0.0.1:${settings.port}\nКурс: ${course.id}; профиль: ${settings.profileId}.\nСохранения: ${settings.stateFile}\nОстановить: Ctrl+C.`));
+  const chosen=readLocalConfig({args:process.argv.slice(2)}),python=findPython312(chosen.python);
+  const {createAccountServer}=await import('./account-server.mjs');
+  const server=createAccountServer({root,python});
+  server.listen(chosen.port,'127.0.0.1',()=>console.log('Гильдия знаний: http://127.0.0.1:'+chosen.port));
   server.on('error',e=>{console.error(e.message);process.exitCode=1;});
  } catch(error) {console.error(error.message);process.exitCode=1;}
+ });
 }

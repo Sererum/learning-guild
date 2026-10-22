@@ -1,3 +1,4 @@
+import {fileURLToPath} from 'node:url';
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import os from 'node:os';import path from 'node:path';
 import {diagnosePython} from '../python-diagnostics.mjs';import {findPython312} from '../local-config.mjs';import {createGuildServer} from '../server.mjs';import {loadCourse} from '../course-loader.mjs';
 const python=findPython312(process.env.GUILD_PYTHON);
@@ -36,7 +37,7 @@ test('syntax errors and Unicode positions use actual editor UTF16 offsets',async
  assert.deepEqual(await analyze('text="sa" # unknown\nprint(text)'),[]);
 });
 test('diagnostic endpoint requires local session and does not change progress or run code',async()=>{
- const dir=fs.mkdtempSync(path.join(os.tmpdir(),'guild-diagnostic-api-')),stateFile=path.join(dir,'progress.json'),course=await loadCourse({courseId:'starter-python'});
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'guild-diagnostic-api-')),stateFile=path.join(dir,'progress.json'),course=await loadCourse({courseId:'starter-python',coursesRoot:fileURLToPath(new URL('../templates/',import.meta.url))});
  const server=createGuildServer({course,stateFile,python,reviewEnabled:false});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
  const base='http://127.0.0.1:'+server.address().port;
  try{

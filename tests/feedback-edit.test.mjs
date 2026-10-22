@@ -1,3 +1,4 @@
+import {learningCourseFixture} from './learning-course-fixture.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {saveTaskFeedback} from '../feedback.mjs';
@@ -33,14 +34,14 @@ test('Invalid edits preserve the current feedback and its audit history',()=>{
 });
 
 test('Manual feedback API uses latest verified proof without requiring the current editor draft',async()=>{
- const directory=fs.mkdtempSync(path.join(os.tmpdir(),'guild-feedback-edit-api-')),server=createGuildServer({stateFile:path.join(directory,'progress.json'),reviewProvider:'off'});
+ const directory=fs.mkdtempSync(path.join(os.tmpdir(),'guild-feedback-edit-api-')),server=createGuildServer({course:learningCourseFixture(),stateFile:path.join(directory,'progress.json'),reviewProvider:'off'});
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const origin='http://127.0.0.1:'+server.address().port,html=await(await fetch(origin)).text(),headers={Origin:origin,'Content-Type':'application/json','X-Guild-Token':html.match(/name="guild-token" content="([^"]+)"/)[1]};
  const post=async(route,input)=>{const response=await fetch(origin+route,{method:'POST',headers,body:JSON.stringify(input)});return{status:response.status,body:await response.json()};};
- const input={...answer,task:'algo-max-1',lesson:'algorithms',edit:true};
+ const input={...answer,task:'source-1',lesson:'source-lesson',edit:true};
  try{
   assert.equal((await post('/api/task-feedback',input)).status,400,'manual add still needs actual test execution');
-  const checked=await post('/api/check',{task:input.task,code:'best_sale = 0\nprint(best_sale)'});assert.equal(checked.body.result.ok,false);
-  const skipped=await post('/api/task-feedback',{task:input.task,lesson:input.lesson,code:'best_sale = 0\nprint(best_sale)',skipped:true});assert.equal(skipped.status,200);
+  const checked=await post('/api/check',{task:input.task,code:'answer = 0\nprint(answer)'});assert.equal(checked.body.result.ok,false);
+  const skipped=await post('/api/task-feedback',{task:input.task,lesson:input.lesson,code:'answer = 0\nprint(answer)',skipped:true});assert.equal(skipped.status,200);
   const currency=skipped.body.state.currency,response=await post('/api/task-feedback',input);assert.equal(response.status,200);assert.equal(response.body.result.updated,true);assert.equal(response.body.state.currency,currency);
   assert.equal(response.body.result.feedback.codeHash,checked.body.state.testProofs[input.task].codeHash);
   assert.equal(response.body.result.feedback.allPassed,false);assert.equal(response.body.state.taskFeedbackHistory[input.task][0].skipped,true);

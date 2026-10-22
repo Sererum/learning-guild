@@ -1,7 +1,8 @@
+import {fileURLToPath} from 'node:url';
 import {browserOptions} from './browser-runtime.mjs';import fs from 'node:fs';import os from 'node:os';import path from 'node:path';import assert from 'node:assert/strict';import {createRequire} from 'node:module';
 import {createGuildServer} from '../server.mjs';import {loadCourse} from '../course-loader.mjs';
 const require=createRequire(import.meta.url),{chromium}=require('playwright'),dir=fs.mkdtempSync(path.join(os.tmpdir(),'guild-diagnostic-browser-'));
-const course=await loadCourse({courseId:'starter-python'}),stateFile=path.join(dir,'progress.json'),server=createGuildServer({course,stateFile,reviewEnabled:false});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+const course=await loadCourse({courseId:'starter-python',coursesRoot:fileURLToPath(new URL('../templates/',import.meta.url))}),stateFile=path.join(dir,'progress.json'),server=createGuildServer({course,stateFile,reviewEnabled:false});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const origin='http://127.0.0.1:'+server.address().port,browser=await chromium.launch(browserOptions());
 try{
  const page=await browser.newPage({viewport:{width:1440,height:1000}});await page.goto(origin+'/#lesson');const frame=page.frameLocator('iframe');await frame.locator('.wb-outline-practice').first().click();const field=frame.locator('[data-cell-code]');await field.waitFor();

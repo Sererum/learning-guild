@@ -1,3 +1,4 @@
+import {fileURLToPath} from 'node:url';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -11,7 +12,7 @@ import {browserOptions} from './browser-runtime.mjs';
 // profile's separate hint/review choices. No provider or real profile is used.
 const require=createRequire(import.meta.url),{chromium}=require('playwright');
 const directory=fs.mkdtempSync(path.join(os.tmpdir(),'guild-effort-workbench-'));
-const course=await loadCourse({courseId:'starter-python'});
+const course=await loadCourse({courseId:'starter-python',coursesRoot:fileURLToPath(new URL('../templates/',import.meta.url))});
 const server=createGuildServer({course,stateFile:path.join(directory,'progress.json'),reviewProvider:'file',learningProvider:'off'});
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const origin='http://127.0.0.1:'+server.address().port,browser=await chromium.launch(browserOptions());

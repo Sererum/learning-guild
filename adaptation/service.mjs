@@ -92,7 +92,7 @@ export function createLearningService({directory,course,readCourse=()=>course,re
  };
  function publicJob(job){return {id:job.id,lessonId:job.lessonId,status:job.status,stage:job.stage,createdAt:job.createdAt,updatedAt:job.updatedAt,attempt:job.attempt,canRetry:canResumeJob(job),canResume:canResumeJob(job),recoveryCount:job.recoveryCount||0,
   ...(job.programRequest?{programRequest:clone(job.programRequest),effort:job.stageEfforts?.generate||effortForTask('program',readAiEfforts())}:{}),...(job.error?{error:job.error}:{}),...(job.summary?{summary:job.summary}:{}),...(job.decision?{decision:job.decision}:{}),...(job.feedbackOnly?{feedbackOnly:true}:{}),...(job.status==='awaiting-consent'?{personalizationProposal:proposalFor(job)}:{}),stageEfforts:clone(job.stageEfforts||{}),branches:job.branches||[],budgetBlocked:!!job.budgetBlocked,providerBlocked:!!job.providerBlocked,personalizationVersion:job.personalizationVersion||0};}
- function snapshot(){const profile=personalization();return {enabled:provider!=='off'&&!!course.adaptation?.roadmap?.length,provider,jobs:loadJobs().slice(0,20).map(publicJob),personalization:{version:profile.version,preferences:profile.rules.filter(rule=>rule.status==='active').map(rule=>({id:rule.id,category:rule.category,text:rule.text})),sharedProposals:profile.sharedProposals.filter(item=>item.status==='needs-independent-review').length},busy:!!running};}
+ function snapshot(){const profile=personalization();return {enabled:provider!=='off'&&!!readCurriculum({includeOptional:true}).length,provider,jobs:loadJobs().slice(0,20).map(publicJob),personalization:{version:profile.version,preferences:profile.rules.filter(rule=>rule.status==='active').map(rule=>({id:rule.id,category:rule.category,text:rule.text})),sharedProposals:profile.sharedProposals.filter(item=>item.status==='needs-independent-review').length},busy:!!running};}
  function getStatus(id){if(!safeId(id))throw Error('Неизвестная отправка урока.');const job=readJson(path.join(jobsDirectory,id+'.json'));if(!job)throw Error('Отправка урока не найдена.');return publicJob(job);}
  const interrupted=[];
  // Keep durable checkpoints, so restoring a stopped app does not buy completed calls again.
@@ -229,7 +229,7 @@ export function createLearningService({directory,course,readCourse=()=>course,re
    overlay.lessons.push(lesson);overlay.tasks.push(...tasks);overlay.points.push(point);overlay.routes.push({from:sourcePoint.id,to:pointId});
    overlay.rewardGroups.push({id:lesson.id,kind:lesson.type==='repair'?'repair':'lesson',taskIds:lesson.taskIds,reward:lesson.reward,completedTopics:[pointId],visitedPoints:[pointId]});
    // Practice is a recommendation and a separate branch, not an automatic new gate.
-   overlay.pointPrerequisites[pointId]=branch==='next'&&!job.decision.practice?sourcePoint.id:null;
+   overlay.pointPrerequisites[pointId]=branch==='next'&&!job.decision.practice&&sourcePoint.id!==map.start.id?sourcePoint.id:null;
    for(const task of tasks){overlay.qualityCaps[task.id]=task.qualityCap;overlay.taskTopics[task.id]=[];}
    if(branch!=='next')overlay.repairPoints.push(point);
    overlay.presentation.points[pointId]={summary:lesson.subtitle,practice:lesson.subtitle,title:lesson.title};
@@ -247,12 +247,12 @@ export function createLearningService({directory,course,readCourse=()=>course,re
    if(job.generationProfileDigest&&job.generationProfileDigest!==profileDigest){delete job.checkpoints?.generate;delete job.checkpoints?.review;delete job.authorAudits;delete job.lastGenerated;}
    job.generationProfileDigest=profileDigest;
    if(job.personalizationApplied&&!job.personalizationVersion)job.personalizationVersion=profile.version;
-   job.decision=job.programRequest?{...decideLearningPath(job.evidence),practice:job.programRequest.kind,certainty:'learner-request',rationale:'По твоей просьбе подготовим отдельную практику перед исходным уроком.'}:decideLearningPath(job.evidence);job.stage='planning';saveJob(job);
+   job.decision=job.curriculumTarget?{...decideLearningPath(job.evidence),practice:null,certainty:'curriculum-request',rationale:'Подготовим согласованный этап программы. Результаты обучения не предполагаются заранее.'}:job.programRequest?{...decideLearningPath(job.evidence),practice:job.programRequest.kind,certainty:'learner-request',rationale:'По твоей просьбе подготовим отдельную практику перед исходным уроком.'}:decideLearningPath(job.evidence);job.stage='planning';saveJob(job);
    const overlayBefore=loadOverlay(),allLessons=[...readCourse().lessons,...overlayBefore.lessons],allPoints=[...readCourse().engineConfig.courseMap.points,...overlayBefore.points];
    const existingLesson=allLessons.find(lesson=>lesson.id===job.nextTopic?.lessonId||lesson.adaptiveTopicId===job.nextTopic?.id);
    if(job.practiceSubmission&&!job.programRequest){finishPracticeSubmission(job,allLessons,allPoints);return;}
    if(!job.programRequest&&!job.nextTopic)throw Error('В roadmap пока не указана следующая тема. Предпочтения уже сохранены; нужно дополнить программу курса.');
-   if(!job.programRequest&&(job.nextTopic.requiresRuntime||job.nextTopic.runtime!==course.manifest.runtime))throw Error('Для следующей темы нужен другой проверенный исполнитель. Предпочтения сохранены, установка библиотек автоматически не выполняется.');
+   if((!job.programRequest||job.curriculumTarget)&&(job.nextTopic.requiresRuntime||job.nextTopic.runtime&&job.nextTopic.runtime!==course.manifest.runtime))throw Error('Для следующей темы нужен другой проверенный исполнитель. Предпочтения сохранены, установка библиотек автоматически не выполняется.');
    const desired=job.curriculumTarget?['next']:job.programRequest?[job.programRequest.kind]:['next',...(job.decision.practice?[job.decision.practice]:[])],reusedBranches=[];
    for(const branch of job.programRequest?[]:desired){const existing=branch==='next'?existingLesson:allLessons.find(lesson=>lesson.sourceLessonId===job.lessonId&&lesson.adaptiveBranch===branch);if(existing)reusedBranches.push({lessonId:existing.id,title:existing.title,pointId:allPoints.find(point=>point.lessonId===existing.id)?.id||'',kind:branch});}
    const branches=desired.filter(branch=>!reusedBranches.some(reused=>reused.kind===branch));job.requestedBranches=branches;
@@ -280,7 +280,7 @@ export function createLearningService({directory,course,readCourse=()=>course,re
    combined.presentation.points={...existing.presentation.points,...overlay.presentation.points};await validateOverlay(combined);assertActive(job);
    job.branches=[...reusedBranches,...artifacts.map(artifact=>({lessonId:artifact.lesson.id,pointId:overlay.points.find(point=>point.lessonId===artifact.lesson.id).id,title:artifact.lesson.title,kind:artifact.branch}))];
    writeJson(path.join(publishedDirectory,job.id+'.json'),{schemaVersion:1,courseId:course.id,sourceLessonId:job.lessonId,jobId:job.id,createdAt:now(),branches:job.branches,overlay,audits:{author:authorAudits,independent:independentAudits}});
-   job.status='ready';job.stage='ready';job.summary=job.programRequest?'Отдельная практика готова. Исходный урок и его результаты сохранены.':job.decision.practice?'Готовы следующая тема и отдельная ветка практики.':'Следующая тема готова.';saveJob(job);
+   job.status='ready';job.stage='ready';job.summary=job.curriculumTarget?'Урок по согласованной теме готов. Можно начать занятие.':job.programRequest?'Отдельная практика готова. Исходный урок и его результаты сохранены.':job.decision.practice?'Готовы следующая тема и отдельная ветка практики.':'Следующая тема готова.';saveJob(job);
   }catch(error){if(!closed){if(!['GUILD_PROVIDER_LIMIT','GUILD_UNSUPPORTED_EFFORT','GUILD_BUDGET_LIMIT'].includes(error.code)&&(['generating','validating'].includes(job.stage)||(job.stage==='independent-review'&&(job.checkpoints?.review||job.reviewIssues?.length)))){delete job.checkpoints?.generate;delete job.checkpoints?.review;delete job.authorAudits;}job.budgetBlocked=error.code==='GUILD_BUDGET_LIMIT';job.providerBlocked=['GUILD_PROVIDER_LIMIT','GUILD_UNSUPPORTED_EFFORT'].includes(error.code);job.status=cancelled.has(job.id)?'cancelled':'failed';job.error=String(error.message||error).slice(0,1000);job.validationFeedback=job.error;job.stage=cancelled.has(job.id)?'cancelled':'failed';saveJob(job);}}finally{running=null;}
  }
  async function submit({lessonId,feedback={},requestId,author}={}){
@@ -288,7 +288,7 @@ export function createLearningService({directory,course,readCourse=()=>course,re
   if(provider==='off')throw Error('Автоматическая подготовка выключена в настройках приложения.');
   if(typeof requestId!=='undefined'&&(typeof requestId!=='string'||requestId.length>120||!/^[a-zA-Z0-9_.:-]+$/.test(requestId)))throw Error('Некорректный номер отправки.');
   const lessons=[...readCourse().lessons,...loadOverlay().lessons],lesson=lessons.find(lesson=>lesson.id===lessonId);if(!lesson)throw Error('Урок не найден.');
-  if(!course.adaptation?.roadmap?.length)throw Error('Для этого курса ещё не настроено автоматическое продолжение roadmap.');
+  if(!readCurriculum().length)throw Error('Для этого курса ещё не настроено автоматическое продолжение roadmap.');
   const cleanFeedback=validateLessonFeedback(feedback),evidence=collectEvidence(lesson,cleanFeedback,author);
   if(!evidence.tasks.some(task=>task.status!=='unknown'))throw Error('Перед отправкой урока проверь хотя бы одно решение на тестах.');
   const fingerprint=digest({lessonId,evidence}),jobs=loadJobs();
@@ -309,22 +309,33 @@ export function createLearningService({directory,course,readCourse=()=>course,re
  async function requestProgram({lessonId,message,kind='reinforcement',requestId,author,curriculumTarget}={}){
   if(closed)throw Error('Приложение остановлено.');
   if(provider==='off')throw Error('Подготовка уроков выключена. Включи её в настройках приложения.');
-  if(!course.adaptation?.roadmap?.length)throw Error('Для этого курса ещё не настроена подготовка программы.');
+  const curriculum=readCurriculum({includeOptional:true});
+  if(!curriculum.length)throw Error('Сначала создай и подтверди программу курса.');
   if(typeof message!=='string'||!message.trim()||message.trim().length>3000)throw Error('Напиши пожелание к программе, до 3000 символов.');
   if(!['reinforcement','repair'].includes(kind))throw Error('Выбери простую версию или короткую практику.');
   if(requestId!==undefined&&(typeof requestId!=='string'||requestId.length>120||!/^[a-zA-Z0-9_.:-]+$/.test(requestId)))throw Error('Некорректный номер запроса.');
-  const lesson=[...readCourse().lessons,...loadOverlay().lessons].find(item=>item.id===lessonId);if(!lesson)throw Error('Выбери существующий урок.');
-  const evidence=collectEvidence(lesson,{},author);
+  const lesson=[...readCourse().lessons,...loadOverlay().lessons].find(item=>item.id===lessonId);
+  if(!lesson){
+   // The first lesson has no previous work. Only an approved local curriculum
+   // node can authorize generation without a source lesson.
+   const approved=curriculumTarget&&curriculum.find(topic=>topic.id===curriculumTarget.id);
+   if(lessonId||!approved)throw Error('Выбери существующий урок или подтверждённый этап программы.');
+   curriculumTarget={...clone(approved),kind:approved.kind||'lesson',diagnostic:approved.kind==='exam'||approved.kind==='diagnostic'};
+   if(!Array.isArray(curriculumTarget.learningGoals)||!curriculumTarget.learningGoals.length)throw Error('Сначала уточни учебные цели этапа.');
+   lessonId=null;
+  }
+  if(curriculumTarget&&(curriculumTarget.requiresRuntime||curriculumTarget.runtime&&curriculumTarget.runtime!==course.manifest.runtime))throw Error('Для этой темы нужен другой проверенный исполнитель. Установка библиотек автоматически не выполняется.');
+  const evidence=lesson?collectEvidence(lesson,{},author):{courseId:course.id,lessonId:null,lessonTitle:null,author:author||{id:'unknown',name:'Не указан'},contentVersions:{},tasks:[],lessonFeedback:{},feedback:[]};
   // Program messages have their own source identity; they never withdraw an existing task/lesson reflection.
   const request={kind,message:message.trim(),lessonTitle:curriculumTarget?.title||lesson.title,...(curriculumTarget?{curriculumTarget:clone(curriculumTarget)}:{})};
-  evidence.feedback=[{id:'program-feedback-'+digest({lessonId,request}).slice(0,18),kind:'program',author:evidence.author,text:request.message}];
+  if(lesson)evidence.feedback=[{id:'program-feedback-'+digest({lessonId,request}).slice(0,18),kind:'program',author:evidence.author,text:request.message}];
   evidence.programRequest=request;
   const fingerprint=digest({type:'program',lessonId,request,evidence}),jobs=loadJobs();
   const duplicate=requestId&&jobs.find(job=>job.requestId===requestId);if(duplicate&&duplicate.fingerprint!==fingerprint)throw Error('Этот номер запроса уже использован для другого сообщения.');
   const same=jobs.find(job=>job.fingerprint===fingerprint);if(same)return publicJob(same);
   if(running)throw Error('Сейчас готовится другой материал. Дождись результата или отмени подготовку.');
-  const source=course.adaptation?.roadmap?.find(topic=>topic.lessonId===lessonId||topic.id===lesson.adaptiveTopicId);
-  const job={schemaVersion:1,id:crypto.randomBytes(12).toString('hex'),materialKey:fingerprint.slice(0,18),lessonId,sourceTopicId:lesson.adaptiveTopicId||source?.id||lessonId,sourcePointId:source?.pointId||null,requestId:requestId||null,fingerprint,evidence,programRequest:request,nextTopic:curriculumTarget?clone(curriculumTarget):null,...(curriculumTarget?{curriculumTarget:clone(curriculumTarget)}:{}),createdAt:now(),attempt:1,status:'pending',stage:'queued'};
+  const source=lesson&&curriculum.find(topic=>topic.lessonId===lessonId||topic.id===lesson.adaptiveTopicId);
+  const job={schemaVersion:1,id:crypto.randomBytes(12).toString('hex'),materialKey:fingerprint.slice(0,18),lessonId,sourceTopicId:lesson?.adaptiveTopicId||source?.id||lessonId,sourcePointId:source?.pointId||null,requestId:requestId||null,fingerprint,evidence,programRequest:request,nextTopic:curriculumTarget?clone(curriculumTarget):null,...(curriculumTarget?{curriculumTarget:clone(curriculumTarget)}:{}),createdAt:now(),attempt:1,status:'pending',stage:'queued'};
   saveJob(job);running=job.id;queueMicrotask(()=>run(job));return publicJob(job);
  }
  function management(){return {...control.management(),jobs:loadJobs().slice(0,40).map(publicJob),busy:!!running};}
@@ -356,7 +367,7 @@ export function createLearningService({directory,course,readCourse=()=>course,re
    if(!governance?.decideChanges)throw Error('Управление персонализацией не подключено.');
    if(!Array.isArray(input.acceptedIds)||input.acceptedIds.some(id=>typeof id!=='string'))throw Error('Выбери изменения профиля или отклони все.');
    assertEvidenceCurrent(job);
-   governance.decideChanges({proposalSetId:job.personalizationProposalId,acceptedIds:input.acceptedIds});
+   governance.decideChanges({proposalSetId:job.personalizationProposalId,acceptedIds:input.acceptedIds,sharedRevision:input.sharedRevision});
    job.personalizationApplied=true;job.personalizationVersion=personalization().version;job.personalizationConsentAt=now();job.personalizationConsentDigest=digest([...input.acceptedIds].sort());
    // A later manual edit wins. Completed author/reviewer checkpoints must never
    // freeze a profile from before this explicit decision.

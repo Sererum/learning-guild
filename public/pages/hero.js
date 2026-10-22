@@ -1,6 +1,6 @@
 import {itemArt} from './item-art.js';
 import {neutralCharacter} from './hero-equipment.js';
-import {renderEquipmentLayers} from '../equipment-scene.js';
+import {renderEquipmentLayers,isSafeEquipmentAssetUrl} from '../equipment-scene.js';
 import {equipmentManifest} from '../equipment-manifest.js';
 import {bindResourceGuide} from './resource-guide.js';
 let heroSection = 'attributes';
@@ -17,7 +17,10 @@ const slotNames = {weapon:'Оружие',outfit:'Наряд',accessory:'Укра
 const tabs = [['attributes','Характеристики','attributes'],['weapon','Оружие','quill'],['artifacts','Артефакты','flower'],['wardrobe','Гардероб','novice']];
 const artPath = '/assets/alice-scholar-v1.png';
 const safe = value => String(value??'').replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
-const profileImage = (state,name) => /^[a-zA-Z0-9][a-zA-Z0-9_-]{0,95}\.png$/.test(name)&&state.profileAssets?.[name]==='/assets/'+name?state.profileAssets[name]:null;
+const profileImage = (state,name) => {
+ const url=state.profileAssets?.[name];
+ return /^[a-zA-Z0-9][a-zA-Z0-9_-]{0,95}\.png$/.test(name)&&isSafeEquipmentAssetUrl(url)&&url.split('?')[0]==='/assets/'+name?url:null;
+};
 const neutralPortrait = () => '<g class="hero-neutral-portrait"><circle cx="240" cy="320" r="157" fill="#f7f1df" fill-opacity=".12" stroke="#d9bd83" stroke-opacity=".55"/><path d="M135 394 204 227 337 350 135 394 290 446 337 350" fill="none" stroke="#d9bd83" stroke-opacity=".7" stroke-width="2"/><g fill="#d9bd83"><circle cx="135" cy="394" r="5"/><circle cx="204" cy="227" r="5"/><circle cx="337" cy="350" r="5"/><circle cx="290" cy="446" r="5"/></g><circle cx="240" cy="320" r="68" fill="#f7f1df"/><image href="/assets/nav-hero.svg" x="192" y="272" width="96" height="96"/></g>';
 
 const paintedIcon = (asset,className='') => `<img class="hero-painted-icon ${className}" src="/assets/${asset}" alt="" aria-hidden="true">`;

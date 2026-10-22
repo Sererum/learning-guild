@@ -21,14 +21,17 @@ export function readLocalConfig({root = applicationRoot, env = process.env, args
     if (!key || !args[i + 1] || args[i + 1].startsWith('--')) throw Error('Доступны --course ID, --course-dir PATH, --profile ID и --port NUMBER.');
     cli[key] = args[i + 1];
   }
-  const courseId = cli.courseId || env.GUILD_COURSE || local.courseId || 'alice-python';
+  let lastCourse;try{lastCourse=JSON.parse(fs.readFileSync(path.join(root,'local-data','selected-course.json'),'utf8')).id;}catch{}
+  const courseId = cli.courseId || env.GUILD_COURSE || lastCourse || local.courseId || 'new-course';
   if (!safeId.test(courseId)) throw Error('Некорректный ID курса.');
   const profileId = validateProfileId(cli.profileId || env.GUILD_PROFILE || local.profileId || 'default');
-  const changedSelection = courseId !== (local.courseId || 'alice-python') || profileId !== (local.profileId || 'default') || !!cli.courseDir || !!env.GUILD_COURSE_DIR;
+  const changedSelection = courseId !== (local.courseId || 'new-course') || profileId !== (local.profileId || 'default') || !!cli.courseDir || !!env.GUILD_COURSE_DIR;
   const stateFile = env.GUILD_STATE_FILE || (!changedSelection && local.stateFile) || path.join('profiles', courseId, profileId, 'progress.json');
   const port = Number(cli.port || env.GUILD_PORT || local.port || 4327);
   if (!Number.isInteger(port) || port < 1 || port > 65535) throw Error('Порт должен быть числом от 1 до 65535.');
   const courseDir = cli.courseDir || env.GUILD_COURSE_DIR || (!cli.courseId && !env.GUILD_COURSE && local.courseDir);
+  const accountManifest=path.join(root,'local-courses',courseId,'manifest.json');
+  if(!cli.courseDir&&!env.GUILD_COURSE_DIR&&fs.existsSync(accountManifest)){const m=JSON.parse(fs.readFileSync(accountManifest,'utf8'));return {courseId,profileId:m.profileId,explicitStateFile:true,courseDir:path.dirname(accountManifest),stateFile:path.join(path.dirname(accountManifest),'profile','progress.json'),port,python:env.GUILD_PYTHON||local.python};}
   return {courseId, profileId, explicitStateFile:!!(env.GUILD_STATE_FILE||(!changedSelection&&local.stateFile)),courseDir: courseDir ? path.resolve(root, courseDir) : undefined,
     stateFile: path.resolve(root, stateFile), port, python: env.GUILD_PYTHON || local.python,
     learnerName: local.learnerName};
