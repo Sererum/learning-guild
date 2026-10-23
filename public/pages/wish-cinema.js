@@ -1,6 +1,6 @@
 // Shared painted cinema: the selected item is a separate layer, for every course and item kind.
 export const WISH_CINEMA_DURATION=7200;
-export const WISH_CINEMA_MEDIA=Object.freeze(Object.fromEntries([3,4,5].map(r=>[r,{video:'/assets/wish-anime-'+r+'star-v6.mp4',poster:'/assets/wish-anime-background-v5.png'}])));
+export const WISH_CINEMA_MEDIA=Object.freeze(Object.fromEntries([3,4,5].map(r=>[r,{video:'/assets/wish-anime-'+r+'star-v9.mp4',poster:'/assets/wish-anime-background-v5.png'}])));
 export function cinemaMarkup({rarity,itemHtml,label,kind,count=1,preview=false}){
  const media=WISH_CINEMA_MEDIA[rarity]||WISH_CINEMA_MEDIA[3];
  return '<div class="wish-cinema wish-painted-cinema rarity-'+rarity+'" data-wish-cinema><video class="wish-painted-video" muted playsinline preload="auto" poster="'+media.poster+'" src="'+media.video+'" aria-hidden="true"></video><button type="button" class="wish-cinema-skip" data-wish-skip>Пропустить <span aria-hidden="true">›</span></button>'+(preview?'<span class="wish-preview-notice">Предпросмотр · без списания и награды</span>':'')+'<p class="wish-cinema-status" role="status">Звёзды отвечают на твою молитву…</p><div class="wish-painted-item">'+itemHtml+'</div><div class="wish-item-identity"><small>'+kind+'</small><h2>'+label+'</h2><span class="wish-reveal-stars">'+'★'.repeat(rarity)+'</span>'+(count>1?'<p>И ещё '+(count-1)+' находок</p>':'')+'</div></div>';

@@ -169,7 +169,7 @@ export function createGuildServer({course=defaultCourse,profileId='default',stat
    }
    if(req.method!=='GET'){reply(res,405,{error:'Метод недоступен'});return;}
    // Only public, versioned cinema files; never read profile media through this route.
-   if(/^\/assets\/wish-anime-[345]star-v[356]\.mp4$/.test(url.pathname)){
+   if(/^\/assets\/wish-anime-[345]star-v[3569]\.mp4$/.test(url.pathname)){
      const file=path.join(root,'public',url.pathname.slice(1));if(!fs.existsSync(file)||!fs.lstatSync(file).isFile()||fs.lstatSync(file).isSymbolicLink()){reply(res,404,{error:'Анимация не найдена'});return;}
      const size=fs.statSync(file).size,headers={'Content-Type':'video/mp4','Accept-Ranges':'bytes','Cache-Control':'public, max-age=0, must-revalidate'};
      if(req.headers.range){const match=/^bytes=(\d*)-(\d*)$/.exec(req.headers.range);let start=0,end=size-1;
