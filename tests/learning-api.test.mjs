@@ -38,20 +38,22 @@ test('Explicit submission updates personalization first, publishes usable privat
  await restart();const restored=await state();assert.equal(restored.state.currency,640);assert.ok(restored.lessons.some(item=>item.id===lesson.id));assert.equal(restored.learning.jobs[0].status,'ready');assert.equal(calls.length,3,'restart must not buy a generation');
  const again=await post('/api/lesson-submit',{lessonId:'source-lesson',requestId:'submission-one',feedback:{clarity:'clear',comment:'Хочу конкретный пример с входом и ответом.'}});assert.equal(again.data.result.job.id,sent.data.result.job.id);assert.equal(calls.length,3);
 }));
-test('A failed checked solution publishes two available branches and never claims the source lesson completed',()=>harness(async({course,post,state,wait})=>{
+test('A failed submission publishes repair while final exam waits for mastery of the source',()=>harness(async({course,post,state,wait})=>{
  const checked=await post('/api/check',{task:course.tasks[0].id,code:'answer = 0\nprint(answer)'});assert.equal(checked.data.result.ok,false);
  const sent=await post('/api/lesson-submit',{lessonId:'source-lesson',feedback:{difficulty:4,clarity:'unclear',comment:'Не понимаю, как меняется сумма.'}});
  const pending=await wait(sent.data.result.job.id);assert.equal(pending.result.job.status,'awaiting-consent');
  assert.equal((await post('/api/settings',{area:'generation',action:'confirm-personalization',jobId:pending.result.job.id,acceptedIds:[]})).status,200);
  const done=await wait(sent.data.result.job.id);assert.equal(done.result.job.status,'ready',JSON.stringify(done.result.job));assert.deepEqual(done.result.job.branches.map(branch=>branch.kind).sort(),['next','repair']);
  assert.equal(done.state.claims['source-1'],undefined);assert.equal(done.state.currency,0);
- for(const branch of done.result.job.branches){assert.equal(done.presentation.points[branch.pointId].available,true);assert.ok(done.courseMap.routes.some(route=>route.to===branch.pointId));}
+ for(const branch of done.result.job.branches){assert.equal(done.presentation.points[branch.pointId].available,branch.kind==='repair');assert.ok(done.courseMap.routes.some(route=>route.to===branch.pointId));}
  const repair=done.result.job.branches.find(branch=>branch.kind==='repair');assert.equal(done.courseMap.points.find(point=>point.id===repair.pointId).kind,'repair');
  assert.equal(done.presentation.currentPointId,repair.pointId);
  const repairLesson=done.lessons.find(lesson=>lesson.id===repair.lessonId);
  for(const task of repairLesson.taskIds){const checked=await post('/api/check',{task,code:'total = sum(values)\nprint(total)'});assert.equal(checked.data.result.ok,true,JSON.stringify(checked.data.result));}
  const afterRepair=await state(),next=done.result.job.branches.find(branch=>branch.kind==='next');
- assert.equal(afterRepair.presentation.currentPointId,next.pointId,'completed practice must yield the current marker to the next lesson');
- assert.equal(afterRepair.presentation.currentLessonId,next.lessonId);
+ assert.equal(afterRepair.presentation.points[next.pointId].available,false,'review completion does not certify the original lesson');
+ assert.equal(afterRepair.presentation.currentPointId,'source-point');
+ for(const task of course.tasks)assert.equal((await post('/api/check',{task:task.id,code:'answer = value\nprint(answer)'})).data.result.ok,true);
+ const afterSource=await state();assert.equal(afterSource.presentation.currentPointId,next.pointId);assert.equal(afterSource.presentation.currentLessonId,next.lessonId);assert.equal(afterSource.presentation.points[next.pointId].available,true);
  assert.equal((await state()).lessons.filter(lesson=>lesson.adaptive).length,2);
 }));

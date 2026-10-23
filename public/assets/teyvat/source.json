@@ -1,0 +1,40 @@
+{
+  "sourceUrl": "https://act.hoyolab.com/ys/app/interactive-map/index.html?lang=ru-ru#/map/2",
+  "retrievedAt": "2026-10-22",
+  "copyright": "© HoYoverse. All rights reserved. No open-source license for the map artwork is implied.",
+  "mapId": 2,
+  "mapVersion": "eea752b746ae1f2e0c1988a574f2b7b0",
+  "endpoints": {
+    "info": "https://sg-public-api-static.hoyolab.com/common/map_user/ys_obc/v3/map/info?map_id=2&app_sn=ys_obc&lang=ru-ru",
+    "regions": "https://sg-public-api-static.hoyolab.com/common/map_user/ys_obc/v1/map/get_area_pageLabel?map_id=2&app_sn=ys_obc&lang=ru-ru",
+    "anchors": "https://sg-public-api-static.hoyolab.com/common/map_user/ys_obc/v1/map/map_anchor/list?map_id=2&app_sn=ys_obc&lang=ru-ru",
+    "teleports": "https://sg-public-api-static.hoyolab.com/common/map_user/ys_obc/v3/map/point/list?map_id=2&app_sn=ys_obc&lang=ru-ru&label_ids=1"
+  },
+  "tileTemplate": "https://act-webstatic.hoyoverse.com/map_manage/map/2/eea752b746ae1f2e0c1988a574f2b7b0/{x}_{y}_N3.webp",
+  "tileColumns": 18,
+  "tileRows": 9,
+  "tileSize": 256,
+  "processing": "Official tiles assembled without geographic changes. Only blank source padding cropped: left 953, top 4, width 2702, height 2295 at zoom -3. Encoded WebP quality 94.",
+  "portalSelection": "12 explicit nearest-to-curated-position surface teleport waypoints per region. label_id=3, icon_sign=0, point_group=null. Exact IDs and source coordinates are in teyvat-atlas.js. Course order is an educational overlay, not an official game route.",
+  "sourceConfig": {
+    "total_size": [
+      36864,
+      18432
+    ],
+    "padding": [
+      7625,
+      37
+    ],
+    "origin": [
+      24206,
+      8918
+    ],
+    "map_version": "eea752b746ae1f2e0c1988a574f2b7b0",
+    "min_zoom": -3,
+    "max_zoom": 0,
+    "original_map_size": [
+      21613,
+      18358
+    ]
+  }
+}

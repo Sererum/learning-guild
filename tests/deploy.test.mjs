@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import net from 'node:net';
 import {spawnSync} from 'node:child_process';
-import {autostartPlan, validateDeployment, validateDeploymentBinding, parseOptions, assertPortFree, deploymentSelection, assertNoLegacyAutostarts, main} from '../tools/deploy.mjs';
+import {autostartPlan, validateDeployment, validateDeploymentBinding, parseOptions, assertPortFree, deploymentSelection, assertNoLegacyAutostarts, waitForDeployment, main} from '../tools/deploy.mjs';
 
 const config = {version:2, mode:'accounts', applicationRoot:'/test/Learning Guild', port:4327, node:'/test/Node & Apps/node', python:'/test/Python 3.12/python', codex:'/test/Codex/codex', path:'/test/bin:/usr/bin:/bin'};
 const temporary=t=>{const directory=fs.mkdtempSync(path.join(os.tmpdir(),'guild-deploy-'));t.after(()=>fs.rmSync(directory,{recursive:true,force:true}));return directory;};
@@ -60,9 +60,21 @@ test('options retain path boundaries and old profile flags fail with migration g
 test('one user LaunchAgent serves all courses; plan escapes XML without writing files',()=>{
  const home=path.join(os.tmpdir(),'guild-plan-'+process.pid),appRoot='/test/Learning & Guild',plan=autostartPlan(config,{home,appRoot,platform:'darwin'});
  assert.equal(fs.existsSync(home),false);assert.equal(plan.label,'local.learning-guild');assert.equal(plan.file,path.join(home,'Library','LaunchAgents','local.learning-guild.plist'));
- assert.match(plan.content,/Node &amp; Apps/);assert.match(plan.content,/Learning &amp; Guild/);assert.match(plan.content,/<key>RunAtLoad<\/key><true\/>/);assert.match(plan.content,/<key>KeepAlive<\/key><false\/>/);assert.match(plan.content,/<string>start<\/string>/);
+ assert.match(plan.content,/Node &amp; Apps/);assert.match(plan.content,/Learning &amp; Guild/);assert.match(plan.content,/<key>RunAtLoad<\/key><true\/>/);assert.match(plan.content,/<key>KeepAlive<\/key><dict><key>SuccessfulExit<\/key><false\/><\/dict>/);assert.match(plan.content,/<key>ThrottleInterval<\/key><integer>30<\/integer>/);assert.match(plan.content,/<string>start<\/string>/);
  assert.doesNotMatch(plan.content,/filipov|sudo|trusted-local|0\.0\.0\.0|--profile|--state-file/);
+ assert.ok(plan.content.includes('<key>WorkingDirectory</key><string>'+home+'</string>'));
+ assert.equal(plan.logs,path.join(home,'Library','Logs','LearningGuild'));
  if(process.platform==='darwin'){const directory=fs.mkdtempSync(path.join(os.tmpdir(),'guild-plist-test-'));try{const file=path.join(directory,'launch.plist');fs.writeFileSync(file,plan.content);const result=spawnSync('/usr/bin/plutil',['-lint',file],{encoding:'utf8'});assert.equal(result.status,0,result.stderr||result.stdout);}finally{fs.rmSync(directory,{recursive:true,force:true});}}
+});
+
+test('autostart readiness requires our live process and a responding account server',async()=>{
+ const running={mode:'accounts',port:4327,nonce:'same'};
+ const ok=async()=>({ok:true,json:async()=>({accounts:[]})});
+ await waitForDeployment(config,{timeoutMs:0,readProcess:()=>running,fetchImpl:ok});
+ for(const readProcess of [()=>null,()=>({...running,port:4999})])await assert.rejects(waitForDeployment(config,{timeoutMs:0,readProcess,fetchImpl:ok}),/не подтвердил запуск/);
+ for(const fetchImpl of [async()=>{throw Error('connection refused');},async()=>({ok:false}),async()=>({ok:true,json:async()=>({other:[]})})])await assert.rejects(waitForDeployment(config,{timeoutMs:0,readProcess:()=>running,fetchImpl}),/не подтвердил запуск/);
+ let reads=0;
+ await assert.rejects(waitForDeployment(config,{timeoutMs:0,readProcess:()=>({...running,nonce:String(++reads)}),fetchImpl:ok}),/не подтвердил запуск/);
 });
 
 test('old profile autostart blocks second service without editing any LaunchAgent',t=>{

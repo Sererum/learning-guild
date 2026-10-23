@@ -320,7 +320,7 @@ export function createLearningService({directory,course,readCourse=()=>course,re
    // node can authorize generation without a source lesson.
    const approved=curriculumTarget&&curriculum.find(topic=>topic.id===curriculumTarget.id);
    if(lessonId||!approved)throw Error('Выбери существующий урок или подтверждённый этап программы.');
-   curriculumTarget={...clone(approved),kind:approved.kind||'lesson',diagnostic:approved.kind==='exam'||approved.kind==='diagnostic'};
+   curriculumTarget={...clone(approved),kind:approved.kind||'lesson',diagnostic:approved.diagnostic===true||approved.kind==='diagnostic'};
    if(!Array.isArray(curriculumTarget.learningGoals)||!curriculumTarget.learningGoals.length)throw Error('Сначала уточни учебные цели этапа.');
    lessonId=null;
   }

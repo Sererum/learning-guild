@@ -1,3 +1,4 @@
+import {lessonRewardAccess} from '../journey.js';
 // One portal opens one complete course lesson. Selection is scoped per profile.
 const storage=()=>typeof window==='undefined'?{getItem:()=>null,setItem(){}}:window.guildStorage;
 const query=()=>new URLSearchParams(typeof location==='undefined'?'':location.search);
@@ -16,8 +17,8 @@ export function renderLesson(ctx){
  if(lesson?.repairWorkbookId)lesson=registry.find(l=>l.id===lesson.repairWorkbookId)||lesson;
  const legacy=data.presentation?.legacyLessonId;
  if(!lesson||lesson.id===legacy&&query().get('lesson')!==legacy){lesson=registry.find(l=>l.id===data.presentation?.currentLessonId)||data.activeLesson||registry[0];if(!lesson)return '<p>В этом курсе пока нет опубликованных уроков.</p>';selection={task:lesson.taskIds[0],point:data.presentation?.currentPointId||(data.courseMap?.points||[]).find(p=>p.lessonId===lesson.id)?.id};}
- const task=lesson.taskIds.includes(selection.task)?selection.task:lesson.taskIds[0];
- return `<section class="integrated-lesson"><iframe class="lesson-workbench-frame" title="${esc(lesson.title)}: теория, задания, Python и проверки" src="/lesson-workbench/index.html?account=${encodeURIComponent(data.account?.id||'')}&lesson=${encodeURIComponent(lesson.id)}&task=${encodeURIComponent(task)}&point=${encodeURIComponent(selection.point||'')}#practice" style="height:1000px" loading="eager"></iframe></section>`;
+ const task=lesson.taskIds.includes(selection.task)?selection.task:lesson.taskIds[0],access=lessonRewardAccess(data,lesson.id);
+ return `<section class="integrated-lesson">${access.preview?`<aside class="panel lesson-preview-note"><strong>Предпросмотр · награды пока закрыты</strong><p>${access.messages.map(esc).join(' ')} Решать задачи и проверять код можно сейчас.</p></aside>`:''}<iframe class="lesson-workbench-frame" title="${esc(lesson.title)}: теория, задания, Python и проверки" src="/lesson-workbench/index.html?account=${encodeURIComponent(data.account?.id||'')}&lesson=${encodeURIComponent(lesson.id)}&task=${encodeURIComponent(task)}&point=${encodeURIComponent(selection.point||'')}#practice" style="height:1000px" loading="eager"></iframe></section>`;
 }
 const bindings=new WeakMap();
 export function bindLesson(root,ctx){

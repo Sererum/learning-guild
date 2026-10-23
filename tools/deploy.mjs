@@ -148,7 +148,9 @@ export function autostartPlan(config, {home = os.homedir(), appRoot = root, plat
   validateDeployment(config);
   if (platform !== 'darwin') throw Error('Автозапуск этой защищённой сборки поддерживается только в macOS.');
   const label = 'local.learning-guild';
-  const logs = path.join(appRoot, 'local-data', 'logs');
+  // launchd opens these paths before Node starts. Documents may be unavailable
+  // to launchd even when Node can read the app through its absolute paths.
+  const logs = path.join(home, 'Library', 'Logs', 'LearningGuild');
   const env = {PATH: config.path || '/usr/bin:/bin:/usr/sbin:/sbin', GUILD_CODEX_BIN: config.codex, GUILD_PYTHON: config.python};
   if (config.dyldLibraryPath) env.DYLD_LIBRARY_PATH = config.dyldLibraryPath;
   const content = `<?xml version="1.0" encoding="UTF-8"?>
@@ -156,9 +158,10 @@ export function autostartPlan(config, {home = os.homedir(), appRoot = root, plat
 <plist version="1.0"><dict>
 <key>Label</key><string>${xml(label)}</string>
 <key>ProgramArguments</key><array><string>${xml(config.node)}</string><string>${xml(path.join(appRoot, 'tools', 'deploy.mjs'))}</string><string>start</string></array>
-<key>WorkingDirectory</key><string>${xml(appRoot)}</string>
+<key>WorkingDirectory</key><string>${xml(home)}</string>
 <key>RunAtLoad</key><true/>
-<key>KeepAlive</key><false/>
+<key>KeepAlive</key><dict><key>SuccessfulExit</key><false/></dict>
+<key>ThrottleInterval</key><integer>30</integer>
 <key>ProcessType</key><string>Background</string>
 <key>EnvironmentVariables</key><dict>${Object.entries(env).map(([key, value]) => `<key>${xml(key)}</key><string>${xml(value)}</string>`).join('')}</dict>
 <key>StandardOutPath</key><string>${xml(path.join(logs, 'server.log'))}</string>
@@ -172,6 +175,22 @@ function managedProcess() {
   const current = JSON.parse(fs.readFileSync(processFile, 'utf8'));
   if (!Number.isInteger(current.pid) || !/^[a-f0-9]{32}$/.test(current.nonce || '')) throw Error('Некорректная запись управляемого процесса. Проверь её вручную.');
   try { process.kill(current.pid, 0); return current; } catch (error) { if (error.code !== 'ESRCH') throw error; return null; }
+}
+
+export async function waitForDeployment(config, {timeoutMs = 15000, readProcess = managedProcess, fetchImpl = fetch} = {}) {
+  const deadline = Date.now() + timeoutMs;
+  do {
+    const current = readProcess();
+    if (current?.mode === 'accounts' && current.port === config.port) {
+      try {
+        const response = await fetchImpl(`http://127.0.0.1:${config.port}/api/accounts`, {signal: AbortSignal.timeout(1000)});
+        if (response.ok && Array.isArray((await response.json()).accounts) && readProcess()?.nonce === current.nonce) return;
+      } catch { /* The process may still be starting. */ }
+    }
+    if (Date.now() >= deadline) break;
+    await new Promise(resolve => setTimeout(resolve, Math.min(250, deadline - Date.now())));
+  } while (Date.now() <= deadline);
+  throw Error('Служба зарегистрирована, но сервер не подтвердил запуск. Проверь журналы и ограничения macOS; защита не отключена.');
 }
 
 async function start(config) {
@@ -287,8 +306,14 @@ export async function main(args = process.argv.slice(2)) {
     fs.mkdirSync(path.dirname(plan.file), {recursive: true});
     fs.mkdirSync(plan.logs, {recursive: true});
     fs.writeFileSync(plan.file, plan.content, {flag: 'wx', mode: 0o600});
-    try { launchctl(['bootstrap', `gui/${process.getuid()}`, plan.file]); }
-    catch (error) { fs.unlinkSync(plan.file); throw error; }
+    try {
+      launchctl(['bootstrap', `gui/${process.getuid()}`, plan.file]);
+      await waitForDeployment(config);
+    } catch (error) {
+      launchctl(['bootout', `gui/${process.getuid()}/${plan.label}`], {allowMissing: true});
+      fs.unlinkSync(plan.file);
+      throw Error(error.message + '\nАвтозапуск отменён. Логи: ' + plan.logs);
+    }
     console.log(`Автозапуск после входа включён. http://127.0.0.1:${config.port}/#world\nЛоги: ${plan.logs}\nПроверь: node tools/deploy.mjs status`);
   } else if (command === 'stop') {
     await stop();

@@ -11,6 +11,12 @@ function context(){
 }
 test('A different course renders in the same map and book and unlocks its own dependent lesson',()=>{
  const ctx=context(),[first,second]=ctx.data.courseMap.points;
+ // The atlas consumes the complete program snapshot supplied by the server;
+ // the book still uses lesson-level progress and rewards.
+ ctx.data.program={blocks:[{id:'basics',title:'Основы'}],nextId:'intro',nodes:[
+  {id:'intro',blockId:'basics',title:'Данные',main:true,status:'ready',available:true,lessonId:'stats',pointId:'intro'},
+  {id:'later',blockId:'basics',title:'Модель',main:true,status:'future',available:false,lessonId:'model',pointId:'later',prerequisites:['intro']}
+ ]};
  assert.equal(currentJourneyPoint(ctx).id,'intro');assert.equal(describePoint(ctx,first).current,true);assert.match(lessonQualityText(ctx,'stats'),/до 10 за решение/);
  assert.equal(describePoint(ctx,first).available,true);assert.equal(describePoint(ctx,second).available,false);
  for(const render of [renderWorld,renderBook]){const html=render(ctx);assert.match(html,/Данные/);assert.doesNotMatch(html,/undefined|NaN|Алисы|Базовые алгоритмы|урок 2\.4/);}

@@ -68,7 +68,7 @@ test('Public snapshots, failed hidden tests, browser rules and static routes do 
 test('Invalid tasks, unsupported actions and rejected session requests leave persisted profile data unchanged',async()=>{
  const directory=fs.mkdtempSync(path.join(os.tmpdir(),'guild-course-invalid-'));let app;
  try{
-  app=await start({course:course(),stateFile:path.join(directory,'progress.json')});const baseline=tree(directory),state=await app.state();
+  app=await start({course:course(),stateFile:path.join(directory,'progress.json'),dailyClock:()=>new Date('2026-10-22T12:00:00Z')});const baseline=tree(directory),state=await app.state();
   for(const [route,input] of [
    ['/api/check',{task:'missing',code:solution}],['/api/run',{task:'missing',code:solution}],['/api/reveal-test',{task:'missing',index:0}],
    ['/api/ai-review',{task:'missing',code:solution}],['/api/task-feedback',{task:'missing',lesson:'reading-lesson',code:solution}],

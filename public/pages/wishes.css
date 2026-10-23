@@ -95,3 +95,4 @@
 
 html:has(dialog.wish-cinematic-modal[open]),body:has(dialog.wish-cinematic-modal[open]){overflow:clip}
 @media(max-aspect-ratio:1/1){.wish-painted-video{object-fit:cover}.wish-painted-item{top:38%;width:76%;height:70%}}
+.stellar-complete-note{flex:1;margin:0;max-width:420px;font-size:12px;line-height:1.7;color:#535e6e}

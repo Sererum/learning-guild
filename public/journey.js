@@ -3,6 +3,17 @@ const presentation=ctx=>ctx.data.presentation||{};
 const settings=(ctx,p)=>({...presentation(ctx).roadmap?.[p.id],...presentation(ctx).points?.[p.id]});
 export const isTaskClaimed=(ctx,id)=>!!ctx.data.state.claims?.[ctx.data.course?.recurringTasks?.includes(id)?id+':'+ctx.data.day:id];
 const claimed=isTaskClaimed;
+// Explain the same reward gates that the server checks, before a learner solves a task.
+export function lessonRewardAccess(data,lessonId){
+ const lesson=data.lessons?.find(l=>l.id===lessonId),config=data.gameRules||{},state=data.state||{};
+ const blocked=[...new Set((lesson?.taskIds||[]).map(id=>config.taskRules?.[id]?.gate).filter(Boolean))].filter(id=>{
+  const gate=config.gates?.[id];if(!gate)return false;
+  const all=(gate.allClaims||[]).every(key=>state.claims?.[key]);
+  const any=[...(gate.anyClaims||[]).map(key=>state.claims?.[key]),...(gate.anyCredits||[]).map(key=>state.courseCredits?.[key])];
+  return !all||(any.length>0&&!any.some(Boolean));
+ });
+ return {preview:blocked.length>0,messages:[...new Set(blocked.map(id=>config.gates[id].message||'Для наград сначала заверши предыдущие темы.'))]};
+}
 const lessonFor=(ctx,p)=>{const spec=settings(ctx,p);return ctx.data.lessons?.find(l=>l.id===(p.repairWorkbookId||spec.lessonId||p.lessonId)||l.taskIds?.includes(p.task));};
 export function previousRepairs(ctx,p){return (ctx.rules.courseHistory||[]).filter(r=>r.kind==='repair'&&r.points?.includes(p.id)&&ctx.data.state.courseCredits?.[r.id]);}
 export function journeyPoints(ctx){
@@ -70,13 +81,14 @@ export function describePoint(ctx,p){
  let amount=progress?.baseTotal??(task?Number(task.reward)||0:null),earned=completed,label=completed?'Награда получена':isRepair?'За завершение работы над ошибками':'За завершение урока';
  if(p.known){const records=(ctx.rules.courseHistory||[]).filter(e=>e.points?.includes(p.id)&&ctx.data.state.courseCredits?.[e.id]);if(records.length){amount=records.reduce((sum,e)=>sum+Number(ctx.data.state.courseCredits[e.id].reward??e.reward??0),0);earned=true;label='Уже начислено за прошлые работы';}}
  else if(progress){earned=progress.baseRemaining===0;label=progress.remaining?'Осталось получить':'Все награды получены';}
- const status=available?(isDaily?(completed?'На сегодня выполнено · завтра снова':'Сегодня доступно · около 5 минут'):completed?'Урок пройден · можно вернуться':isRepair?'Можно разобрать':progress?.started?'В процессе · '+progress.completedTasks+' / '+progress.totalTasks+' задач':current?'Следующий урок · можно начать':'Можно начать'):archived?(completed?'Пройдено · архив':phase==='partial'?'Изучали · практика частично':'Временно недоступно'):'Откроется позже';
+ const rewardAccess=lessonRewardAccess(ctx.data,lesson?.id);
+ const status=available&&rewardAccess.preview?'Предпросмотр · награды пока закрыты':available?(isDaily?(completed?'На сегодня выполнено · завтра снова':'Сегодня доступно · около 5 минут'):completed?'Урок пройден · можно вернуться':isRepair?'Можно разобрать':progress?.started?'В процессе · '+progress.completedTasks+' / '+progress.totalTasks+' задач':current?'Следующий урок · можно начать':'Можно начать'):archived?(completed?'Пройдено · архив':phase==='partial'?'Изучали · практика частично':'Временно недоступно'):'Откроется позже';
  if(isDaily){amount=progress?.baseRemaining??(completed?0:Number(task?.reward)||0);earned=completed;label=completed?'Награда получена сегодня':'За сегодняшнее повторение';}
- return {completed,available,archived,current,isRepair,isDaily,lessonId:lesson?.id,phase:completed&&phase==='partial'?'mastered':phase,number:spec.number||p.number||'',status,progress,
+ return {completed,available,archived,current,isRepair,isDaily,lessonId:lesson?.id,phase:completed&&phase==='partial'?'mastered':phase,number:spec.number||p.number||'',status,progress,rewardAccess,
  note:isDaily?spec.note||p.summary||'':progress?.started&&!completed?'Твой прогресс сохранён: '+progress.completedTasks+' / '+progress.totalTasks+' задач. Можно продолжить урок или вернуться к материалам.':completed&&phase==='partial'?'Работа над ошибками по этой теме прошла все тесты. Сложное место закрыто; материалы можно повторить.':spec.note||p.summary||'',description:spec.description||lesson?.description||task?.description||p.summary||'',requirements:available?[]:requirements,
  repairs:journeyPoints(ctx).filter(x=>x.kind==='repair'&&(x.evidenceId||x.adaptive)&&x.topic===p.id).map(x=>({id:x.id,name:x.name})),previousRepairs:previousRepairs(ctx,p),
  unlocks:journeyPoints(ctx).filter(x=>prerequisiteIds(ctx,x).includes(p.id)).map(x=>({id:x.id,name:x.name})),reward:{amount,earned,label,...(progress?{remaining:progress.remaining}:{})},taskId,
- actionLabel:spec.actionLabel||(available?(isDaily?(completed?'Повторить без награды':'Начать дэйлик'):completed?'Вернуться к материалам':isRepair?(progress?.started?'Продолжить разбор':'Разобрать ошибки'):progress?.started?'Продолжить урок'+(spec.number?' '+spec.number:''):'Начать урок'+(spec.number?' '+spec.number:'')):archived?'Архив · временно недоступно':'Урок ещё недоступен')};
+ actionLabel:available&&rewardAccess.preview?'Открыть предпросмотр'+(spec.number?' '+spec.number:''):spec.actionLabel||(available?(isDaily?(completed?'Повторить без награды':'Начать дэйлик'):completed?'Вернуться к материалам':isRepair?(progress?.started?'Продолжить разбор':'Разобрать ошибки'):progress?.started?'Продолжить урок'+(spec.number?' '+spec.number:''):'Начать урок'+(spec.number?' '+spec.number:'')):archived?'Архив · временно недоступно':'Урок ещё недоступен')};
 }
 export function journeyRoutes(ctx){const overrides=presentation(ctx).routeOverrides||{},routes=(ctx.data.courseMap?.routes||[]).filter(r=>!(overrides.remove||[]).some(([a,b])=>r.from===a&&r.to===b));return [...new Map([...routes,...(overrides.add||[]),...journeyPoints(ctx).filter(p=>p.kind==='repair'&&(p.evidenceId||p.adaptive)&&p.topic).map(p=>({from:p.topic,to:p.id,side:true}))].map(route=>[route.from+'|'+route.to,route])).values()];}
 export function discoveredJourneyZones(ctx){return journeyPoints(ctx).filter(p=>{const d=describePoint(ctx,p);return p.kind==='teleport'&&(['mastered','partial'].includes(d.phase)||d.completed)||p.kind==='statue'&&d.completed;}).map(p=>({id:p.id,x:p.x*10,y:p.y*6.5,radius:p.kind==='statue'?225:92,kind:p.kind}));}

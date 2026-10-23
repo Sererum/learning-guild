@@ -1,3 +1,4 @@
+import {validateDailyBank} from './daily-service.mjs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
@@ -28,6 +29,7 @@ function jsonValue(value,label,seen=new Set()){
 // checks the content contract; it is not a sandbox for third-party modules.
 export function validateCourse(course){
  if(!object(course))fail('ожидался объект');
+ validateDailyBank(course.daily);
  const manifest=course.manifest;
  if(!object(manifest)||manifest.schemaVersion!==1)fail('course.json: schemaVersion должен быть 1');
  if(typeof manifest.id!=='string'||!slug.test(manifest.id)||course.id!==manifest.id)fail('id должен быть ASCII slug и совпадать с course.json');

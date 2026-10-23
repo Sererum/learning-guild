@@ -1,3 +1,4 @@
+import {blockAccessRequirements} from './public/block-progress.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
@@ -61,6 +62,11 @@ export function programView(course,state,local={extras:[],excluded:[],bindings:{
  // Diagnostics supply explicit evidence only for their target, never fake old task claims.
  for(const n of nodes.filter(n=>n.kind==='diagnostic'&&n.completed&&!n.excluded)){const target=nodes.find(t=>t.id===n.parentId);if(target){target.status='done';target.completed=true;target.masteryVia=n.id;}}
  for(const n of nodes){n.missing=n.prerequisites.filter(p=>!nodes.find(v=>v.id===p)?.completed);n.unlocks=nodes.filter(t=>t.prerequisites.includes(n.id)).map(t=>t.id);if(local.bindings?.[n.id]||n.prerequisites.some(id=>nodes.find(x=>x.id===id)?.masteryVia))n.available=!!n.lessonId&&!n.missing.length&&!n.excluded;if(n.excluded)n.available=false;}
+ for(const n of nodes){
+  n.blockMissing=blockAccessRequirements(nodes,blocks,n).filter(id=>!nodes.find(other=>other.id===id)?.completed);
+  n.missing=[...new Set([...n.missing,...n.blockMissing])];
+  if(n.blockMissing.length&&!n.completed){n.available=false;n.materials=(n.materials||[]).map(m=>({...m,available:false}));}
+ }
  for(const p of points.filter(p=>p.kind==='repair')){
   const d=describePoint(ctx,p);if(!d.lessonId||usedLessons.has(d.lessonId))continue;
   const parent=nodes.find(n=>n.pointIds.includes(p.topic))||nodes.find(n=>n.lessonId===course.lessons.find(l=>l.id===d.lessonId)?.sourceLessonId);
@@ -198,13 +204,13 @@ export function createProgramService({directory,courseId,profileId,readCourse,re
    const n=v.nodes.find(n=>n.id===input.nodeId);if(!n||n.excluded)throw Error('Этап не найден в текущем маршруте.');if(!n.canPrepare)throw Error(n.prepareReason);
    if(n.requiresRuntime||n.runtime&&n.runtime!==readCourse().manifest.runtime)throw Error('Для этой темы сначала нужно проверить поддержку её инструментов. Этап остаётся в плане; установка библиотек автоматически не выполняется.');
    const old=local.bindings[n.id],oldJob=old&&learning.snapshot().jobs.find(j=>j.id===old.jobId);if(oldJob&&oldJob.status!=='cancelled')throw Error('Подготовка уже запрошена. Её состояние показано ниже.');
-   const target={id:n.id,title:n.title,kind:n.kind==='diagnostic'?'exam':n.kind==='reinforcement'?'reinforcement':'lesson',learningGoals:n.learningGoals,lessonPlan:n.lessonPlan||[],prerequisites:n.prerequisites,runtime:n.runtime||readCourse().manifest.runtime,diagnostic:n.kind==='diagnostic'};
+   const target={id:n.id,title:n.title,kind:['diagnostic','exam'].includes(n.kind)?'exam':n.kind==='reinforcement'?'reinforcement':'lesson',learningGoals:n.learningGoals,lessonPlan:n.lessonPlan||[],prerequisites:n.prerequisites,runtime:n.runtime||readCourse().manifest.runtime,diagnostic:n.kind==='diagnostic'};
    const parent=v.nodes.find(x=>x.id===n.parentId),sourceLessonId=parent?.lessonId||n.prerequisites.map(x=>v.nodes.find(y=>y.id===x)?.lessonId).find(Boolean)||null;
    const job=await learning.requestProgram({lessonId:sourceLessonId,message:'Подготовь согласованный этап программы: '+n.title+'. Цели: '+n.learningGoals.join('; ')+'. Подробный план: '+(n.lessonPlan||[]).join(' '),kind:'reinforcement',requestId:'program-material-'+n.id+'-'+local.revision,curriculumTarget:target});
    local.bindings[n.id]={jobId:job.id,at:now()};write(local);return {message:'Подготовка началась. Материал появится после проверок и независимого ревью.'};
   }
   throw Error('Неизвестное действие с программой.');
  }
- function curriculum({includeOptional=false}={}){const local=read();return [...(readCourse().adaptation?.roadmap||[]).filter(n=>includeOptional||n.main!==false),...local.extras.filter(n=>n.main||includeOptional).map(n=>({...n,afterLessonIds:n.prerequisites,kind:n.kind==='diagnostic'?'exam':n.kind||'lesson'}))].filter(n=>!new Set([...(readCourse().program?.excluded||[]),...local.excluded]).has(n.id));}
+ function curriculum({includeOptional=false}={}){const local=read();return [...(readCourse().adaptation?.roadmap||[]).filter(n=>includeOptional||n.main!==false),...local.extras.filter(n=>n.main||includeOptional).map(n=>({...n,afterLessonIds:n.prerequisites,kind:n.kind==='diagnostic'?'exam':n.kind||'lesson',diagnostic:n.kind==='diagnostic'}))].filter(n=>!new Set([...(readCourse().program?.excluded||[]),...local.excluded]).has(n.id));}
  return {snapshot,act,curriculum,whenIdle:async()=>{while(running)await new Promise(resolve=>setTimeout(resolve,10));},close(){closed=true;child?.guildCancel?.();}};
 }

@@ -4,7 +4,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 const publicRoot=path.join(path.dirname(fileURLToPath(import.meta.url)),'public');
-import {createLocalCourseStore} from './local-courses.mjs';
+import {createLocalCourseStore,courseMetadata,courseAvatars} from './local-courses.mjs';
 import {createGuildServer} from './server.mjs';
 
 // Each open account owns a separate server context and lock. Switching never
@@ -14,7 +14,7 @@ export function createAccountServer({root,python,...options}){
  const reply=(res,status,body)=>{res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(body));};
  function context(accountId){if(contexts.has(accountId))return contexts.get(accountId);const entry=store.load(accountId);
   const child=createGuildServer({...options,course:entry.course,profileId:entry.profileId,stateFile:entry.stateFile,python,sharedPreferences:{read:()=>store.preferences(store.manifest(accountId).learningProfileId).read(),write:(value,opts)=>store.preferences(store.manifest(accountId).learningProfileId).write(value,opts)},
-   accountContext:{id:accountId,sharing:()=>store.sharing(accountId),snapshot:()=>({id:accountId,...store.sharing(accountId),id:accountId,learningProfileId:store.manifest(accountId).learningProfileId}),assets:state=>({...state,...(state.profileAssets?{profileAssets:Object.fromEntries(Object.entries(state.profileAssets).map(([key,url])=>[key,url+'?account='+accountId]))}:{})})}});
+   accountContext:{id:accountId,metadata:()=>courseMetadata(store.manifest(accountId)),sharing:()=>store.sharing(accountId),snapshot:()=>({id:accountId,...store.sharing(accountId),id:accountId,...courseMetadata(store.manifest(accountId)),avatarChoices:courseAvatars,learningProfileId:store.manifest(accountId).learningProfileId}),assets:state=>({...state,...(state.profileAssets?{profileAssets:Object.fromEntries(Object.entries(state.profileAssets).map(([key,url])=>[key,url+'?account='+accountId]))}:{})})}});
   contexts.set(accountId,child);return child;
  }
  const server=http.createServer(async(req,res)=>{
@@ -22,11 +22,12 @@ export function createAccountServer({root,python,...options}){
   const host=req.headers.host||'';if(!/^127\.0\.0\.1:\d+$/.test(host))return reply(res,403,{error:'Доступ только через 127.0.0.1'});
   const url=new URL(req.url,'http://'+host),accountId=url.searchParams.get('account');
   try{
-   if(url.pathname==='/api/accounts'&&req.method==='GET')return reply(res,200,{...store.list(),selected:store.selected(),token});
+   if(url.pathname==='/api/accounts'&&req.method==='GET')return reply(res,200,{...store.list(),avatarChoices:courseAvatars,selected:store.selected(),token});
    if(url.pathname==='/api/accounts'&&req.method==='POST'){
     if(req.headers.origin!=='http://'+host||req.headers['x-guild-token']!==token)return reply(res,403,{error:'Обновите список курсов и повторите действие.'});
     let body='';for await(const chunk of req){body+=chunk;if(Buffer.byteLength(body)>16000)throw Error('Слишком большой запрос.');}const input=JSON.parse(body);
     if(input.action==='select'){context(input.id);store.select(input.id);return reply(res,200,{url:'/?account='+input.id+'#program'});}
+    if(input.action==='update-metadata'){const {action,id,...metadata}=input;const account=store.updateMetadata(id,metadata);return reply(res,200,{account,message:'Название, описание и аватар курса сохранены.'});}
     if(input.action==='detach'){store.detach(input.id,{expectedRevision:input.revision,expectedProfileId:input.sharedProfileId});return reply(res,200,{message:'Теперь у курса самостоятельный профиль обучения.'});}
     if(input.action!=='create')throw Error('Неизвестное действие.');
     // Never trust an effectiveCourse object received from the browser.
@@ -41,7 +42,7 @@ export function createAccountServer({root,python,...options}){
    if(accountId){const child=context(accountId);return child.emit('request',req,res);}
    // Common assets have no account state. Use an existing context only for the
    // public allowlist. APIs, HTML, rules and private portraits require an ID.
-   const common=/^\/(?:app\.js|style\.css|transport\.js|storage\.js|journey\.js|equipment-[a-z-]+\.js|fantasy-theme\.css|pages\/[a-z-]+\.(?:js|css)|lesson-workbench\/[a-z-]+\.(?:js|css)|assets\/[a-zA-Z0-9_/-]+\.(?:png|svg|webp|mp4))$/.test(url.pathname);
+   const common=/^\/(?:app\.js|style\.css|transport\.js|storage\.js|journey\.js|block-progress\.js|teyvat-territories\.js|map-icons\.js|teyvat-(?:atlas|route)\.js|equipment-[a-z-]+\.js|fantasy-theme\.css|pages\/[a-z-]+\.(?:js|css)|lesson-workbench\/[a-z-]+\.(?:js|css)|assets\/[a-zA-Z0-9_/-]+\.(?:png|svg|webp|mp4))$/.test(url.pathname);
    if(common&&req.method==='GET'){
     const file=path.resolve(publicRoot,'.'+url.pathname);if(!file.startsWith(publicRoot+path.sep)||!fs.existsSync(file)||!fs.lstatSync(file).isFile()||fs.lstatSync(file).isSymbolicLink())return reply(res,404,{error:'Не найдено'});
     const types={'.js':'text/javascript','.css':'text/css','.png':'image/png','.svg':'image/svg+xml','.webp':'image/webp','.mp4':'video/mp4'},headers={'Content-Type':types[path.extname(file)],'Cache-Control':'no-cache'},size=fs.statSync(file).size;
