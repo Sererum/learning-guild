@@ -7,6 +7,13 @@ export const TEYVAT_ATLAS = Object.freeze({
   "retrievedAt": "2026-10-22",
   "copyright": "© HoYoverse. Все права на карту и географию принадлежат правообладателю.",
   "image": "/assets/teyvat/teyvat-official-2026-10.webp",
+  "detail": {
+    "directory": "/assets/teyvat",
+    "prefix": "detail-4x-",
+    "scale": 4,
+    "tileSize": 256,
+    "sourceZoom": -1
+  },
   "width": 2702,
   "height": 2295,
   "mapId": 2,

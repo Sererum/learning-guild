@@ -15,6 +15,16 @@
   "tileRows": 9,
   "tileSize": 256,
   "processing": "Official tiles assembled without geographic changes. Only blank source padding cropped: left 953, top 4, width 2702, height 2295 at zoom -3. Encoded WebP quality 94.",
+  "detail": {
+    "retrievedAt": "2026-10-24",
+    "sourceZoom": -1,
+    "tileTemplate": "https://act-webstatic.hoyoverse.com/map_manage/map/2/eea752b746ae1f2e0c1988a574f2b7b0/{x}_{y}_N1.webp",
+    "scale": 4,
+    "width": 10808,
+    "height": 9180,
+    "sourceCrop": {"left": 3812, "top": 16, "width": 10808, "height": 9180},
+    "processing": "Official zoom -1 tiles assembled without rescaling or sharpening. Same geographic crop and route coordinates as overview. Repacked as 99 local WebP tiles, maximum 1024x1024 native pixels, quality 94. Only viewport tiles are decoded; overview remains underneath."
+  },
   "portalSelection": "12 explicit nearest-to-curated-position surface teleport waypoints per region. label_id=3, icon_sign=0, point_group=null. Exact IDs and source coordinates are in teyvat-atlas.js. Course order is an educational overlay, not an official game route.",
   "sourceConfig": {
     "total_size": [

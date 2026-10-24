@@ -4,6 +4,46 @@ import {mapIcon} from '../map-icons.js';
 import {TEYVAT_ATLAS,ATLAS_REGIONS} from '../teyvat-atlas.js';
 import {buildTeyvatRoute} from '../teyvat-route.js';
 
+
+// Keep all route/fog coordinates in overview pixels. Only the artwork gains
+// detail; loading is bounded by the viewport rather than the entire world.
+export function visibleMapTiles(camera,viewport,pixelRatio=1,atlas=TEYVAT_ATLAS){
+ const detail=atlas.detail;
+ if(!detail||camera.zoom*Math.max(1,pixelRatio)<=1||viewport.width<=0||viewport.height<=0)return [];
+ const size=detail.tileSize,margin=24;
+ const left=Math.max(0,(-camera.x)/camera.zoom-margin),top=Math.max(0,(-camera.y)/camera.zoom-margin);
+ const right=Math.min(atlas.width,(viewport.width-camera.x)/camera.zoom+margin),bottom=Math.min(atlas.height,(viewport.height-camera.y)/camera.zoom+margin);
+ if(right<=left||bottom<=top)return [];
+ const tiles=[];
+ for(let row=Math.floor(top/size);row<Math.ceil(bottom/size);row++)for(let col=Math.floor(left/size);col<Math.ceil(right/size);col++){
+  const x=col*size,y=row*size;
+  tiles.push({key:col+'-'+row,src:detail.directory+'/'+detail.prefix+col+'-'+row+'.webp',x,y,width:Math.min(size,atlas.width-x),height:Math.min(size,atlas.height-y)});
+ }
+ return tiles;
+}
+
+export function createMapDetailLayer(layer){
+ if(!layer)return {update(){},dispose(){}};
+ const images=new Map();
+ return {
+  update(camera,viewport,pixelRatio=1){
+   const tiles=visibleMapTiles(camera,viewport,pixelRatio),wanted=new Set(tiles.map(tile=>tile.key));
+   for(const [key,image] of images)if(!wanted.has(key)){image.remove();images.delete(key);}
+   for(const tile of tiles){
+    if(images.has(tile.key))continue;
+    const image=layer.ownerDocument.createElement('img');
+    image.alt='';image.draggable=false;image.decoding='async';
+    image.dataset.mapTile=tile.key;
+    image.style.cssText=`left:${tile.x}px;top:${tile.y}px;width:${tile.width}px;height:${tile.height}px`;
+    // Failed or still-loading tiles leave the overview visible underneath.
+    image.src=tile.src;layer.append(image);images.set(tile.key,image);
+   }
+  },
+  dispose(){for(const image of images.values())image.remove();images.clear();}
+ };
+}
+
+
 const labels={done:'Пройдено',repair:'Нужен разбор',ready:'Материал готов',future:'Впереди'};
 const symbols={done:'✓',repair:'!',ready:'◆',future:'◇'};
 const view={scope:null,pass:0,selected:null,drawerOpen:false,x:0,y:0,zoom:1,initialized:false};
@@ -104,7 +144,7 @@ export function render(ctx){
  const {data,esc:e}=ctx,atlas=routeFor(data);
  if(!allPoints(atlas).some(n=>n.id===view.selected)){view.selected=null;view.drawerOpen=false;}
  const current=currentPoint(data,atlas),selected=allPoints(atlas).find(n=>n.id===view.selected),nodes=(data.program?.nodes||[]).filter(n=>!n.excluded&&n.main!==false),done=nodes.filter(n=>n.completed).length;
- return `<section class="world-page"><header class="world-heading"><div><p class="eyebrow">ТВОЙ УЧЕБНЫЙ МАРШРУТ</p><h1>Карта мира</h1></div><p class="world-progress">${done} / ${nodes.length} <span>пройдено</span></p><button type="button" class="button secondary" data-world-program>Моя программа →</button></header><div class="world-layout"><section class="world-atlas" aria-label="Атлас Тейвата"><div class="world-map-toolbar">${atlas.passesCount>1?`<label class="world-pass-picker">Путешествие <select data-world-pass aria-label="Выбрать путешествие">${atlas.passes.map(p=>`<option value="${p.index}" ${p.index===atlas.pass?'selected':''}>${e(p.label)}</option>`).join('')}</select></label>`:''}<label class="world-region-picker">Регион <select data-world-region aria-label="Перейти к региону">${atlas.regions.map(r=>`<option value="${e(r.id)}" ${r.id===current?.region?'selected':''}>${e(r.name)}${r.blockTitle?' · '+e(r.blockTitle):''}</option>`).join('')}</select></label><button type="button" data-world-daily class="world-daily-link">${mapIcon('daily',{active:data.daily?.today?.status!=='claimed'})} Дэйлик дня</button><button type="button" data-world-current class="world-current-link">К текущему уроку ↗</button></div><div class="world-viewport" tabindex="0" aria-label="Карта: перетаскивай для перемещения, колёсико для масштаба, стрелки для движения"><div class="world-canvas" style="width:${TEYVAT_ATLAS.width}px;height:${TEYVAT_ATLAS.height}px;transform:translate(${view.x}px,${view.y}px) scale(${view.zoom});--world-inverse:${1/view.zoom}"><img class="world-map-image" src="${e(TEYVAT_ATLAS.image)}" width="${TEYVAT_ATLAS.width}" height="${TEYVAT_ATLAS.height}" alt="Географическая карта Тейвата" draggable="false">${fogLayer(atlas)}${roadLayer(atlas,e)}${atlas.regions.map(r=>`<div class="world-region" style="left:${r.x}%;top:${r.y}%"><strong>${e(r.name)}</strong>${r.blockTitle?`<span>${e(r.blockTitle)}</span>`:''}</div>`).join('')}${atlas.slots.filter(s=>!s.nodeId).map(s=>`<span class="world-empty-slot" style="left:${s.x}%;top:${s.y}%" data-world-slot="${e(s.id)}" aria-hidden="true"></span>`).join('')}${worldItinerary(atlas).points.filter(p=>p.kind!=='statue').map(p=>portal(p,e,current,atlas)).join('')}${landmarks(atlas,data,e)}</div><div class="world-map-help" aria-hidden="true">Перетаскивай карту · меняй масштаб</div></div><div class="world-map-bottom"><div class="world-legend">${[['teleport',true,'Урок пройден'],['teleport',false,'Не пройден'],['teleport',true,'Есть разбор',true],['repair',true,'Разбор'],['daily',true,'Дэйлик']].map(([kind,active,label,attention])=>`<span>${mapIcon(kind,{active,attention})}${label}</span>`).join('')}</div><div class="world-controls"><button type="button" data-world-zoom="-1" aria-label="Отдалить карту">−</button><output data-world-scale aria-label="Масштаб карты">${Math.round(view.zoom*100)}%</output><button type="button" data-world-zoom="1" aria-label="Приблизить карту">+</button><button type="button" data-world-overview aria-label="Показать весь Тейват" title="Весь Тейват">⛶</button></div></div></section><aside class="world-quest-drawer" id="world-quest-drawer" aria-labelledby="world-topic-title" ${view.drawerOpen&&selected?'':'hidden'}><header><span class="eyebrow">ВЫБРАННАЯ ТЕМА</span><button type="button" data-world-drawer-close aria-label="Закрыть описание">×</button></header><div class="world-drawer-scroll">${selected?detailCard(ctx,selected,atlas):''}</div></aside></div>${nodes.length?'':'<p class="world-empty-message">Пока здесь только Тейват. Создай свою программу — и на карте появится твой путь.</p>'}${overflowList(atlas,e)}<footer class="world-attribution"><a href="${e(TEYVAT_ATLAS.sourceUrl)}" target="_blank" rel="noopener noreferrer">Карта: ${e(TEYVAT_ATLAS.sourceName)}</a><span>${e(TEYVAT_ATLAS.copyright)}</span></footer></section>`;
+ return `<section class="world-page"><header class="world-heading"><div><p class="eyebrow">ТВОЙ УЧЕБНЫЙ МАРШРУТ</p><h1>Карта мира</h1></div><p class="world-progress">${done} / ${nodes.length} <span>пройдено</span></p><button type="button" class="button secondary" data-world-program>Моя программа →</button></header><div class="world-layout"><section class="world-atlas" aria-label="Атлас Тейвата"><div class="world-map-toolbar">${atlas.passesCount>1?`<label class="world-pass-picker">Путешествие <select data-world-pass aria-label="Выбрать путешествие">${atlas.passes.map(p=>`<option value="${p.index}" ${p.index===atlas.pass?'selected':''}>${e(p.label)}</option>`).join('')}</select></label>`:''}<label class="world-region-picker">Регион <select data-world-region aria-label="Перейти к региону">${atlas.regions.map(r=>`<option value="${e(r.id)}" ${r.id===current?.region?'selected':''}>${e(r.name)}${r.blockTitle?' · '+e(r.blockTitle):''}</option>`).join('')}</select></label><button type="button" data-world-daily class="world-daily-link">${mapIcon('daily',{active:data.daily?.today?.status!=='claimed'})} Дэйлик дня</button><button type="button" data-world-current class="world-current-link">К текущему уроку ↗</button></div><div class="world-viewport" tabindex="0" aria-label="Карта: перетаскивай для перемещения, колёсико для масштаба, стрелки для движения"><div class="world-canvas" style="width:${TEYVAT_ATLAS.width}px;height:${TEYVAT_ATLAS.height}px;transform:translate(${view.x}px,${view.y}px) scale(${view.zoom});--world-inverse:${1/view.zoom}"><img class="world-map-image" src="${e(TEYVAT_ATLAS.image)}" width="${TEYVAT_ATLAS.width}" height="${TEYVAT_ATLAS.height}" alt="Географическая карта Тейвата" draggable="false"><div class="world-map-detail" aria-hidden="true"></div>${fogLayer(atlas)}${roadLayer(atlas,e)}${atlas.regions.map(r=>`<div class="world-region" style="left:${r.x}%;top:${r.y}%"><strong>${e(r.name)}</strong>${r.blockTitle?`<span>${e(r.blockTitle)}</span>`:''}</div>`).join('')}${atlas.slots.filter(s=>!s.nodeId).map(s=>`<span class="world-empty-slot" style="left:${s.x}%;top:${s.y}%" data-world-slot="${e(s.id)}" aria-hidden="true"></span>`).join('')}${worldItinerary(atlas).points.filter(p=>p.kind!=='statue').map(p=>portal(p,e,current,atlas)).join('')}${landmarks(atlas,data,e)}</div><div class="world-map-help" aria-hidden="true">Перетаскивай карту · меняй масштаб</div></div><div class="world-map-bottom"><div class="world-legend">${[['teleport',true,'Урок пройден'],['teleport',false,'Не пройден'],['teleport',true,'Есть разбор',true],['repair',true,'Разбор'],['daily',true,'Дэйлик']].map(([kind,active,label,attention])=>`<span>${mapIcon(kind,{active,attention})}${label}</span>`).join('')}</div><div class="world-controls"><button type="button" data-world-zoom="-1" aria-label="Отдалить карту">−</button><output data-world-scale aria-label="Масштаб карты">${Math.round(view.zoom*100)}%</output><button type="button" data-world-zoom="1" aria-label="Приблизить карту">+</button><button type="button" data-world-overview aria-label="Показать весь Тейват" title="Весь Тейват">⛶</button></div></div></section><aside class="world-quest-drawer" id="world-quest-drawer" aria-labelledby="world-topic-title" ${view.drawerOpen&&selected?'':'hidden'}><header><span class="eyebrow">ВЫБРАННАЯ ТЕМА</span><button type="button" data-world-drawer-close aria-label="Закрыть описание">×</button></header><div class="world-drawer-scroll">${selected?detailCard(ctx,selected,atlas):''}</div></aside></div>${nodes.length?'':'<p class="world-empty-message">Пока здесь только Тейват. Создай свою программу — и на карте появится твой путь.</p>'}${overflowList(atlas,e)}<footer class="world-attribution"><a href="${e(TEYVAT_ATLAS.sourceUrl)}" target="_blank" rel="noopener noreferrer">Карта: ${e(TEYVAT_ATLAS.sourceName)}</a><span>${e(TEYVAT_ATLAS.copyright)}</span></footer></section>`;
 }
 
 // Coordinates are image pixels. The aspect ratio never depends on viewport size.
@@ -122,7 +162,8 @@ export function bind(root,ctx){
  const atlas=routeFor(ctx.data),viewport=root.querySelector('.world-viewport'),canvas=root.querySelector('.world-canvas'),drawer=root.querySelector('.world-quest-drawer');
  if(!viewport||!canvas)return;
  const controller=new AbortController(),listen=(el,name,fn,options={})=>el?.addEventListener(name,fn,{...options,signal:controller.signal});
- const apply=()=>{Object.assign(view,clampCamera(view,viewport.clientWidth,viewport.clientHeight));canvas.style.transform=`translate(${view.x}px,${view.y}px) scale(${view.zoom})`;canvas.style.setProperty('--world-inverse',1/view.zoom);root.querySelector('[data-world-scale]').textContent=Math.round(view.zoom*100)+'%';};
+ const detail=createMapDetailLayer(root.querySelector('.world-map-detail'));
+ const apply=()=>{Object.assign(view,clampCamera(view,viewport.clientWidth,viewport.clientHeight));canvas.style.transform=`translate(${view.x}px,${view.y}px) scale(${view.zoom})`;canvas.style.setProperty('--world-inverse',1/view.zoom);root.querySelector('[data-world-scale]').textContent=Math.round(view.zoom*100)+'%';detail.update(view,{width:viewport.clientWidth,height:viewport.clientHeight},globalThis.devicePixelRatio||1);};
  const focusLocation=(point,zoom)=>{const pos=pointPixels(point);view.zoom=zoom;view.x=viewport.clientWidth/2-pos.x*zoom;view.y=viewport.clientHeight/2-pos.y*zoom;apply();};
  const focusCurrent=()=>{const p=currentPoint(ctx.data,atlas)||atlas.regions[0];focusLocation(p,viewport.clientWidth<600?1.05:1.25);root.querySelector('[data-world-region]').value=p.region||p.id;};
  if(!view.initialized&&viewport.clientWidth){view.initialized=true;focusCurrent();}else apply();
@@ -159,5 +200,5 @@ export function bind(root,ctx){
  listen(viewport,'pointerup',finish);listen(viewport,'pointercancel',finish);listen(viewport,'lostpointercapture',finish);
  listen(viewport,'keydown',e=>{if(e.key==='Escape'&&view.drawerOpen){close();return;}if(e.target!==viewport)return;const movement={ArrowLeft:[70,0],ArrowRight:[-70,0],ArrowUp:[0,70],ArrowDown:[0,-70]}[e.key];if(movement){e.preventDefault();view.x+=movement[0];view.y+=movement[1];apply();}else if(['+','=','-'].includes(e.key)){e.preventDefault();zoomAt(view.zoom*(e.key==='-'?.8:1.25));}else if(e.key==='Home'){e.preventDefault();focusCurrent();}});
  const resize=typeof ResizeObserver!=='undefined'?new ResizeObserver(()=>{if(!root.isConnected){resize.disconnect();return;}apply();}):null;resize?.observe(viewport);
- bindings.set(root,()=>{controller.abort();resize?.disconnect();});
+ bindings.set(root,()=>{controller.abort();resize?.disconnect();detail.dispose();});
 }
